@@ -1,0 +1,25 @@
+package com.randioo.demo_optimisticframe_server.protocal;
+import "Login.proto";
+import "Match.proto";
+import "Fight.proto";
+import "Ping.proto";
+
+message SCMessage{
+	optional LoginCheckAccountResponse loginCheckAccountResponse=1;
+	optional LoginCreateRoleResponse loginCreateRoleResponse=2;
+	optional LoginGetRoleDataResponse loginGetRoleDataResponse=3;
+	
+	optional MatchRoleResponse matchRoleResponse=4;
+
+	optional FightReceiveHitGameControlResponse fightReceiveHitGameControlResponse=5;
+	optional FightReceivePlaneGameControlResponse fightReceivePlaneGameControlResponse=6;
+	optional FightLoadCompleteResponse fightLoadCompleteResponse=7;
+	optional SCFightStartGame scFightStartGame = 8;
+	optional SCFightLoadResource scFightLoadResource =9;
+	optional SCFightRemove scFightRemove = 10;
+	optional SCFightCreate scFightCreate =11;
+	optional SCFightGameOver scFightGameOver =12;
+	optional SCFightSendKeyFrame scFightSendKeyFrame = 13;
+
+	optional PingResponse pingResponse=14;
+}

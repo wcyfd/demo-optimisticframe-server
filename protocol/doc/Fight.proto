@@ -1,0 +1,81 @@
+package com.randioo.demo_optimisticframe_server.protocal;
+import "Game.proto";
+
+message FightReceiveHitGameControlRequest{
+	optional int32 enemyId=1;
+}
+message FightReceiveHitGameControlResponse{
+	optional int32 success=1;
+}
+
+message FightReceivePlaneGameControlRequest{
+	optional GameAction gameAction = 1;
+}
+
+message FightReceivePlaneGameControlResponse{
+	optional int32 success = 1;
+}
+message FightLoadCompleteRequest{
+}
+
+message FightLoadCompleteResponse{
+	optional int32 errorCode=1;
+}
+
+message SCFightStartGame{
+}
+
+message SCFightLoadResource{
+	optional int32 index = 1;
+	optional int32 randSeed = 2;
+	repeated RoleInfo roleInfos = 3;
+}
+
+message RoleInfo{
+	optional int32 roleId = 1;
+	optional string name=2;
+}
+
+message SCFightRemove{
+	optional int32 enemyId = 1;
+	optional int32 roleId=2;
+	optional int32 addScore =3;
+}
+
+message SCFightCreate{
+	optional int32 x=1;
+	optional int32 y=2;
+	optional int32 enemyId=3;
+	optional EnemyType enemyType = 4;
+}
+
+message SCFightGameOver{
+	message Result{
+		optional int32 roleId = 1;
+		optional string name = 2;
+		optional int32 score = 3;
+	}
+	repeated Result results= 1;
+}
+
+enum EnemyType{
+	ENEMY1 = 1012;
+	ENEMY2 = 1015;
+	ENEMY3 = 1023;
+	ENEMY4 = 1066;
+	ENEMY5 = 1067;
+	ENEMY6 = 1087;
+	ENEMY7 = 1219;
+	ENEMY8 = 1707;
+	ENEMY9 = 2070;
+}
+
+message SCFightSendKeyFrame{	
+	repeated Frame frames = 1;
+}
+
+message Frame{
+	optional int32 frameIndex = 1;
+	repeated GameAction gameActions= 2;		
+}
+		

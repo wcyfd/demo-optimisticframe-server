@@ -1,0 +1,19 @@
+package com.randioo.demo_optimisticframe_server.protocal;
+import "Login.proto";
+import "Match.proto";
+import "Fight.proto";
+import "Ping.proto";
+
+message CSMessage{
+	optional LoginCheckAccountRequest loginCheckAccountRequest=1;
+	optional LoginCreateRoleRequest loginCreateRoleRequest=2;
+	optional LoginGetRoleDataRequest loginGetRoleDataRequest=3;
+
+	optional MatchRoleRequest matchRoleRequest=4;
+
+	optional FightReceiveHitGameControlRequest fightReceiveHitGameControlRequest=5;
+	optional FightReceivePlaneGameControlRequest fightReceivePlaneGameControlRequest=6;
+	optional FightLoadCompleteRequest fightLoadCompleteRequest=7;
+
+	optional PingRequest pingRequest = 8;
+}

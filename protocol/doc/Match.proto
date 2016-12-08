@@ -1,0 +1,9 @@
+package com.randioo.demo_optimisticframe_server.protocal;
+
+message MatchRoleRequest{	
+	optional bool test = 1;
+}
+
+message MatchRoleResponse{
+	optional int32 errorCode = 1;
+}

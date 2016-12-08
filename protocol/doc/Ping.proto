@@ -1,0 +1,10 @@
+package com.randioo.demo_optimisticframe_server.protocal;
+
+message PingRequest{
+	optional int64 clientTimestamp = 1;
+}
+
+message PingResponse{
+	optional int64 clientTimestamp = 1;
+	optional int64 serverTimestamp = 2;
+}
