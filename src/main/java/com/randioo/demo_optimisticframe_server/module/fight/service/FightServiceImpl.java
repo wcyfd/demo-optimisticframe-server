@@ -58,10 +58,13 @@ public class FightServiceImpl extends BaseService implements FightService {
 	}
 
 	@Override
-	public void loadResource(MatchInfo matchInfo) {
+	public void loadResource(int playCount, List<? extends Matchable> matchables) {
 		int randSeed = Utils.getRandomNum(0, 100);
-		List<Matchable> matchables = matchInfo.getMatchables();
 		System.out.println("loadResource");
+
+		// 游戏初始化
+		this.serverGameInit(playCount, matchables);
+
 		try {
 			for (int i = 0; i < matchables.size(); i++) {
 				Role targetRole = (Role) matchables.get(i);
@@ -95,33 +98,28 @@ public class FightServiceImpl extends BaseService implements FightService {
 							FightLoadCompleteResponse.newBuilder().setErrorCode(ErrorCode.SUCCESS)).build());
 
 			role.setPrepare(true);
-			MatchInfo matchInfo = role.getMatchInfo();
+			Game game = (Game) role.getGame();
 
 			// 检查全部都准备完毕
 			boolean allReadyComplete = false;
-			for (Matchable matchable : matchInfo.getMatchables()) {
-				allReadyComplete = matchable.isPrepare();
+			for (Role r : game.getRoleMap().values()) {
+				allReadyComplete = r.isPrepare();
 			}
 
 			if (allReadyComplete) {
 				// 重置准备完毕的标记
-				for (Matchable matchable : matchInfo.getMatchables()) {
-					Role matchableRole = (Role) matchable;
-					matchableRole.setPrepare(false);
+				for (Role r : game.getRoleMap().values()) {
+					r.setPrepare(false);
 				}
-				// 游戏初始化
-				Game initGame = this.serverGameInit(matchInfo);
 
-				List<Matchable> matchables = matchInfo.getMatchables();
-				for (Matchable matchable : matchables) {
-					Role r = (Role) matchable;
+				for (Role r : game.getRoleMap().values()) {
 					IoSession s = SessionCache.getSessionById(r.getRoleId());
 					if (s != null) {
 						s.write(SCMessage.newBuilder().setScFightStartGame(SCFightStartGame.newBuilder()).build());
 					}
 				}
 
-				this.startGame(initGame);
+				this.startGame((Game) role.getGame());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -130,14 +128,10 @@ public class FightServiceImpl extends BaseService implements FightService {
 	}
 
 	@Override
-	public Game serverGameInit(MatchInfo matchInfo) {
-		MatchRule matchRule = matchInfo.getMatchRule();
-		int playCount = matchRule.getPlayerCount();
-
+	public Game serverGameInit(int playCount, List<? extends Matchable> matchables) {
 		Game game = new Game(playCount, 60 * 3, 5, 50);
 		game.setGameId(GameCache.getGameId());
 
-		List<Matchable> matchables = matchInfo.getMatchables();
 		for (Matchable matchable : matchables) {
 			Role role = (Role) matchable;
 			GameInfo gameInfo = new GameInfo();
@@ -151,7 +145,7 @@ public class FightServiceImpl extends BaseService implements FightService {
 		return game;
 	}
 
-	public void startGame(Game game) {
+	private void startGame(Game game) {
 		int frameCountInOneSecond = game.getFrameCountInOneSecond();
 		game.setStart(true);
 		int deltaTime = 1000 / frameCountInOneSecond;
@@ -171,13 +165,13 @@ public class FightServiceImpl extends BaseService implements FightService {
 				game.setStartTime(System.currentTimeMillis());
 				game.setHasStartTime(true);
 			}
-			// 游戏时间到了，发送游戏结束
-			if (getCurrentFrameIndex(game) >= game.getFrameCountInOneSecond() * game.getTotalTime()) {
-
-				sendEnd(game);
-
-				return;
-			}
+//			// 游戏时间到了，发送游戏结束
+//			if (getCurrentFrameIndex(game) >= game.getFrameCountInOneSecond() * game.getTotalTime()) {
+//
+//				sendEnd(game);
+//
+//				return;
+//			}
 
 			// 发送关键帧内所有操作信息
 			sendKeyFrameInfo(game);

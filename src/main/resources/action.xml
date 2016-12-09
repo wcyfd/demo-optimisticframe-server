@@ -18,4 +18,7 @@
 	<bean id="fightReceivePlaneGameControlInfoAction" class="com.randioo.demo_optimisticframe_server.module.fight.action.FightReceivePlaneGameControlInfoAction" p:fightService-ref="fightService"></bean>
 	
 	<bean id="pingAction" class="com.randioo.demo_optimisticframe_server.module.ping.action.PingAction" p:pingService-ref="pingService"></bean>
+	
+	<bean id="inviteAnswerAction" class="com.randioo.demo_optimisticframe_server.module.invite.action.InviteAnswerAction" p:inviteService-ref="inviteService"></bean>
+	<bean id="inviteFriendAction" class="com.randioo.demo_optimisticframe_server.module.invite.action.InviteFriendAction" p:inviteService-ref="inviteService"></bean>
 </beans>

@@ -23,5 +23,11 @@
 	
 	<bean id="pingService" class="com.randioo.demo_optimisticframe_server.module.ping.service.PingServiceImpl">
 	</bean>
+	
+	<bean id="inviteService" class="com.randioo.demo_optimisticframe_server.module.invite.service.InviteServiceImpl">
+		<property name="gameInviter" ref="gameInviter"></property>
+		<property name="matchService" ref="matchService"></property>
+		
+	</bean>
 
 </beans>

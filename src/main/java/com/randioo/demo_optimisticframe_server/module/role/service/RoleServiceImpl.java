@@ -12,4 +12,6 @@ public class RoleServiceImpl extends BaseService implements RoleService {
 	public void initNavigation() {
 		// TODO Auto-generated method stub
 	}
+	
+	
 }

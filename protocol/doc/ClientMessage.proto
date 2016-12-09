@@ -3,7 +3,9 @@ import "Login.proto";
 import "Match.proto";
 import "Fight.proto";
 import "Ping.proto";
+import "Invite.proto";
 
+//10
 message CSMessage{
 	optional LoginCheckAccountRequest loginCheckAccountRequest=1;
 	optional LoginCreateRoleRequest loginCreateRoleRequest=2;
@@ -16,4 +18,7 @@ message CSMessage{
 	optional FightLoadCompleteRequest fightLoadCompleteRequest=7;
 
 	optional PingRequest pingRequest = 8;
+	
+	optional InviteFriendRequest inviteFriendRequest = 9;
+	optional InviteAnswerRequest inviteAnswerRequest = 10;
 }

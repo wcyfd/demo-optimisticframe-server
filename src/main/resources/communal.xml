@@ -14,6 +14,8 @@
 	<bean id="gameStarter" class="com.randioo.randioo_server_base.utils.game.game_type.real_time_strategy_game.RTSGameStarter">
 		<property name="threadSize" value="1"></property>
 	</bean>
+	
+	<bean id="gameInviter" class="com.randioo.demo_optimisticframe_server.utils.GameInviter"></bean>
 
 	<bean id="serviceManager" class="com.randioo.randioo_server_base.module.ServiceManager">
 		<property name="services">
@@ -23,6 +25,7 @@
 				<ref bean="matchService"/>
 				<ref bean="pingService"/>
 				<ref bean="roleService"/>
+				<ref bean="inviteService"/>
 			</list>
 		</property>
 	</bean>

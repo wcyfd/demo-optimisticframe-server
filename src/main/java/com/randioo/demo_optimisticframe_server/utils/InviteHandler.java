@@ -10,7 +10,7 @@ public interface InviteHandler<T> {
 	 * @param targeter 邀请目标
 	 * @author wcy 2016年12月7日
 	 */
-	public void acceptInvite(T starter, T targeter);
+	public void acceptInvite(Invitation<T> invitation,T targeter);
 
 	/**
 	 * 拒绝邀请
@@ -19,7 +19,7 @@ public interface InviteHandler<T> {
 	 * @param targeter 邀请目标
 	 * @author wcy 2016年12月7日
 	 */
-	public void rejectInvite(T starter, T targeter);
+	public void rejectInvite(Invitation<T> invitation,T targeter);
 
 	/**
 	 * 邀请被取消
@@ -28,12 +28,7 @@ public interface InviteHandler<T> {
 	 * @param targeter
 	 * @author wcy 2016年12月7日
 	 */
-	public void inviteCancelled(T starter, T targeter);
-
-	/**
-	 * 取消对某人的邀请
-	 */
-	public void inviteCancel(T starter, T targeter);
+	public void inviteCancel(Invitation<T> invitation, T targeter);
 
 	/**
 	 * 邀请完成
@@ -41,14 +36,7 @@ public interface InviteHandler<T> {
 	 * @param starter
 	 * @author wcy 2016年12月7日
 	 */
-	public void inviteComplete(Set<T> completeSet);
-
-	/**
-	 * 
-	 * @param invitation
-	 * @author wcy 2016年12月7日
-	 */
-	public void invitationDestoryed(T starter);
+	public void inviteComplete(Invitation<T> invitation);
 
 	/**
 	 * 邀请超过限制
@@ -56,5 +44,5 @@ public interface InviteHandler<T> {
 	 * @param invitation
 	 * @author wcy 2016年12月7日
 	 */
-	public void inviteOutOfIndex(Invitation<?> invitation);
+	public void inviteOutOfIndex(Invitation<T> invitation);
 }

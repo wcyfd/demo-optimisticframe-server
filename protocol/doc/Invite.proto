@@ -1,0 +1,38 @@
+package com.randioo.demo_optimisticframe_server.protocal;
+
+message InviteFriendRequest{
+	optional string account = 1;
+}
+
+message InviteFriendResponse{
+	optional int32 errorCode = 1;
+}
+
+message InviteAnswerRequest{
+	optional string account = 1;
+	optional bool answer = 2;
+}
+
+message InviteAnswerResponse{
+	
+}
+
+message SCInviteAccept{
+	//发起者信息
+	optional string starter = 1;
+	//接受者信息
+	optional string targeter = 2;
+}
+
+message SCInviteReject{
+	//发起者信息
+	optional string starter = 1;
+	//拒绝者信息
+	optional string targeter = 2;
+}
+
+//邀请取消
+message SCInviteCancel{
+	optional string starter = 1;
+}
+

@@ -3,7 +3,9 @@ import "Login.proto";
 import "Match.proto";
 import "Fight.proto";
 import "Ping.proto";
+import "Invite.proto";
 
+//19
 message SCMessage{
 	optional LoginCheckAccountResponse loginCheckAccountResponse=1;
 	optional LoginCreateRoleResponse loginCreateRoleResponse=2;
@@ -22,4 +24,11 @@ message SCMessage{
 	optional SCFightSendKeyFrame scFightSendKeyFrame = 13;
 
 	optional PingResponse pingResponse=14;
+	
+	optional InviteFriendResponse inviteFriendResponse = 15;
+	optional InviteAnswerResponse inviteAnswerResponse = 16;
+	optional SCInviteAccept scInviteAccept = 17;
+	optional SCInviteReject scInviteReject = 18;
+	optional SCInviteCancel scInviteCancel = 19;
+	
 }

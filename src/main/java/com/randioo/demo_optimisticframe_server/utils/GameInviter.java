@@ -73,33 +73,33 @@ public class GameInviter<T> {
 		// 如果接受邀请
 		Invitation<T> invitation = requestMap.get(starter);
 		if (invitation == null || invitation.isCancel()) {
-			handler.invitationDestoryed(starter);
+			handler.inviteCancel(invitation, targeter);
 		}
 		Lock lock = invitation.getLock();
 		try {
 			if (invitation.isCancel()) {
-				handler.invitationDestoryed(starter);
+				handler.inviteCancel(invitation, targeter);
 			}
 
 			if (invite) {
 				// 是否仍在邀请中
 				if (!invitation.getInvitationMap().containsKey(targeter)) {
-					handler.inviteCancelled(starter, targeter);
+					handler.inviteCancel(invitation, targeter);
 					return;
 				}// 接受邀请
 				invitation.getInvitationMap().put(targeter, true);
-				handler.acceptInvite(starter, targeter);
+				handler.acceptInvite(invitation, targeter);
 				Map<T, Boolean> invitationMap = invitation.getInvitationMap();
 				// 检查邀请完毕
 				if (this.checkInviteComplete(invitationMap)) {
 					Set<T> set = invitationMap.keySet();
 					// 邀请完毕
-					handler.inviteComplete(set);
+					handler.inviteComplete(invitation);
 				}
 
 			} else {
 				invitation.getInvitationMap().remove(targeter);
-				handler.rejectInvite(starter, targeter);
+				handler.rejectInvite(invitation, targeter);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -125,12 +125,11 @@ public class GameInviter<T> {
 		lock.lock();
 		try {
 			if (invitation.isCancel()) {
-				handler.invitationDestoryed(starter);
 				return;
 			}
 			if (invitation.getInvitationMap().containsKey(targeter)) {
 				invitation.getInvitationMap().remove(targeter);
-				handler.inviteCancel(starter, targeter);
+				handler.inviteCancel(invitation, targeter);
 			}
 			invitation.setCancel(true);
 		} catch (Exception e) {
@@ -156,12 +155,11 @@ public class GameInviter<T> {
 		lock.lock();
 		try {
 			if (invitation.isCancel()) {
-				handler.invitationDestoryed(starter);
 				return;
 			}
 			Map<T, Boolean> invitationMap = invitation.getInvitationMap();
 			for (T t : invitationMap.keySet()) {
-				handler.inviteCancel(starter, t);
+				handler.inviteCancel(invitation, t);
 			}
 			invitation.setCancel(true);
 		} catch (Exception e) {

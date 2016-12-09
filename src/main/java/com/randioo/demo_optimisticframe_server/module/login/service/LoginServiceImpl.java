@@ -39,6 +39,12 @@ public class LoginServiceImpl extends LoginModelServiceImpl implements LoginServ
 	private class LoginHandlerImpl implements LoginHandler<Role> {
 
 		@Override
+		public GeneratedMessage checkLoginAccountCanLogin(String account) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
 		public String getLoginAccount(Object loginMessage) {
 			LoginCheckAccountRequest request = (LoginCheckAccountRequest) loginMessage;
 			return request.getAccount();
@@ -132,8 +138,7 @@ public class LoginServiceImpl extends LoginModelServiceImpl implements LoginServ
 		}
 
 		@Override
-		public Object getRoleObjectFromCollectionsByGeneratedMessage(Ref<Role> ref,
-				Object createRoleMessage) {
+		public Object getRoleObjectFromCollectionsByGeneratedMessage(Ref<Role> ref, Object createRoleMessage) {
 			LoginGetRoleDataRequest request = (LoginGetRoleDataRequest) createRoleMessage;
 			String account = request.getAccount();
 			Role role = RoleCache.getRoleByAccount(account);

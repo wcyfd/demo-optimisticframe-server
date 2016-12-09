@@ -2,8 +2,5 @@ package com.randioo.demo_optimisticframe_server.protocal;
 
 message GameAction{
 	optional int32 gameElementID = 1;
-	optional bool leftKey = 2;
-	optional bool rightKey = 3;
-	optional bool upKey = 4;
-	optional bool downKey = 5;
+	optional string rate = 2;
 }

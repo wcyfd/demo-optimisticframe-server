@@ -1,11 +1,11 @@
 package com.randioo.demo_optimisticframe_server.module.match.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.mina.core.session.IoSession;
-import org.springframework.cache.support.SimpleCacheManager;
 
-import com.google.protobuf.GeneratedMessage;
 import com.randioo.demo_optimisticframe_server.common.ErrorCode;
 import com.randioo.demo_optimisticframe_server.entity.Role;
 import com.randioo.demo_optimisticframe_server.module.fight.service.FightService;
@@ -34,25 +34,21 @@ public class MatchServiceImpl extends BaseService implements MatchService {
 
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
 		gameMatcher.setMatchHandler(new MatchHandler() {
 
 			@Override
 			public boolean needWaitMatch(MatchInfo matchInfo) {
-				// TODO Auto-generated method stub
 				System.out.println("needWaitMatch");
 				return true;
 			}
 
 			@Override
 			public void matchSuccess(MatchInfo matchInfo, MatchRule matchRule) {
-				// TODO Auto-generated method stub
 				System.out.println("matchSuccess");
 			}
 
 			@Override
 			public boolean matchRule(MatchRule myMatchRule, MatchInfo otherMatchInfo) {
-				// TODO Auto-generated method stub
 				System.out.println("matchRule");
 				MatchRule otherMatchRule = otherMatchInfo.getMatchRule();
 				return myMatchRule.getPlayerCount() == otherMatchRule.getPlayerCount();
@@ -60,14 +56,12 @@ public class MatchServiceImpl extends BaseService implements MatchService {
 
 			@Override
 			public void matchComplete(MatchInfo matchInfo) {
-				// TODO Auto-generated method stub
 				System.out.println("matchComplete");
-				fightService.loadResource(matchInfo);
+				fightService.loadResource(matchInfo.getMatchRule().getPlayerCount(), matchInfo.getMatchables());
 			}
 
 			@Override
 			public MatchRule getAutoMatchRole(MatchInfo matchInfo) {
-				// TODO Auto-generated method stub
 				System.out.println("getAutoMatchRole");
 				// 如果是npc，则默认是加载完毕的
 				Role role = new Role();
@@ -96,6 +90,20 @@ public class MatchServiceImpl extends BaseService implements MatchService {
 			public void cancelMatch(Matchable matchable) {
 				System.out.println("cancel match success");
 			}
+
+			@Override
+			public void changeStartMatcher(Matchable originStarter, Matchable newStarter) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void waitClick(MatchInfo matchInfo, int clickCount) {
+				// TODO Auto-generated method stub
+				Role role = (Role) matchInfo.getMatchRule().getMatchTarget();
+				System.out.println("plane match wait id:" + matchInfo.getMatchId() + " start account:"
+						+ role.getAccount() + " start name:" + role.getName());
+			}
 		});
 	}
 
@@ -116,10 +124,12 @@ public class MatchServiceImpl extends BaseService implements MatchService {
 
 	@Override
 	public void cancelRole(Role role,IoSession session) {
-		
 		gameMatcher.cancelMatch(role);
-		
-
+	}
+	
+	@Override
+	public void matchRole(List<Role> roleList){		
+		fightService.loadResource(roleList.size(), roleList);
 	}
 
 }

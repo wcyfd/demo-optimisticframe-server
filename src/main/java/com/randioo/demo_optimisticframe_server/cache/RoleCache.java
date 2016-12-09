@@ -1,6 +1,5 @@
 package com.randioo.demo_optimisticframe_server.cache;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -55,6 +54,10 @@ public class RoleCache {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public static Role getRoleById(int roleId){
+		return roleMap.get(roleId);
 	}
 
 }

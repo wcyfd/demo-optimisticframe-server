@@ -1,5 +1,7 @@
 package com.randioo.demo_optimisticframe_server.module.fight.service;
 
+import java.util.List;
+
 import org.apache.mina.core.session.IoSession;
 
 import com.google.protobuf.GeneratedMessage;
@@ -7,12 +9,13 @@ import com.randioo.demo_optimisticframe_server.entity.Game;
 import com.randioo.demo_optimisticframe_server.entity.Role;
 import com.randioo.randioo_server_base.module.BaseServiceInterface;
 import com.randioo.randioo_server_base.utils.game.matcher.MatchInfo;
+import com.randioo.randioo_server_base.utils.game.matcher.Matchable;
 
 public interface FightService extends BaseServiceInterface {
 
 	public void loadComplete(Role role, IoSession session);
 
-	public void loadResource(MatchInfo matchInfo);
+	public void loadResource(int playCount,List<? extends Matchable> matchables);
 
 	public void receive_HitGame_ControlInfo(Role role, int enemyId);
 
@@ -35,6 +38,6 @@ public interface FightService extends BaseServiceInterface {
 	 * @return
 	 * @author wcy 2016年11月29日
 	 */
-	Game serverGameInit(MatchInfo matchInfo);
+	Game serverGameInit(int playCount,List<? extends Matchable>matchables);
 
 }

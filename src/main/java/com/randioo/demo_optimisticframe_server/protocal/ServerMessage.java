@@ -133,6 +133,41 @@ public final class ServerMessage {
     public boolean hasPingResponse() { return hasPingResponse; }
     public com.randioo.demo_optimisticframe_server.protocal.Ping.PingResponse getPingResponse() { return pingResponse_; }
     
+    // optional .com.randioo.demo_optimisticframe_server.protocal.InviteFriendResponse inviteFriendResponse = 15;
+    public static final int INVITEFRIENDRESPONSE_FIELD_NUMBER = 15;
+    private boolean hasInviteFriendResponse;
+    private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendResponse inviteFriendResponse_;
+    public boolean hasInviteFriendResponse() { return hasInviteFriendResponse; }
+    public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendResponse getInviteFriendResponse() { return inviteFriendResponse_; }
+    
+    // optional .com.randioo.demo_optimisticframe_server.protocal.InviteAnswerResponse inviteAnswerResponse = 16;
+    public static final int INVITEANSWERRESPONSE_FIELD_NUMBER = 16;
+    private boolean hasInviteAnswerResponse;
+    private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerResponse inviteAnswerResponse_;
+    public boolean hasInviteAnswerResponse() { return hasInviteAnswerResponse; }
+    public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerResponse getInviteAnswerResponse() { return inviteAnswerResponse_; }
+    
+    // optional .com.randioo.demo_optimisticframe_server.protocal.SCInviteAccept scInviteAccept = 17;
+    public static final int SCINVITEACCEPT_FIELD_NUMBER = 17;
+    private boolean hasScInviteAccept;
+    private com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept scInviteAccept_;
+    public boolean hasScInviteAccept() { return hasScInviteAccept; }
+    public com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept getScInviteAccept() { return scInviteAccept_; }
+    
+    // optional .com.randioo.demo_optimisticframe_server.protocal.SCInviteReject scInviteReject = 18;
+    public static final int SCINVITEREJECT_FIELD_NUMBER = 18;
+    private boolean hasScInviteReject;
+    private com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReject scInviteReject_;
+    public boolean hasScInviteReject() { return hasScInviteReject; }
+    public com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReject getScInviteReject() { return scInviteReject_; }
+    
+    // optional .com.randioo.demo_optimisticframe_server.protocal.SCInviteCancel scInviteCancel = 19;
+    public static final int SCINVITECANCEL_FIELD_NUMBER = 19;
+    private boolean hasScInviteCancel;
+    private com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel scInviteCancel_;
+    public boolean hasScInviteCancel() { return hasScInviteCancel; }
+    public com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel getScInviteCancel() { return scInviteCancel_; }
+    
     private void initFields() {
       loginCheckAccountResponse_ = com.randioo.demo_optimisticframe_server.protocal.Login.LoginCheckAccountResponse.getDefaultInstance();
       loginCreateRoleResponse_ = com.randioo.demo_optimisticframe_server.protocal.Login.LoginCreateRoleResponse.getDefaultInstance();
@@ -148,6 +183,11 @@ public final class ServerMessage {
       scFightGameOver_ = com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.getDefaultInstance();
       scFightSendKeyFrame_ = com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightSendKeyFrame.getDefaultInstance();
       pingResponse_ = com.randioo.demo_optimisticframe_server.protocal.Ping.PingResponse.getDefaultInstance();
+      inviteFriendResponse_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendResponse.getDefaultInstance();
+      inviteAnswerResponse_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerResponse.getDefaultInstance();
+      scInviteAccept_ = com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept.getDefaultInstance();
+      scInviteReject_ = com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReject.getDefaultInstance();
+      scInviteCancel_ = com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel.getDefaultInstance();
     }
     public final boolean isInitialized() {
       return true;
@@ -197,6 +237,21 @@ public final class ServerMessage {
       }
       if (hasPingResponse()) {
         output.writeMessage(14, getPingResponse());
+      }
+      if (hasInviteFriendResponse()) {
+        output.writeMessage(15, getInviteFriendResponse());
+      }
+      if (hasInviteAnswerResponse()) {
+        output.writeMessage(16, getInviteAnswerResponse());
+      }
+      if (hasScInviteAccept()) {
+        output.writeMessage(17, getScInviteAccept());
+      }
+      if (hasScInviteReject()) {
+        output.writeMessage(18, getScInviteReject());
+      }
+      if (hasScInviteCancel()) {
+        output.writeMessage(19, getScInviteCancel());
       }
       getUnknownFields().writeTo(output);
     }
@@ -262,6 +317,26 @@ public final class ServerMessage {
       if (hasPingResponse()) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(14, getPingResponse());
+      }
+      if (hasInviteFriendResponse()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, getInviteFriendResponse());
+      }
+      if (hasInviteAnswerResponse()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, getInviteAnswerResponse());
+      }
+      if (hasScInviteAccept()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(17, getScInviteAccept());
+      }
+      if (hasScInviteReject()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(18, getScInviteReject());
+      }
+      if (hasScInviteCancel()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(19, getScInviteCancel());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -463,6 +538,21 @@ public final class ServerMessage {
         if (other.hasPingResponse()) {
           mergePingResponse(other.getPingResponse());
         }
+        if (other.hasInviteFriendResponse()) {
+          mergeInviteFriendResponse(other.getInviteFriendResponse());
+        }
+        if (other.hasInviteAnswerResponse()) {
+          mergeInviteAnswerResponse(other.getInviteAnswerResponse());
+        }
+        if (other.hasScInviteAccept()) {
+          mergeScInviteAccept(other.getScInviteAccept());
+        }
+        if (other.hasScInviteReject()) {
+          mergeScInviteReject(other.getScInviteReject());
+        }
+        if (other.hasScInviteCancel()) {
+          mergeScInviteCancel(other.getScInviteCancel());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -612,6 +702,51 @@ public final class ServerMessage {
               }
               input.readMessage(subBuilder, extensionRegistry);
               setPingResponse(subBuilder.buildPartial());
+              break;
+            }
+            case 122: {
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendResponse.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendResponse.newBuilder();
+              if (hasInviteFriendResponse()) {
+                subBuilder.mergeFrom(getInviteFriendResponse());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setInviteFriendResponse(subBuilder.buildPartial());
+              break;
+            }
+            case 130: {
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerResponse.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerResponse.newBuilder();
+              if (hasInviteAnswerResponse()) {
+                subBuilder.mergeFrom(getInviteAnswerResponse());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setInviteAnswerResponse(subBuilder.buildPartial());
+              break;
+            }
+            case 138: {
+              com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept.newBuilder();
+              if (hasScInviteAccept()) {
+                subBuilder.mergeFrom(getScInviteAccept());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setScInviteAccept(subBuilder.buildPartial());
+              break;
+            }
+            case 146: {
+              com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReject.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReject.newBuilder();
+              if (hasScInviteReject()) {
+                subBuilder.mergeFrom(getScInviteReject());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setScInviteReject(subBuilder.buildPartial());
+              break;
+            }
+            case 154: {
+              com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel.newBuilder();
+              if (hasScInviteCancel()) {
+                subBuilder.mergeFrom(getScInviteCancel());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setScInviteCancel(subBuilder.buildPartial());
               break;
             }
           }
@@ -1137,6 +1272,191 @@ public final class ServerMessage {
         return this;
       }
       
+      // optional .com.randioo.demo_optimisticframe_server.protocal.InviteFriendResponse inviteFriendResponse = 15;
+      public boolean hasInviteFriendResponse() {
+        return result.hasInviteFriendResponse();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendResponse getInviteFriendResponse() {
+        return result.getInviteFriendResponse();
+      }
+      public Builder setInviteFriendResponse(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendResponse value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasInviteFriendResponse = true;
+        result.inviteFriendResponse_ = value;
+        return this;
+      }
+      public Builder setInviteFriendResponse(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendResponse.Builder builderForValue) {
+        result.hasInviteFriendResponse = true;
+        result.inviteFriendResponse_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeInviteFriendResponse(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendResponse value) {
+        if (result.hasInviteFriendResponse() &&
+            result.inviteFriendResponse_ != com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendResponse.getDefaultInstance()) {
+          result.inviteFriendResponse_ =
+            com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendResponse.newBuilder(result.inviteFriendResponse_).mergeFrom(value).buildPartial();
+        } else {
+          result.inviteFriendResponse_ = value;
+        }
+        result.hasInviteFriendResponse = true;
+        return this;
+      }
+      public Builder clearInviteFriendResponse() {
+        result.hasInviteFriendResponse = false;
+        result.inviteFriendResponse_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendResponse.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.demo_optimisticframe_server.protocal.InviteAnswerResponse inviteAnswerResponse = 16;
+      public boolean hasInviteAnswerResponse() {
+        return result.hasInviteAnswerResponse();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerResponse getInviteAnswerResponse() {
+        return result.getInviteAnswerResponse();
+      }
+      public Builder setInviteAnswerResponse(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerResponse value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasInviteAnswerResponse = true;
+        result.inviteAnswerResponse_ = value;
+        return this;
+      }
+      public Builder setInviteAnswerResponse(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerResponse.Builder builderForValue) {
+        result.hasInviteAnswerResponse = true;
+        result.inviteAnswerResponse_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeInviteAnswerResponse(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerResponse value) {
+        if (result.hasInviteAnswerResponse() &&
+            result.inviteAnswerResponse_ != com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerResponse.getDefaultInstance()) {
+          result.inviteAnswerResponse_ =
+            com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerResponse.newBuilder(result.inviteAnswerResponse_).mergeFrom(value).buildPartial();
+        } else {
+          result.inviteAnswerResponse_ = value;
+        }
+        result.hasInviteAnswerResponse = true;
+        return this;
+      }
+      public Builder clearInviteAnswerResponse() {
+        result.hasInviteAnswerResponse = false;
+        result.inviteAnswerResponse_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerResponse.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.demo_optimisticframe_server.protocal.SCInviteAccept scInviteAccept = 17;
+      public boolean hasScInviteAccept() {
+        return result.hasScInviteAccept();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept getScInviteAccept() {
+        return result.getScInviteAccept();
+      }
+      public Builder setScInviteAccept(com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasScInviteAccept = true;
+        result.scInviteAccept_ = value;
+        return this;
+      }
+      public Builder setScInviteAccept(com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept.Builder builderForValue) {
+        result.hasScInviteAccept = true;
+        result.scInviteAccept_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeScInviteAccept(com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept value) {
+        if (result.hasScInviteAccept() &&
+            result.scInviteAccept_ != com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept.getDefaultInstance()) {
+          result.scInviteAccept_ =
+            com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept.newBuilder(result.scInviteAccept_).mergeFrom(value).buildPartial();
+        } else {
+          result.scInviteAccept_ = value;
+        }
+        result.hasScInviteAccept = true;
+        return this;
+      }
+      public Builder clearScInviteAccept() {
+        result.hasScInviteAccept = false;
+        result.scInviteAccept_ = com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.demo_optimisticframe_server.protocal.SCInviteReject scInviteReject = 18;
+      public boolean hasScInviteReject() {
+        return result.hasScInviteReject();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReject getScInviteReject() {
+        return result.getScInviteReject();
+      }
+      public Builder setScInviteReject(com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReject value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasScInviteReject = true;
+        result.scInviteReject_ = value;
+        return this;
+      }
+      public Builder setScInviteReject(com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReject.Builder builderForValue) {
+        result.hasScInviteReject = true;
+        result.scInviteReject_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeScInviteReject(com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReject value) {
+        if (result.hasScInviteReject() &&
+            result.scInviteReject_ != com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReject.getDefaultInstance()) {
+          result.scInviteReject_ =
+            com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReject.newBuilder(result.scInviteReject_).mergeFrom(value).buildPartial();
+        } else {
+          result.scInviteReject_ = value;
+        }
+        result.hasScInviteReject = true;
+        return this;
+      }
+      public Builder clearScInviteReject() {
+        result.hasScInviteReject = false;
+        result.scInviteReject_ = com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReject.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.demo_optimisticframe_server.protocal.SCInviteCancel scInviteCancel = 19;
+      public boolean hasScInviteCancel() {
+        return result.hasScInviteCancel();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel getScInviteCancel() {
+        return result.getScInviteCancel();
+      }
+      public Builder setScInviteCancel(com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasScInviteCancel = true;
+        result.scInviteCancel_ = value;
+        return this;
+      }
+      public Builder setScInviteCancel(com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel.Builder builderForValue) {
+        result.hasScInviteCancel = true;
+        result.scInviteCancel_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeScInviteCancel(com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel value) {
+        if (result.hasScInviteCancel() &&
+            result.scInviteCancel_ != com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel.getDefaultInstance()) {
+          result.scInviteCancel_ =
+            com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel.newBuilder(result.scInviteCancel_).mergeFrom(value).buildPartial();
+        } else {
+          result.scInviteCancel_ = value;
+        }
+        result.hasScInviteCancel = true;
+        return this;
+      }
+      public Builder clearScInviteCancel() {
+        result.hasScInviteCancel = false;
+        result.scInviteCancel_ = com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel.getDefaultInstance();
+        return this;
+      }
+      
       // @@protoc_insertion_point(builder_scope:com.randioo.demo_optimisticframe_server.protocal.SCMessage)
     }
     
@@ -1166,43 +1486,55 @@ public final class ServerMessage {
       "\n\023ServerMessage.proto\0220com.randioo.demo_" +
       "optimisticframe_server.protocal\032\013Login.p" +
       "roto\032\013Match.proto\032\013Fight.proto\032\nPing.pro" +
-      "to\"\267\013\n\tSCMessage\022n\n\031loginCheckAccountRes" +
-      "ponse\030\001 \001(\0132K.com.randioo.demo_optimisti" +
-      "cframe_server.protocal.LoginCheckAccount" +
-      "Response\022j\n\027loginCreateRoleResponse\030\002 \001(" +
-      "\0132I.com.randioo.demo_optimisticframe_ser" +
-      "ver.protocal.LoginCreateRoleResponse\022l\n\030" +
-      "loginGetRoleDataResponse\030\003 \001(\0132J.com.ran",
+      "to\032\014Invite.proto\"\221\017\n\tSCMessage\022n\n\031loginC" +
+      "heckAccountResponse\030\001 \001(\0132K.com.randioo." +
+      "demo_optimisticframe_server.protocal.Log" +
+      "inCheckAccountResponse\022j\n\027loginCreateRol" +
+      "eResponse\030\002 \001(\0132I.com.randioo.demo_optim" +
+      "isticframe_server.protocal.LoginCreateRo" +
+      "leResponse\022l\n\030loginGetRoleDataResponse\030\003",
+      " \001(\0132J.com.randioo.demo_optimisticframe_" +
+      "server.protocal.LoginGetRoleDataResponse" +
+      "\022^\n\021matchRoleResponse\030\004 \001(\0132C.com.randio" +
+      "o.demo_optimisticframe_server.protocal.M" +
+      "atchRoleResponse\022\200\001\n\"fightReceiveHitGame" +
+      "ControlResponse\030\005 \001(\0132T.com.randioo.demo" +
+      "_optimisticframe_server.protocal.FightRe" +
+      "ceiveHitGameControlResponse\022\204\001\n$fightRec" +
+      "eivePlaneGameControlResponse\030\006 \001(\0132V.com" +
+      ".randioo.demo_optimisticframe_server.pro",
+      "tocal.FightReceivePlaneGameControlRespon" +
+      "se\022n\n\031fightLoadCompleteResponse\030\007 \001(\0132K." +
+      "com.randioo.demo_optimisticframe_server." +
+      "protocal.FightLoadCompleteResponse\022\\\n\020sc" +
+      "FightStartGame\030\010 \001(\0132B.com.randioo.demo_" +
+      "optimisticframe_server.protocal.SCFightS" +
+      "tartGame\022b\n\023scFightLoadResource\030\t \001(\0132E." +
+      "com.randioo.demo_optimisticframe_server." +
+      "protocal.SCFightLoadResource\022V\n\rscFightR" +
+      "emove\030\n \001(\0132?.com.randioo.demo_optimisti",
+      "cframe_server.protocal.SCFightRemove\022V\n\r" +
+      "scFightCreate\030\013 \001(\0132?.com.randioo.demo_o" +
+      "ptimisticframe_server.protocal.SCFightCr" +
+      "eate\022Z\n\017scFightGameOver\030\014 \001(\0132A.com.rand" +
+      "ioo.demo_optimisticframe_server.protocal" +
+      ".SCFightGameOver\022b\n\023scFightSendKeyFrame\030" +
+      "\r \001(\0132E.com.randioo.demo_optimisticframe" +
+      "_server.protocal.SCFightSendKeyFrame\022T\n\014" +
+      "pingResponse\030\016 \001(\0132>.com.randioo.demo_op" +
+      "timisticframe_server.protocal.PingRespon",
+      "se\022d\n\024inviteFriendResponse\030\017 \001(\0132F.com.r" +
+      "andioo.demo_optimisticframe_server.proto" +
+      "cal.InviteFriendResponse\022d\n\024inviteAnswer" +
+      "Response\030\020 \001(\0132F.com.randioo.demo_optimi" +
+      "sticframe_server.protocal.InviteAnswerRe" +
+      "sponse\022X\n\016scInviteAccept\030\021 \001(\0132@.com.ran" +
       "dioo.demo_optimisticframe_server.protoca" +
-      "l.LoginGetRoleDataResponse\022^\n\021matchRoleR" +
-      "esponse\030\004 \001(\0132C.com.randioo.demo_optimis" +
-      "ticframe_server.protocal.MatchRoleRespon" +
-      "se\022\200\001\n\"fightReceiveHitGameControlRespons" +
-      "e\030\005 \001(\0132T.com.randioo.demo_optimisticfra" +
-      "me_server.protocal.FightReceiveHitGameCo" +
-      "ntrolResponse\022\204\001\n$fightReceivePlaneGameC" +
-      "ontrolResponse\030\006 \001(\0132V.com.randioo.demo_" +
-      "optimisticframe_server.protocal.FightRec",
-      "eivePlaneGameControlResponse\022n\n\031fightLoa" +
-      "dCompleteResponse\030\007 \001(\0132K.com.randioo.de" +
-      "mo_optimisticframe_server.protocal.Fight" +
-      "LoadCompleteResponse\022\\\n\020scFightStartGame" +
-      "\030\010 \001(\0132B.com.randioo.demo_optimisticfram" +
-      "e_server.protocal.SCFightStartGame\022b\n\023sc" +
-      "FightLoadResource\030\t \001(\0132E.com.randioo.de" +
-      "mo_optimisticframe_server.protocal.SCFig" +
-      "htLoadResource\022V\n\rscFightRemove\030\n \001(\0132?." +
-      "com.randioo.demo_optimisticframe_server.",
-      "protocal.SCFightRemove\022V\n\rscFightCreate\030" +
-      "\013 \001(\0132?.com.randioo.demo_optimisticframe" +
-      "_server.protocal.SCFightCreate\022Z\n\017scFigh" +
-      "tGameOver\030\014 \001(\0132A.com.randioo.demo_optim" +
-      "isticframe_server.protocal.SCFightGameOv" +
-      "er\022b\n\023scFightSendKeyFrame\030\r \001(\0132E.com.ra" +
-      "ndioo.demo_optimisticframe_server.protoc" +
-      "al.SCFightSendKeyFrame\022T\n\014pingResponse\030\016" +
-      " \001(\0132>.com.randioo.demo_optimisticframe_" +
-      "server.protocal.PingResponse"
+      "l.SCInviteAccept\022X\n\016scInviteReject\030\022 \001(\013" +
+      "2@.com.randioo.demo_optimisticframe_serv" +
+      "er.protocal.SCInviteReject\022X\n\016scInviteCa",
+      "ncel\030\023 \001(\0132@.com.randioo.demo_optimistic" +
+      "frame_server.protocal.SCInviteCancel"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1214,7 +1546,7 @@ public final class ServerMessage {
           internal_static_com_randioo_demo_optimisticframe_server_protocal_SCMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_demo_optimisticframe_server_protocal_SCMessage_descriptor,
-              new java.lang.String[] { "LoginCheckAccountResponse", "LoginCreateRoleResponse", "LoginGetRoleDataResponse", "MatchRoleResponse", "FightReceiveHitGameControlResponse", "FightReceivePlaneGameControlResponse", "FightLoadCompleteResponse", "ScFightStartGame", "ScFightLoadResource", "ScFightRemove", "ScFightCreate", "ScFightGameOver", "ScFightSendKeyFrame", "PingResponse", },
+              new java.lang.String[] { "LoginCheckAccountResponse", "LoginCreateRoleResponse", "LoginGetRoleDataResponse", "MatchRoleResponse", "FightReceiveHitGameControlResponse", "FightReceivePlaneGameControlResponse", "FightLoadCompleteResponse", "ScFightStartGame", "ScFightLoadResource", "ScFightRemove", "ScFightCreate", "ScFightGameOver", "ScFightSendKeyFrame", "PingResponse", "InviteFriendResponse", "InviteAnswerResponse", "ScInviteAccept", "ScInviteReject", "ScInviteCancel", },
               com.randioo.demo_optimisticframe_server.protocal.ServerMessage.SCMessage.class,
               com.randioo.demo_optimisticframe_server.protocal.ServerMessage.SCMessage.Builder.class);
           return null;
@@ -1227,6 +1559,7 @@ public final class ServerMessage {
           com.randioo.demo_optimisticframe_server.protocal.Match.getDescriptor(),
           com.randioo.demo_optimisticframe_server.protocal.Fight.getDescriptor(),
           com.randioo.demo_optimisticframe_server.protocal.Ping.getDescriptor(),
+          com.randioo.demo_optimisticframe_server.protocal.Invite.getDescriptor(),
         }, assigner);
   }
   
