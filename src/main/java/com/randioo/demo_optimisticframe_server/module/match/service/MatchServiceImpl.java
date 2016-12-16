@@ -1,13 +1,12 @@
 package com.randioo.demo_optimisticframe_server.module.match.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.mina.core.session.IoSession;
 
 import com.randioo.demo_optimisticframe_server.common.ErrorCode;
-import com.randioo.demo_optimisticframe_server.entity.Role;
+import com.randioo.demo_optimisticframe_server.entity.bo.Role;
 import com.randioo.demo_optimisticframe_server.module.fight.service.FightService;
 import com.randioo.demo_optimisticframe_server.protocal.Match.MatchRoleResponse;
 import com.randioo.demo_optimisticframe_server.protocal.ServerMessage.SCMessage;
@@ -69,7 +68,7 @@ public class MatchServiceImpl extends BaseService implements MatchService {
 				role.setName("npc");
 				role.setPrepare(true);
 				role.setNpc(true);
-				
+
 				MatchRule matchRule = new MatchRule();
 				matchRule.setMatchTarget(role);
 
@@ -94,7 +93,7 @@ public class MatchServiceImpl extends BaseService implements MatchService {
 			@Override
 			public void changeStartMatcher(Matchable originStarter, Matchable newStarter) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
@@ -123,12 +122,12 @@ public class MatchServiceImpl extends BaseService implements MatchService {
 	}
 
 	@Override
-	public void cancelRole(Role role,IoSession session) {
+	public void cancelRole(Role role, IoSession session) {
 		gameMatcher.cancelMatch(role);
 	}
-	
+
 	@Override
-	public void matchRole(List<Role> roleList){		
+	public void matchRole(List<Role> roleList) {
 		fightService.loadResource(roleList.size(), roleList);
 	}
 

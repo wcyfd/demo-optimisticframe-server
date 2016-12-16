@@ -84,26 +84,82 @@ public final class ClientMessage {
     public boolean hasFightLoadCompleteRequest() { return hasFightLoadCompleteRequest; }
     public com.randioo.demo_optimisticframe_server.protocal.Fight.FightLoadCompleteRequest getFightLoadCompleteRequest() { return fightLoadCompleteRequest_; }
     
-    // optional .com.randioo.demo_optimisticframe_server.protocal.PingRequest pingRequest = 8;
-    public static final int PINGREQUEST_FIELD_NUMBER = 8;
+    // optional .com.randioo.demo_optimisticframe_server.protocal.FightGameOverRequest fightGameOverRequest = 8;
+    public static final int FIGHTGAMEOVERREQUEST_FIELD_NUMBER = 8;
+    private boolean hasFightGameOverRequest;
+    private com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverRequest fightGameOverRequest_;
+    public boolean hasFightGameOverRequest() { return hasFightGameOverRequest; }
+    public com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverRequest getFightGameOverRequest() { return fightGameOverRequest_; }
+    
+    // optional .com.randioo.demo_optimisticframe_server.protocal.PingRequest pingRequest = 9;
+    public static final int PINGREQUEST_FIELD_NUMBER = 9;
     private boolean hasPingRequest;
     private com.randioo.demo_optimisticframe_server.protocal.Ping.PingRequest pingRequest_;
     public boolean hasPingRequest() { return hasPingRequest; }
     public com.randioo.demo_optimisticframe_server.protocal.Ping.PingRequest getPingRequest() { return pingRequest_; }
     
-    // optional .com.randioo.demo_optimisticframe_server.protocal.InviteFriendRequest inviteFriendRequest = 9;
-    public static final int INVITEFRIENDREQUEST_FIELD_NUMBER = 9;
+    // optional .com.randioo.demo_optimisticframe_server.protocal.InviteFriendRequest inviteFriendRequest = 10;
+    public static final int INVITEFRIENDREQUEST_FIELD_NUMBER = 10;
     private boolean hasInviteFriendRequest;
     private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendRequest inviteFriendRequest_;
     public boolean hasInviteFriendRequest() { return hasInviteFriendRequest; }
     public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendRequest getInviteFriendRequest() { return inviteFriendRequest_; }
     
-    // optional .com.randioo.demo_optimisticframe_server.protocal.InviteAnswerRequest inviteAnswerRequest = 10;
-    public static final int INVITEANSWERREQUEST_FIELD_NUMBER = 10;
+    // optional .com.randioo.demo_optimisticframe_server.protocal.InviteAnswerRequest inviteAnswerRequest = 11;
+    public static final int INVITEANSWERREQUEST_FIELD_NUMBER = 11;
     private boolean hasInviteAnswerRequest;
     private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerRequest inviteAnswerRequest_;
     public boolean hasInviteAnswerRequest() { return hasInviteAnswerRequest; }
     public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerRequest getInviteAnswerRequest() { return inviteAnswerRequest_; }
+    
+    // optional .com.randioo.demo_optimisticframe_server.protocal.InviteShowFriendsRequest inviteShowFriendsRequest = 12;
+    public static final int INVITESHOWFRIENDSREQUEST_FIELD_NUMBER = 12;
+    private boolean hasInviteShowFriendsRequest;
+    private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest inviteShowFriendsRequest_;
+    public boolean hasInviteShowFriendsRequest() { return hasInviteShowFriendsRequest; }
+    public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest getInviteShowFriendsRequest() { return inviteShowFriendsRequest_; }
+    
+    // optional .com.randioo.demo_optimisticframe_server.protocal.InviteNewInvitationRequest inviteNewInvitationRequest = 13;
+    public static final int INVITENEWINVITATIONREQUEST_FIELD_NUMBER = 13;
+    private boolean hasInviteNewInvitationRequest;
+    private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest inviteNewInvitationRequest_;
+    public boolean hasInviteNewInvitationRequest() { return hasInviteNewInvitationRequest; }
+    public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest getInviteNewInvitationRequest() { return inviteNewInvitationRequest_; }
+    
+    // optional .com.randioo.demo_optimisticframe_server.protocal.InviteQuitInvitationRequest inviteQuitInvitationRequest = 14;
+    public static final int INVITEQUITINVITATIONREQUEST_FIELD_NUMBER = 14;
+    private boolean hasInviteQuitInvitationRequest;
+    private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest inviteQuitInvitationRequest_;
+    public boolean hasInviteQuitInvitationRequest() { return hasInviteQuitInvitationRequest; }
+    public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest getInviteQuitInvitationRequest() { return inviteQuitInvitationRequest_; }
+    
+    // optional .com.randioo.demo_optimisticframe_server.protocal.InviteFriendsGameStartRequest inviteFriendsGameStartRequest = 15;
+    public static final int INVITEFRIENDSGAMESTARTREQUEST_FIELD_NUMBER = 15;
+    private boolean hasInviteFriendsGameStartRequest;
+    private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest inviteFriendsGameStartRequest_;
+    public boolean hasInviteFriendsGameStartRequest() { return hasInviteFriendsGameStartRequest; }
+    public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest getInviteFriendsGameStartRequest() { return inviteFriendsGameStartRequest_; }
+    
+    // optional .com.randioo.demo_optimisticframe_server.protocal.RoleChoosePlaneRequest roleChoosePlaneRequest = 16;
+    public static final int ROLECHOOSEPLANEREQUEST_FIELD_NUMBER = 16;
+    private boolean hasRoleChoosePlaneRequest;
+    private com.randioo.demo_optimisticframe_server.protocal.Role.RoleChoosePlaneRequest roleChoosePlaneRequest_;
+    public boolean hasRoleChoosePlaneRequest() { return hasRoleChoosePlaneRequest; }
+    public com.randioo.demo_optimisticframe_server.protocal.Role.RoleChoosePlaneRequest getRoleChoosePlaneRequest() { return roleChoosePlaneRequest_; }
+    
+    // optional .com.randioo.demo_optimisticframe_server.protocal.RoleFallPlaneRequest roleFallPlaneRequest = 17;
+    public static final int ROLEFALLPLANEREQUEST_FIELD_NUMBER = 17;
+    private boolean hasRoleFallPlaneRequest;
+    private com.randioo.demo_optimisticframe_server.protocal.Role.RoleFallPlaneRequest roleFallPlaneRequest_;
+    public boolean hasRoleFallPlaneRequest() { return hasRoleFallPlaneRequest; }
+    public com.randioo.demo_optimisticframe_server.protocal.Role.RoleFallPlaneRequest getRoleFallPlaneRequest() { return roleFallPlaneRequest_; }
+    
+    // optional .com.randioo.demo_optimisticframe_server.protocal.MarketBuyPlaneRequest marketBuyPlaneRequest = 18;
+    public static final int MARKETBUYPLANEREQUEST_FIELD_NUMBER = 18;
+    private boolean hasMarketBuyPlaneRequest;
+    private com.randioo.demo_optimisticframe_server.protocal.Market.MarketBuyPlaneRequest marketBuyPlaneRequest_;
+    public boolean hasMarketBuyPlaneRequest() { return hasMarketBuyPlaneRequest; }
+    public com.randioo.demo_optimisticframe_server.protocal.Market.MarketBuyPlaneRequest getMarketBuyPlaneRequest() { return marketBuyPlaneRequest_; }
     
     private void initFields() {
       loginCheckAccountRequest_ = com.randioo.demo_optimisticframe_server.protocal.Login.LoginCheckAccountRequest.getDefaultInstance();
@@ -113,9 +169,17 @@ public final class ClientMessage {
       fightReceiveHitGameControlRequest_ = com.randioo.demo_optimisticframe_server.protocal.Fight.FightReceiveHitGameControlRequest.getDefaultInstance();
       fightReceivePlaneGameControlRequest_ = com.randioo.demo_optimisticframe_server.protocal.Fight.FightReceivePlaneGameControlRequest.getDefaultInstance();
       fightLoadCompleteRequest_ = com.randioo.demo_optimisticframe_server.protocal.Fight.FightLoadCompleteRequest.getDefaultInstance();
+      fightGameOverRequest_ = com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverRequest.getDefaultInstance();
       pingRequest_ = com.randioo.demo_optimisticframe_server.protocal.Ping.PingRequest.getDefaultInstance();
       inviteFriendRequest_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendRequest.getDefaultInstance();
       inviteAnswerRequest_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerRequest.getDefaultInstance();
+      inviteShowFriendsRequest_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest.getDefaultInstance();
+      inviteNewInvitationRequest_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest.getDefaultInstance();
+      inviteQuitInvitationRequest_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest.getDefaultInstance();
+      inviteFriendsGameStartRequest_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest.getDefaultInstance();
+      roleChoosePlaneRequest_ = com.randioo.demo_optimisticframe_server.protocal.Role.RoleChoosePlaneRequest.getDefaultInstance();
+      roleFallPlaneRequest_ = com.randioo.demo_optimisticframe_server.protocal.Role.RoleFallPlaneRequest.getDefaultInstance();
+      marketBuyPlaneRequest_ = com.randioo.demo_optimisticframe_server.protocal.Market.MarketBuyPlaneRequest.getDefaultInstance();
     }
     public final boolean isInitialized() {
       return true;
@@ -145,14 +209,38 @@ public final class ClientMessage {
       if (hasFightLoadCompleteRequest()) {
         output.writeMessage(7, getFightLoadCompleteRequest());
       }
+      if (hasFightGameOverRequest()) {
+        output.writeMessage(8, getFightGameOverRequest());
+      }
       if (hasPingRequest()) {
-        output.writeMessage(8, getPingRequest());
+        output.writeMessage(9, getPingRequest());
       }
       if (hasInviteFriendRequest()) {
-        output.writeMessage(9, getInviteFriendRequest());
+        output.writeMessage(10, getInviteFriendRequest());
       }
       if (hasInviteAnswerRequest()) {
-        output.writeMessage(10, getInviteAnswerRequest());
+        output.writeMessage(11, getInviteAnswerRequest());
+      }
+      if (hasInviteShowFriendsRequest()) {
+        output.writeMessage(12, getInviteShowFriendsRequest());
+      }
+      if (hasInviteNewInvitationRequest()) {
+        output.writeMessage(13, getInviteNewInvitationRequest());
+      }
+      if (hasInviteQuitInvitationRequest()) {
+        output.writeMessage(14, getInviteQuitInvitationRequest());
+      }
+      if (hasInviteFriendsGameStartRequest()) {
+        output.writeMessage(15, getInviteFriendsGameStartRequest());
+      }
+      if (hasRoleChoosePlaneRequest()) {
+        output.writeMessage(16, getRoleChoosePlaneRequest());
+      }
+      if (hasRoleFallPlaneRequest()) {
+        output.writeMessage(17, getRoleFallPlaneRequest());
+      }
+      if (hasMarketBuyPlaneRequest()) {
+        output.writeMessage(18, getMarketBuyPlaneRequest());
       }
       getUnknownFields().writeTo(output);
     }
@@ -191,17 +279,49 @@ public final class ClientMessage {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(7, getFightLoadCompleteRequest());
       }
+      if (hasFightGameOverRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, getFightGameOverRequest());
+      }
       if (hasPingRequest()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, getPingRequest());
+          .computeMessageSize(9, getPingRequest());
       }
       if (hasInviteFriendRequest()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, getInviteFriendRequest());
+          .computeMessageSize(10, getInviteFriendRequest());
       }
       if (hasInviteAnswerRequest()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, getInviteAnswerRequest());
+          .computeMessageSize(11, getInviteAnswerRequest());
+      }
+      if (hasInviteShowFriendsRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, getInviteShowFriendsRequest());
+      }
+      if (hasInviteNewInvitationRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, getInviteNewInvitationRequest());
+      }
+      if (hasInviteQuitInvitationRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, getInviteQuitInvitationRequest());
+      }
+      if (hasInviteFriendsGameStartRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, getInviteFriendsGameStartRequest());
+      }
+      if (hasRoleChoosePlaneRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, getRoleChoosePlaneRequest());
+      }
+      if (hasRoleFallPlaneRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(17, getRoleFallPlaneRequest());
+      }
+      if (hasMarketBuyPlaneRequest()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(18, getMarketBuyPlaneRequest());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -382,6 +502,9 @@ public final class ClientMessage {
         if (other.hasFightLoadCompleteRequest()) {
           mergeFightLoadCompleteRequest(other.getFightLoadCompleteRequest());
         }
+        if (other.hasFightGameOverRequest()) {
+          mergeFightGameOverRequest(other.getFightGameOverRequest());
+        }
         if (other.hasPingRequest()) {
           mergePingRequest(other.getPingRequest());
         }
@@ -390,6 +513,27 @@ public final class ClientMessage {
         }
         if (other.hasInviteAnswerRequest()) {
           mergeInviteAnswerRequest(other.getInviteAnswerRequest());
+        }
+        if (other.hasInviteShowFriendsRequest()) {
+          mergeInviteShowFriendsRequest(other.getInviteShowFriendsRequest());
+        }
+        if (other.hasInviteNewInvitationRequest()) {
+          mergeInviteNewInvitationRequest(other.getInviteNewInvitationRequest());
+        }
+        if (other.hasInviteQuitInvitationRequest()) {
+          mergeInviteQuitInvitationRequest(other.getInviteQuitInvitationRequest());
+        }
+        if (other.hasInviteFriendsGameStartRequest()) {
+          mergeInviteFriendsGameStartRequest(other.getInviteFriendsGameStartRequest());
+        }
+        if (other.hasRoleChoosePlaneRequest()) {
+          mergeRoleChoosePlaneRequest(other.getRoleChoosePlaneRequest());
+        }
+        if (other.hasRoleFallPlaneRequest()) {
+          mergeRoleFallPlaneRequest(other.getRoleFallPlaneRequest());
+        }
+        if (other.hasMarketBuyPlaneRequest()) {
+          mergeMarketBuyPlaneRequest(other.getMarketBuyPlaneRequest());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -480,6 +624,15 @@ public final class ClientMessage {
               break;
             }
             case 66: {
+              com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverRequest.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverRequest.newBuilder();
+              if (hasFightGameOverRequest()) {
+                subBuilder.mergeFrom(getFightGameOverRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setFightGameOverRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 74: {
               com.randioo.demo_optimisticframe_server.protocal.Ping.PingRequest.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Ping.PingRequest.newBuilder();
               if (hasPingRequest()) {
                 subBuilder.mergeFrom(getPingRequest());
@@ -488,7 +641,7 @@ public final class ClientMessage {
               setPingRequest(subBuilder.buildPartial());
               break;
             }
-            case 74: {
+            case 82: {
               com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendRequest.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendRequest.newBuilder();
               if (hasInviteFriendRequest()) {
                 subBuilder.mergeFrom(getInviteFriendRequest());
@@ -497,13 +650,76 @@ public final class ClientMessage {
               setInviteFriendRequest(subBuilder.buildPartial());
               break;
             }
-            case 82: {
+            case 90: {
               com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerRequest.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteAnswerRequest.newBuilder();
               if (hasInviteAnswerRequest()) {
                 subBuilder.mergeFrom(getInviteAnswerRequest());
               }
               input.readMessage(subBuilder, extensionRegistry);
               setInviteAnswerRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 98: {
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest.newBuilder();
+              if (hasInviteShowFriendsRequest()) {
+                subBuilder.mergeFrom(getInviteShowFriendsRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setInviteShowFriendsRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 106: {
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest.newBuilder();
+              if (hasInviteNewInvitationRequest()) {
+                subBuilder.mergeFrom(getInviteNewInvitationRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setInviteNewInvitationRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 114: {
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest.newBuilder();
+              if (hasInviteQuitInvitationRequest()) {
+                subBuilder.mergeFrom(getInviteQuitInvitationRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setInviteQuitInvitationRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 122: {
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest.newBuilder();
+              if (hasInviteFriendsGameStartRequest()) {
+                subBuilder.mergeFrom(getInviteFriendsGameStartRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setInviteFriendsGameStartRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 130: {
+              com.randioo.demo_optimisticframe_server.protocal.Role.RoleChoosePlaneRequest.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Role.RoleChoosePlaneRequest.newBuilder();
+              if (hasRoleChoosePlaneRequest()) {
+                subBuilder.mergeFrom(getRoleChoosePlaneRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setRoleChoosePlaneRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 138: {
+              com.randioo.demo_optimisticframe_server.protocal.Role.RoleFallPlaneRequest.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Role.RoleFallPlaneRequest.newBuilder();
+              if (hasRoleFallPlaneRequest()) {
+                subBuilder.mergeFrom(getRoleFallPlaneRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setRoleFallPlaneRequest(subBuilder.buildPartial());
+              break;
+            }
+            case 146: {
+              com.randioo.demo_optimisticframe_server.protocal.Market.MarketBuyPlaneRequest.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Market.MarketBuyPlaneRequest.newBuilder();
+              if (hasMarketBuyPlaneRequest()) {
+                subBuilder.mergeFrom(getMarketBuyPlaneRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setMarketBuyPlaneRequest(subBuilder.buildPartial());
               break;
             }
           }
@@ -770,7 +986,44 @@ public final class ClientMessage {
         return this;
       }
       
-      // optional .com.randioo.demo_optimisticframe_server.protocal.PingRequest pingRequest = 8;
+      // optional .com.randioo.demo_optimisticframe_server.protocal.FightGameOverRequest fightGameOverRequest = 8;
+      public boolean hasFightGameOverRequest() {
+        return result.hasFightGameOverRequest();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverRequest getFightGameOverRequest() {
+        return result.getFightGameOverRequest();
+      }
+      public Builder setFightGameOverRequest(com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasFightGameOverRequest = true;
+        result.fightGameOverRequest_ = value;
+        return this;
+      }
+      public Builder setFightGameOverRequest(com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverRequest.Builder builderForValue) {
+        result.hasFightGameOverRequest = true;
+        result.fightGameOverRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeFightGameOverRequest(com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverRequest value) {
+        if (result.hasFightGameOverRequest() &&
+            result.fightGameOverRequest_ != com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverRequest.getDefaultInstance()) {
+          result.fightGameOverRequest_ =
+            com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverRequest.newBuilder(result.fightGameOverRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.fightGameOverRequest_ = value;
+        }
+        result.hasFightGameOverRequest = true;
+        return this;
+      }
+      public Builder clearFightGameOverRequest() {
+        result.hasFightGameOverRequest = false;
+        result.fightGameOverRequest_ = com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.demo_optimisticframe_server.protocal.PingRequest pingRequest = 9;
       public boolean hasPingRequest() {
         return result.hasPingRequest();
       }
@@ -807,7 +1060,7 @@ public final class ClientMessage {
         return this;
       }
       
-      // optional .com.randioo.demo_optimisticframe_server.protocal.InviteFriendRequest inviteFriendRequest = 9;
+      // optional .com.randioo.demo_optimisticframe_server.protocal.InviteFriendRequest inviteFriendRequest = 10;
       public boolean hasInviteFriendRequest() {
         return result.hasInviteFriendRequest();
       }
@@ -844,7 +1097,7 @@ public final class ClientMessage {
         return this;
       }
       
-      // optional .com.randioo.demo_optimisticframe_server.protocal.InviteAnswerRequest inviteAnswerRequest = 10;
+      // optional .com.randioo.demo_optimisticframe_server.protocal.InviteAnswerRequest inviteAnswerRequest = 11;
       public boolean hasInviteAnswerRequest() {
         return result.hasInviteAnswerRequest();
       }
@@ -881,6 +1134,265 @@ public final class ClientMessage {
         return this;
       }
       
+      // optional .com.randioo.demo_optimisticframe_server.protocal.InviteShowFriendsRequest inviteShowFriendsRequest = 12;
+      public boolean hasInviteShowFriendsRequest() {
+        return result.hasInviteShowFriendsRequest();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest getInviteShowFriendsRequest() {
+        return result.getInviteShowFriendsRequest();
+      }
+      public Builder setInviteShowFriendsRequest(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasInviteShowFriendsRequest = true;
+        result.inviteShowFriendsRequest_ = value;
+        return this;
+      }
+      public Builder setInviteShowFriendsRequest(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest.Builder builderForValue) {
+        result.hasInviteShowFriendsRequest = true;
+        result.inviteShowFriendsRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeInviteShowFriendsRequest(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest value) {
+        if (result.hasInviteShowFriendsRequest() &&
+            result.inviteShowFriendsRequest_ != com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest.getDefaultInstance()) {
+          result.inviteShowFriendsRequest_ =
+            com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest.newBuilder(result.inviteShowFriendsRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.inviteShowFriendsRequest_ = value;
+        }
+        result.hasInviteShowFriendsRequest = true;
+        return this;
+      }
+      public Builder clearInviteShowFriendsRequest() {
+        result.hasInviteShowFriendsRequest = false;
+        result.inviteShowFriendsRequest_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.demo_optimisticframe_server.protocal.InviteNewInvitationRequest inviteNewInvitationRequest = 13;
+      public boolean hasInviteNewInvitationRequest() {
+        return result.hasInviteNewInvitationRequest();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest getInviteNewInvitationRequest() {
+        return result.getInviteNewInvitationRequest();
+      }
+      public Builder setInviteNewInvitationRequest(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasInviteNewInvitationRequest = true;
+        result.inviteNewInvitationRequest_ = value;
+        return this;
+      }
+      public Builder setInviteNewInvitationRequest(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest.Builder builderForValue) {
+        result.hasInviteNewInvitationRequest = true;
+        result.inviteNewInvitationRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeInviteNewInvitationRequest(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest value) {
+        if (result.hasInviteNewInvitationRequest() &&
+            result.inviteNewInvitationRequest_ != com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest.getDefaultInstance()) {
+          result.inviteNewInvitationRequest_ =
+            com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest.newBuilder(result.inviteNewInvitationRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.inviteNewInvitationRequest_ = value;
+        }
+        result.hasInviteNewInvitationRequest = true;
+        return this;
+      }
+      public Builder clearInviteNewInvitationRequest() {
+        result.hasInviteNewInvitationRequest = false;
+        result.inviteNewInvitationRequest_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.demo_optimisticframe_server.protocal.InviteQuitInvitationRequest inviteQuitInvitationRequest = 14;
+      public boolean hasInviteQuitInvitationRequest() {
+        return result.hasInviteQuitInvitationRequest();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest getInviteQuitInvitationRequest() {
+        return result.getInviteQuitInvitationRequest();
+      }
+      public Builder setInviteQuitInvitationRequest(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasInviteQuitInvitationRequest = true;
+        result.inviteQuitInvitationRequest_ = value;
+        return this;
+      }
+      public Builder setInviteQuitInvitationRequest(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest.Builder builderForValue) {
+        result.hasInviteQuitInvitationRequest = true;
+        result.inviteQuitInvitationRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeInviteQuitInvitationRequest(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest value) {
+        if (result.hasInviteQuitInvitationRequest() &&
+            result.inviteQuitInvitationRequest_ != com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest.getDefaultInstance()) {
+          result.inviteQuitInvitationRequest_ =
+            com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest.newBuilder(result.inviteQuitInvitationRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.inviteQuitInvitationRequest_ = value;
+        }
+        result.hasInviteQuitInvitationRequest = true;
+        return this;
+      }
+      public Builder clearInviteQuitInvitationRequest() {
+        result.hasInviteQuitInvitationRequest = false;
+        result.inviteQuitInvitationRequest_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.demo_optimisticframe_server.protocal.InviteFriendsGameStartRequest inviteFriendsGameStartRequest = 15;
+      public boolean hasInviteFriendsGameStartRequest() {
+        return result.hasInviteFriendsGameStartRequest();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest getInviteFriendsGameStartRequest() {
+        return result.getInviteFriendsGameStartRequest();
+      }
+      public Builder setInviteFriendsGameStartRequest(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasInviteFriendsGameStartRequest = true;
+        result.inviteFriendsGameStartRequest_ = value;
+        return this;
+      }
+      public Builder setInviteFriendsGameStartRequest(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest.Builder builderForValue) {
+        result.hasInviteFriendsGameStartRequest = true;
+        result.inviteFriendsGameStartRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeInviteFriendsGameStartRequest(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest value) {
+        if (result.hasInviteFriendsGameStartRequest() &&
+            result.inviteFriendsGameStartRequest_ != com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest.getDefaultInstance()) {
+          result.inviteFriendsGameStartRequest_ =
+            com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest.newBuilder(result.inviteFriendsGameStartRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.inviteFriendsGameStartRequest_ = value;
+        }
+        result.hasInviteFriendsGameStartRequest = true;
+        return this;
+      }
+      public Builder clearInviteFriendsGameStartRequest() {
+        result.hasInviteFriendsGameStartRequest = false;
+        result.inviteFriendsGameStartRequest_ = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.demo_optimisticframe_server.protocal.RoleChoosePlaneRequest roleChoosePlaneRequest = 16;
+      public boolean hasRoleChoosePlaneRequest() {
+        return result.hasRoleChoosePlaneRequest();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Role.RoleChoosePlaneRequest getRoleChoosePlaneRequest() {
+        return result.getRoleChoosePlaneRequest();
+      }
+      public Builder setRoleChoosePlaneRequest(com.randioo.demo_optimisticframe_server.protocal.Role.RoleChoosePlaneRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasRoleChoosePlaneRequest = true;
+        result.roleChoosePlaneRequest_ = value;
+        return this;
+      }
+      public Builder setRoleChoosePlaneRequest(com.randioo.demo_optimisticframe_server.protocal.Role.RoleChoosePlaneRequest.Builder builderForValue) {
+        result.hasRoleChoosePlaneRequest = true;
+        result.roleChoosePlaneRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeRoleChoosePlaneRequest(com.randioo.demo_optimisticframe_server.protocal.Role.RoleChoosePlaneRequest value) {
+        if (result.hasRoleChoosePlaneRequest() &&
+            result.roleChoosePlaneRequest_ != com.randioo.demo_optimisticframe_server.protocal.Role.RoleChoosePlaneRequest.getDefaultInstance()) {
+          result.roleChoosePlaneRequest_ =
+            com.randioo.demo_optimisticframe_server.protocal.Role.RoleChoosePlaneRequest.newBuilder(result.roleChoosePlaneRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.roleChoosePlaneRequest_ = value;
+        }
+        result.hasRoleChoosePlaneRequest = true;
+        return this;
+      }
+      public Builder clearRoleChoosePlaneRequest() {
+        result.hasRoleChoosePlaneRequest = false;
+        result.roleChoosePlaneRequest_ = com.randioo.demo_optimisticframe_server.protocal.Role.RoleChoosePlaneRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.demo_optimisticframe_server.protocal.RoleFallPlaneRequest roleFallPlaneRequest = 17;
+      public boolean hasRoleFallPlaneRequest() {
+        return result.hasRoleFallPlaneRequest();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Role.RoleFallPlaneRequest getRoleFallPlaneRequest() {
+        return result.getRoleFallPlaneRequest();
+      }
+      public Builder setRoleFallPlaneRequest(com.randioo.demo_optimisticframe_server.protocal.Role.RoleFallPlaneRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasRoleFallPlaneRequest = true;
+        result.roleFallPlaneRequest_ = value;
+        return this;
+      }
+      public Builder setRoleFallPlaneRequest(com.randioo.demo_optimisticframe_server.protocal.Role.RoleFallPlaneRequest.Builder builderForValue) {
+        result.hasRoleFallPlaneRequest = true;
+        result.roleFallPlaneRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeRoleFallPlaneRequest(com.randioo.demo_optimisticframe_server.protocal.Role.RoleFallPlaneRequest value) {
+        if (result.hasRoleFallPlaneRequest() &&
+            result.roleFallPlaneRequest_ != com.randioo.demo_optimisticframe_server.protocal.Role.RoleFallPlaneRequest.getDefaultInstance()) {
+          result.roleFallPlaneRequest_ =
+            com.randioo.demo_optimisticframe_server.protocal.Role.RoleFallPlaneRequest.newBuilder(result.roleFallPlaneRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.roleFallPlaneRequest_ = value;
+        }
+        result.hasRoleFallPlaneRequest = true;
+        return this;
+      }
+      public Builder clearRoleFallPlaneRequest() {
+        result.hasRoleFallPlaneRequest = false;
+        result.roleFallPlaneRequest_ = com.randioo.demo_optimisticframe_server.protocal.Role.RoleFallPlaneRequest.getDefaultInstance();
+        return this;
+      }
+      
+      // optional .com.randioo.demo_optimisticframe_server.protocal.MarketBuyPlaneRequest marketBuyPlaneRequest = 18;
+      public boolean hasMarketBuyPlaneRequest() {
+        return result.hasMarketBuyPlaneRequest();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Market.MarketBuyPlaneRequest getMarketBuyPlaneRequest() {
+        return result.getMarketBuyPlaneRequest();
+      }
+      public Builder setMarketBuyPlaneRequest(com.randioo.demo_optimisticframe_server.protocal.Market.MarketBuyPlaneRequest value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasMarketBuyPlaneRequest = true;
+        result.marketBuyPlaneRequest_ = value;
+        return this;
+      }
+      public Builder setMarketBuyPlaneRequest(com.randioo.demo_optimisticframe_server.protocal.Market.MarketBuyPlaneRequest.Builder builderForValue) {
+        result.hasMarketBuyPlaneRequest = true;
+        result.marketBuyPlaneRequest_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeMarketBuyPlaneRequest(com.randioo.demo_optimisticframe_server.protocal.Market.MarketBuyPlaneRequest value) {
+        if (result.hasMarketBuyPlaneRequest() &&
+            result.marketBuyPlaneRequest_ != com.randioo.demo_optimisticframe_server.protocal.Market.MarketBuyPlaneRequest.getDefaultInstance()) {
+          result.marketBuyPlaneRequest_ =
+            com.randioo.demo_optimisticframe_server.protocal.Market.MarketBuyPlaneRequest.newBuilder(result.marketBuyPlaneRequest_).mergeFrom(value).buildPartial();
+        } else {
+          result.marketBuyPlaneRequest_ = value;
+        }
+        result.hasMarketBuyPlaneRequest = true;
+        return this;
+      }
+      public Builder clearMarketBuyPlaneRequest() {
+        result.hasMarketBuyPlaneRequest = false;
+        result.marketBuyPlaneRequest_ = com.randioo.demo_optimisticframe_server.protocal.Market.MarketBuyPlaneRequest.getDefaultInstance();
+        return this;
+      }
+      
       // @@protoc_insertion_point(builder_scope:com.randioo.demo_optimisticframe_server.protocal.CSMessage)
     }
     
@@ -910,34 +1422,57 @@ public final class ClientMessage {
       "\n\023ClientMessage.proto\0220com.randioo.demo_" +
       "optimisticframe_server.protocal\032\013Login.p" +
       "roto\032\013Match.proto\032\013Fight.proto\032\nPing.pro" +
-      "to\032\014Invite.proto\"\274\010\n\tCSMessage\022l\n\030loginC" +
-      "heckAccountRequest\030\001 \001(\0132J.com.randioo.d" +
-      "emo_optimisticframe_server.protocal.Logi" +
-      "nCheckAccountRequest\022h\n\026loginCreateRoleR" +
-      "equest\030\002 \001(\0132H.com.randioo.demo_optimist" +
-      "icframe_server.protocal.LoginCreateRoleR" +
-      "equest\022j\n\027loginGetRoleDataRequest\030\003 \001(\0132",
-      "I.com.randioo.demo_optimisticframe_serve" +
-      "r.protocal.LoginGetRoleDataRequest\022\\\n\020ma" +
-      "tchRoleRequest\030\004 \001(\0132B.com.randioo.demo_" +
-      "optimisticframe_server.protocal.MatchRol" +
-      "eRequest\022~\n!fightReceiveHitGameControlRe" +
-      "quest\030\005 \001(\0132S.com.randioo.demo_optimisti" +
-      "cframe_server.protocal.FightReceiveHitGa" +
-      "meControlRequest\022\202\001\n#fightReceivePlaneGa" +
-      "meControlRequest\030\006 \001(\0132U.com.randioo.dem" +
-      "o_optimisticframe_server.protocal.FightR",
-      "eceivePlaneGameControlRequest\022l\n\030fightLo" +
-      "adCompleteRequest\030\007 \001(\0132J.com.randioo.de" +
-      "mo_optimisticframe_server.protocal.Fight" +
-      "LoadCompleteRequest\022R\n\013pingRequest\030\010 \001(\013" +
-      "2=.com.randioo.demo_optimisticframe_serv" +
-      "er.protocal.PingRequest\022b\n\023inviteFriendR" +
-      "equest\030\t \001(\0132E.com.randioo.demo_optimist" +
-      "icframe_server.protocal.InviteFriendRequ" +
-      "est\022b\n\023inviteAnswerRequest\030\n \001(\0132E.com.r" +
-      "andioo.demo_optimisticframe_server.proto",
-      "cal.InviteAnswerRequest"
+      "to\032\014Invite.proto\032\014Market.proto\032\nRole.pro" +
+      "to\"\246\017\n\tCSMessage\022l\n\030loginCheckAccountReq" +
+      "uest\030\001 \001(\0132J.com.randioo.demo_optimistic" +
+      "frame_server.protocal.LoginCheckAccountR" +
+      "equest\022h\n\026loginCreateRoleRequest\030\002 \001(\0132H" +
+      ".com.randioo.demo_optimisticframe_server" +
+      ".protocal.LoginCreateRoleRequest\022j\n\027logi",
+      "nGetRoleDataRequest\030\003 \001(\0132I.com.randioo." +
+      "demo_optimisticframe_server.protocal.Log" +
+      "inGetRoleDataRequest\022\\\n\020matchRoleRequest" +
+      "\030\004 \001(\0132B.com.randioo.demo_optimisticfram" +
+      "e_server.protocal.MatchRoleRequest\022~\n!fi" +
+      "ghtReceiveHitGameControlRequest\030\005 \001(\0132S." +
+      "com.randioo.demo_optimisticframe_server." +
+      "protocal.FightReceiveHitGameControlReque" +
+      "st\022\202\001\n#fightReceivePlaneGameControlReque" +
+      "st\030\006 \001(\0132U.com.randioo.demo_optimisticfr",
+      "ame_server.protocal.FightReceivePlaneGam" +
+      "eControlRequest\022l\n\030fightLoadCompleteRequ" +
+      "est\030\007 \001(\0132J.com.randioo.demo_optimisticf" +
+      "rame_server.protocal.FightLoadCompleteRe" +
+      "quest\022d\n\024fightGameOverRequest\030\010 \001(\0132F.co" +
+      "m.randioo.demo_optimisticframe_server.pr" +
+      "otocal.FightGameOverRequest\022R\n\013pingReque" +
+      "st\030\t \001(\0132=.com.randioo.demo_optimisticfr" +
+      "ame_server.protocal.PingRequest\022b\n\023invit" +
+      "eFriendRequest\030\n \001(\0132E.com.randioo.demo_",
+      "optimisticframe_server.protocal.InviteFr" +
+      "iendRequest\022b\n\023inviteAnswerRequest\030\013 \001(\013" +
+      "2E.com.randioo.demo_optimisticframe_serv" +
+      "er.protocal.InviteAnswerRequest\022l\n\030invit" +
+      "eShowFriendsRequest\030\014 \001(\0132J.com.randioo." +
+      "demo_optimisticframe_server.protocal.Inv" +
+      "iteShowFriendsRequest\022p\n\032inviteNewInvita" +
+      "tionRequest\030\r \001(\0132L.com.randioo.demo_opt" +
+      "imisticframe_server.protocal.InviteNewIn" +
+      "vitationRequest\022r\n\033inviteQuitInvitationR",
+      "equest\030\016 \001(\0132M.com.randioo.demo_optimist" +
+      "icframe_server.protocal.InviteQuitInvita" +
+      "tionRequest\022v\n\035inviteFriendsGameStartReq" +
+      "uest\030\017 \001(\0132O.com.randioo.demo_optimistic" +
+      "frame_server.protocal.InviteFriendsGameS" +
+      "tartRequest\022h\n\026roleChoosePlaneRequest\030\020 " +
+      "\001(\0132H.com.randioo.demo_optimisticframe_s" +
+      "erver.protocal.RoleChoosePlaneRequest\022d\n" +
+      "\024roleFallPlaneRequest\030\021 \001(\0132F.com.randio" +
+      "o.demo_optimisticframe_server.protocal.R",
+      "oleFallPlaneRequest\022f\n\025marketBuyPlaneReq" +
+      "uest\030\022 \001(\0132G.com.randioo.demo_optimistic" +
+      "frame_server.protocal.MarketBuyPlaneRequ" +
+      "est"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -949,7 +1484,7 @@ public final class ClientMessage {
           internal_static_com_randioo_demo_optimisticframe_server_protocal_CSMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_demo_optimisticframe_server_protocal_CSMessage_descriptor,
-              new java.lang.String[] { "LoginCheckAccountRequest", "LoginCreateRoleRequest", "LoginGetRoleDataRequest", "MatchRoleRequest", "FightReceiveHitGameControlRequest", "FightReceivePlaneGameControlRequest", "FightLoadCompleteRequest", "PingRequest", "InviteFriendRequest", "InviteAnswerRequest", },
+              new java.lang.String[] { "LoginCheckAccountRequest", "LoginCreateRoleRequest", "LoginGetRoleDataRequest", "MatchRoleRequest", "FightReceiveHitGameControlRequest", "FightReceivePlaneGameControlRequest", "FightLoadCompleteRequest", "FightGameOverRequest", "PingRequest", "InviteFriendRequest", "InviteAnswerRequest", "InviteShowFriendsRequest", "InviteNewInvitationRequest", "InviteQuitInvitationRequest", "InviteFriendsGameStartRequest", "RoleChoosePlaneRequest", "RoleFallPlaneRequest", "MarketBuyPlaneRequest", },
               com.randioo.demo_optimisticframe_server.protocal.ClientMessage.CSMessage.class,
               com.randioo.demo_optimisticframe_server.protocal.ClientMessage.CSMessage.Builder.class);
           return null;
@@ -963,6 +1498,8 @@ public final class ClientMessage {
           com.randioo.demo_optimisticframe_server.protocal.Fight.getDescriptor(),
           com.randioo.demo_optimisticframe_server.protocal.Ping.getDescriptor(),
           com.randioo.demo_optimisticframe_server.protocal.Invite.getDescriptor(),
+          com.randioo.demo_optimisticframe_server.protocal.Market.getDescriptor(),
+          com.randioo.demo_optimisticframe_server.protocal.Role.getDescriptor(),
         }, assigner);
   }
   

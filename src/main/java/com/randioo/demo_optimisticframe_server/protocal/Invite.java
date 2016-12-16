@@ -1177,19 +1177,17 @@ public final class Invite {
       return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_SCInviteAccept_fieldAccessorTable;
     }
     
-    // optional string starter = 1;
-    public static final int STARTER_FIELD_NUMBER = 1;
-    private boolean hasStarter;
-    private java.lang.String starter_ = "";
-    public boolean hasStarter() { return hasStarter; }
-    public java.lang.String getStarter() { return starter_; }
-    
-    // optional string targeter = 2;
-    public static final int TARGETER_FIELD_NUMBER = 2;
-    private boolean hasTargeter;
-    private java.lang.String targeter_ = "";
-    public boolean hasTargeter() { return hasTargeter; }
-    public java.lang.String getTargeter() { return targeter_; }
+    // repeated .com.randioo.demo_optimisticframe_server.protocal.InviteRoleData inviteRoleDatas = 1;
+    public static final int INVITEROLEDATAS_FIELD_NUMBER = 1;
+    private java.util.List<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData> inviteRoleDatas_ =
+      java.util.Collections.emptyList();
+    public java.util.List<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData> getInviteRoleDatasList() {
+      return inviteRoleDatas_;
+    }
+    public int getInviteRoleDatasCount() { return inviteRoleDatas_.size(); }
+    public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData getInviteRoleDatas(int index) {
+      return inviteRoleDatas_.get(index);
+    }
     
     private void initFields() {
     }
@@ -1200,11 +1198,8 @@ public final class Invite {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (hasStarter()) {
-        output.writeString(1, getStarter());
-      }
-      if (hasTargeter()) {
-        output.writeString(2, getTargeter());
+      for (com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData element : getInviteRoleDatasList()) {
+        output.writeMessage(1, element);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1215,13 +1210,9 @@ public final class Invite {
       if (size != -1) return size;
     
       size = 0;
-      if (hasStarter()) {
+      for (com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData element : getInviteRoleDatasList()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(1, getStarter());
-      }
-      if (hasTargeter()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(2, getTargeter());
+          .computeMessageSize(1, element);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1365,6 +1356,10 @@ public final class Invite {
           throw new IllegalStateException(
             "build() has already been called on this Builder.");
         }
+        if (result.inviteRoleDatas_ != java.util.Collections.EMPTY_LIST) {
+          result.inviteRoleDatas_ =
+            java.util.Collections.unmodifiableList(result.inviteRoleDatas_);
+        }
         com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept returnMe = result;
         result = null;
         return returnMe;
@@ -1381,11 +1376,11 @@ public final class Invite {
       
       public Builder mergeFrom(com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept other) {
         if (other == com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept.getDefaultInstance()) return this;
-        if (other.hasStarter()) {
-          setStarter(other.getStarter());
-        }
-        if (other.hasTargeter()) {
-          setTargeter(other.getTargeter());
+        if (!other.inviteRoleDatas_.isEmpty()) {
+          if (result.inviteRoleDatas_.isEmpty()) {
+            result.inviteRoleDatas_ = new java.util.ArrayList<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData>();
+          }
+          result.inviteRoleDatas_.addAll(other.inviteRoleDatas_);
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1413,11 +1408,9 @@ public final class Invite {
               break;
             }
             case 10: {
-              setStarter(input.readString());
-              break;
-            }
-            case 18: {
-              setTargeter(input.readString());
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addInviteRoleDatas(subBuilder.buildPartial());
               break;
             }
           }
@@ -1425,45 +1418,54 @@ public final class Invite {
       }
       
       
-      // optional string starter = 1;
-      public boolean hasStarter() {
-        return result.hasStarter();
+      // repeated .com.randioo.demo_optimisticframe_server.protocal.InviteRoleData inviteRoleDatas = 1;
+      public java.util.List<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData> getInviteRoleDatasList() {
+        return java.util.Collections.unmodifiableList(result.inviteRoleDatas_);
       }
-      public java.lang.String getStarter() {
-        return result.getStarter();
+      public int getInviteRoleDatasCount() {
+        return result.getInviteRoleDatasCount();
       }
-      public Builder setStarter(java.lang.String value) {
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData getInviteRoleDatas(int index) {
+        return result.getInviteRoleDatas(index);
+      }
+      public Builder setInviteRoleDatas(int index, com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  result.hasStarter = true;
-        result.starter_ = value;
+          throw new NullPointerException();
+        }
+        result.inviteRoleDatas_.set(index, value);
         return this;
       }
-      public Builder clearStarter() {
-        result.hasStarter = false;
-        result.starter_ = getDefaultInstance().getStarter();
+      public Builder setInviteRoleDatas(int index, com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.Builder builderForValue) {
+        result.inviteRoleDatas_.set(index, builderForValue.build());
         return this;
       }
-      
-      // optional string targeter = 2;
-      public boolean hasTargeter() {
-        return result.hasTargeter();
-      }
-      public java.lang.String getTargeter() {
-        return result.getTargeter();
-      }
-      public Builder setTargeter(java.lang.String value) {
+      public Builder addInviteRoleDatas(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  result.hasTargeter = true;
-        result.targeter_ = value;
+          throw new NullPointerException();
+        }
+        if (result.inviteRoleDatas_.isEmpty()) {
+          result.inviteRoleDatas_ = new java.util.ArrayList<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData>();
+        }
+        result.inviteRoleDatas_.add(value);
         return this;
       }
-      public Builder clearTargeter() {
-        result.hasTargeter = false;
-        result.targeter_ = getDefaultInstance().getTargeter();
+      public Builder addInviteRoleDatas(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.Builder builderForValue) {
+        if (result.inviteRoleDatas_.isEmpty()) {
+          result.inviteRoleDatas_ = new java.util.ArrayList<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData>();
+        }
+        result.inviteRoleDatas_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addAllInviteRoleDatas(
+          java.lang.Iterable<? extends com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData> values) {
+        if (result.inviteRoleDatas_.isEmpty()) {
+          result.inviteRoleDatas_ = new java.util.ArrayList<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData>();
+        }
+        super.addAll(values, result.inviteRoleDatas_);
+        return this;
+      }
+      public Builder clearInviteRoleDatas() {
+        result.inviteRoleDatas_ = java.util.Collections.emptyList();
         return this;
       }
       
@@ -2095,6 +2097,2793 @@ public final class Invite {
     // @@protoc_insertion_point(class_scope:com.randioo.demo_optimisticframe_server.protocal.SCInviteCancel)
   }
   
+  public static final class SCInviteReceive extends
+      com.google.protobuf.GeneratedMessage {
+    // Use SCInviteReceive.newBuilder() to construct.
+    private SCInviteReceive() {
+      initFields();
+    }
+    private SCInviteReceive(boolean noInit) {}
+    
+    private static final SCInviteReceive defaultInstance;
+    public static SCInviteReceive getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public SCInviteReceive getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_SCInviteReceive_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_SCInviteReceive_fieldAccessorTable;
+    }
+    
+    // optional string account = 1;
+    public static final int ACCOUNT_FIELD_NUMBER = 1;
+    private boolean hasAccount;
+    private java.lang.String account_ = "";
+    public boolean hasAccount() { return hasAccount; }
+    public java.lang.String getAccount() { return account_; }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (hasAccount()) {
+        output.writeString(1, getAccount());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (hasAccount()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getAccount());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive result;
+      
+      // Construct using com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive();
+        return builder;
+      }
+      
+      protected com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive.getDescriptor();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive getDefaultInstanceForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive) {
+          return mergeFrom((com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive other) {
+        if (other == com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive.getDefaultInstance()) return this;
+        if (other.hasAccount()) {
+          setAccount(other.getAccount());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              setAccount(input.readString());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // optional string account = 1;
+      public boolean hasAccount() {
+        return result.hasAccount();
+      }
+      public java.lang.String getAccount() {
+        return result.getAccount();
+      }
+      public Builder setAccount(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasAccount = true;
+        result.account_ = value;
+        return this;
+      }
+      public Builder clearAccount() {
+        result.hasAccount = false;
+        result.account_ = getDefaultInstance().getAccount();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.demo_optimisticframe_server.protocal.SCInviteReceive)
+    }
+    
+    static {
+      defaultInstance = new SCInviteReceive(true);
+      com.randioo.demo_optimisticframe_server.protocal.Invite.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.demo_optimisticframe_server.protocal.SCInviteReceive)
+  }
+  
+  public static final class InviteShowFriendsRequest extends
+      com.google.protobuf.GeneratedMessage {
+    // Use InviteShowFriendsRequest.newBuilder() to construct.
+    private InviteShowFriendsRequest() {
+      initFields();
+    }
+    private InviteShowFriendsRequest(boolean noInit) {}
+    
+    private static final InviteShowFriendsRequest defaultInstance;
+    public static InviteShowFriendsRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public InviteShowFriendsRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsRequest_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsRequest_fieldAccessorTable;
+    }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest result;
+      
+      // Construct using com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest();
+        return builder;
+      }
+      
+      protected com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest.getDescriptor();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest getDefaultInstanceForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest) {
+          return mergeFrom((com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest other) {
+        if (other == com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.demo_optimisticframe_server.protocal.InviteShowFriendsRequest)
+    }
+    
+    static {
+      defaultInstance = new InviteShowFriendsRequest(true);
+      com.randioo.demo_optimisticframe_server.protocal.Invite.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.demo_optimisticframe_server.protocal.InviteShowFriendsRequest)
+  }
+  
+  public static final class InviteShowFriendsResponse extends
+      com.google.protobuf.GeneratedMessage {
+    // Use InviteShowFriendsResponse.newBuilder() to construct.
+    private InviteShowFriendsResponse() {
+      initFields();
+    }
+    private InviteShowFriendsResponse(boolean noInit) {}
+    
+    private static final InviteShowFriendsResponse defaultInstance;
+    public static InviteShowFriendsResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public InviteShowFriendsResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsResponse_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsResponse_fieldAccessorTable;
+    }
+    
+    // repeated .com.randioo.demo_optimisticframe_server.protocal.InviteRoleData inviteRoleDatas = 1;
+    public static final int INVITEROLEDATAS_FIELD_NUMBER = 1;
+    private java.util.List<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData> inviteRoleDatas_ =
+      java.util.Collections.emptyList();
+    public java.util.List<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData> getInviteRoleDatasList() {
+      return inviteRoleDatas_;
+    }
+    public int getInviteRoleDatasCount() { return inviteRoleDatas_.size(); }
+    public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData getInviteRoleDatas(int index) {
+      return inviteRoleDatas_.get(index);
+    }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData element : getInviteRoleDatasList()) {
+        output.writeMessage(1, element);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      for (com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData element : getInviteRoleDatasList()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, element);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse result;
+      
+      // Construct using com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse();
+        return builder;
+      }
+      
+      protected com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse.getDescriptor();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse getDefaultInstanceForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        if (result.inviteRoleDatas_ != java.util.Collections.EMPTY_LIST) {
+          result.inviteRoleDatas_ =
+            java.util.Collections.unmodifiableList(result.inviteRoleDatas_);
+        }
+        com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse) {
+          return mergeFrom((com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse other) {
+        if (other == com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse.getDefaultInstance()) return this;
+        if (!other.inviteRoleDatas_.isEmpty()) {
+          if (result.inviteRoleDatas_.isEmpty()) {
+            result.inviteRoleDatas_ = new java.util.ArrayList<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData>();
+          }
+          result.inviteRoleDatas_.addAll(other.inviteRoleDatas_);
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addInviteRoleDatas(subBuilder.buildPartial());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // repeated .com.randioo.demo_optimisticframe_server.protocal.InviteRoleData inviteRoleDatas = 1;
+      public java.util.List<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData> getInviteRoleDatasList() {
+        return java.util.Collections.unmodifiableList(result.inviteRoleDatas_);
+      }
+      public int getInviteRoleDatasCount() {
+        return result.getInviteRoleDatasCount();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData getInviteRoleDatas(int index) {
+        return result.getInviteRoleDatas(index);
+      }
+      public Builder setInviteRoleDatas(int index, com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.inviteRoleDatas_.set(index, value);
+        return this;
+      }
+      public Builder setInviteRoleDatas(int index, com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.Builder builderForValue) {
+        result.inviteRoleDatas_.set(index, builderForValue.build());
+        return this;
+      }
+      public Builder addInviteRoleDatas(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        if (result.inviteRoleDatas_.isEmpty()) {
+          result.inviteRoleDatas_ = new java.util.ArrayList<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData>();
+        }
+        result.inviteRoleDatas_.add(value);
+        return this;
+      }
+      public Builder addInviteRoleDatas(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.Builder builderForValue) {
+        if (result.inviteRoleDatas_.isEmpty()) {
+          result.inviteRoleDatas_ = new java.util.ArrayList<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData>();
+        }
+        result.inviteRoleDatas_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addAllInviteRoleDatas(
+          java.lang.Iterable<? extends com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData> values) {
+        if (result.inviteRoleDatas_.isEmpty()) {
+          result.inviteRoleDatas_ = new java.util.ArrayList<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData>();
+        }
+        super.addAll(values, result.inviteRoleDatas_);
+        return this;
+      }
+      public Builder clearInviteRoleDatas() {
+        result.inviteRoleDatas_ = java.util.Collections.emptyList();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.demo_optimisticframe_server.protocal.InviteShowFriendsResponse)
+    }
+    
+    static {
+      defaultInstance = new InviteShowFriendsResponse(true);
+      com.randioo.demo_optimisticframe_server.protocal.Invite.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.demo_optimisticframe_server.protocal.InviteShowFriendsResponse)
+  }
+  
+  public static final class InviteRoleData extends
+      com.google.protobuf.GeneratedMessage {
+    // Use InviteRoleData.newBuilder() to construct.
+    private InviteRoleData() {
+      initFields();
+    }
+    private InviteRoleData(boolean noInit) {}
+    
+    private static final InviteRoleData defaultInstance;
+    public static InviteRoleData getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public InviteRoleData getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteRoleData_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteRoleData_fieldAccessorTable;
+    }
+    
+    // optional string account = 1;
+    public static final int ACCOUNT_FIELD_NUMBER = 1;
+    private boolean hasAccount;
+    private java.lang.String account_ = "";
+    public boolean hasAccount() { return hasAccount; }
+    public java.lang.String getAccount() { return account_; }
+    
+    // repeated int32 planeId = 2;
+    public static final int PLANEID_FIELD_NUMBER = 2;
+    private java.util.List<java.lang.Integer> planeId_ =
+      java.util.Collections.emptyList();
+    public java.util.List<java.lang.Integer> getPlaneIdList() {
+      return planeId_;
+    }
+    public int getPlaneIdCount() { return planeId_.size(); }
+    public int getPlaneId(int index) {
+      return planeId_.get(index);
+    }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (hasAccount()) {
+        output.writeString(1, getAccount());
+      }
+      for (int element : getPlaneIdList()) {
+        output.writeInt32(2, element);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (hasAccount()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(1, getAccount());
+      }
+      {
+        int dataSize = 0;
+        for (int element : getPlaneIdList()) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(element);
+        }
+        size += dataSize;
+        size += 1 * getPlaneIdList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData result;
+      
+      // Construct using com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData();
+        return builder;
+      }
+      
+      protected com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.getDescriptor();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData getDefaultInstanceForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        if (result.planeId_ != java.util.Collections.EMPTY_LIST) {
+          result.planeId_ =
+            java.util.Collections.unmodifiableList(result.planeId_);
+        }
+        com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData) {
+          return mergeFrom((com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData other) {
+        if (other == com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.getDefaultInstance()) return this;
+        if (other.hasAccount()) {
+          setAccount(other.getAccount());
+        }
+        if (!other.planeId_.isEmpty()) {
+          if (result.planeId_.isEmpty()) {
+            result.planeId_ = new java.util.ArrayList<java.lang.Integer>();
+          }
+          result.planeId_.addAll(other.planeId_);
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              setAccount(input.readString());
+              break;
+            }
+            case 16: {
+              addPlaneId(input.readInt32());
+              break;
+            }
+            case 18: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              while (input.getBytesUntilLimit() > 0) {
+                addPlaneId(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // optional string account = 1;
+      public boolean hasAccount() {
+        return result.hasAccount();
+      }
+      public java.lang.String getAccount() {
+        return result.getAccount();
+      }
+      public Builder setAccount(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasAccount = true;
+        result.account_ = value;
+        return this;
+      }
+      public Builder clearAccount() {
+        result.hasAccount = false;
+        result.account_ = getDefaultInstance().getAccount();
+        return this;
+      }
+      
+      // repeated int32 planeId = 2;
+      public java.util.List<java.lang.Integer> getPlaneIdList() {
+        return java.util.Collections.unmodifiableList(result.planeId_);
+      }
+      public int getPlaneIdCount() {
+        return result.getPlaneIdCount();
+      }
+      public int getPlaneId(int index) {
+        return result.getPlaneId(index);
+      }
+      public Builder setPlaneId(int index, int value) {
+        result.planeId_.set(index, value);
+        return this;
+      }
+      public Builder addPlaneId(int value) {
+        if (result.planeId_.isEmpty()) {
+          result.planeId_ = new java.util.ArrayList<java.lang.Integer>();
+        }
+        result.planeId_.add(value);
+        return this;
+      }
+      public Builder addAllPlaneId(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        if (result.planeId_.isEmpty()) {
+          result.planeId_ = new java.util.ArrayList<java.lang.Integer>();
+        }
+        super.addAll(values, result.planeId_);
+        return this;
+      }
+      public Builder clearPlaneId() {
+        result.planeId_ = java.util.Collections.emptyList();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.demo_optimisticframe_server.protocal.InviteRoleData)
+    }
+    
+    static {
+      defaultInstance = new InviteRoleData(true);
+      com.randioo.demo_optimisticframe_server.protocal.Invite.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.demo_optimisticframe_server.protocal.InviteRoleData)
+  }
+  
+  public static final class InviteNewInvitationRequest extends
+      com.google.protobuf.GeneratedMessage {
+    // Use InviteNewInvitationRequest.newBuilder() to construct.
+    private InviteNewInvitationRequest() {
+      initFields();
+    }
+    private InviteNewInvitationRequest(boolean noInit) {}
+    
+    private static final InviteNewInvitationRequest defaultInstance;
+    public static InviteNewInvitationRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public InviteNewInvitationRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationRequest_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationRequest_fieldAccessorTable;
+    }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest result;
+      
+      // Construct using com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest();
+        return builder;
+      }
+      
+      protected com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest.getDescriptor();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest getDefaultInstanceForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest) {
+          return mergeFrom((com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest other) {
+        if (other == com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.demo_optimisticframe_server.protocal.InviteNewInvitationRequest)
+    }
+    
+    static {
+      defaultInstance = new InviteNewInvitationRequest(true);
+      com.randioo.demo_optimisticframe_server.protocal.Invite.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.demo_optimisticframe_server.protocal.InviteNewInvitationRequest)
+  }
+  
+  public static final class InviteNewInvitationResponse extends
+      com.google.protobuf.GeneratedMessage {
+    // Use InviteNewInvitationResponse.newBuilder() to construct.
+    private InviteNewInvitationResponse() {
+      initFields();
+    }
+    private InviteNewInvitationResponse(boolean noInit) {}
+    
+    private static final InviteNewInvitationResponse defaultInstance;
+    public static InviteNewInvitationResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public InviteNewInvitationResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationResponse_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationResponse_fieldAccessorTable;
+    }
+    
+    // repeated .com.randioo.demo_optimisticframe_server.protocal.InviteRoleData inviteRoleDatas = 1;
+    public static final int INVITEROLEDATAS_FIELD_NUMBER = 1;
+    private java.util.List<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData> inviteRoleDatas_ =
+      java.util.Collections.emptyList();
+    public java.util.List<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData> getInviteRoleDatasList() {
+      return inviteRoleDatas_;
+    }
+    public int getInviteRoleDatasCount() { return inviteRoleDatas_.size(); }
+    public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData getInviteRoleDatas(int index) {
+      return inviteRoleDatas_.get(index);
+    }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData element : getInviteRoleDatasList()) {
+        output.writeMessage(1, element);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      for (com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData element : getInviteRoleDatasList()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, element);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse result;
+      
+      // Construct using com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse();
+        return builder;
+      }
+      
+      protected com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse.getDescriptor();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse getDefaultInstanceForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        if (result.inviteRoleDatas_ != java.util.Collections.EMPTY_LIST) {
+          result.inviteRoleDatas_ =
+            java.util.Collections.unmodifiableList(result.inviteRoleDatas_);
+        }
+        com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse) {
+          return mergeFrom((com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse other) {
+        if (other == com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse.getDefaultInstance()) return this;
+        if (!other.inviteRoleDatas_.isEmpty()) {
+          if (result.inviteRoleDatas_.isEmpty()) {
+            result.inviteRoleDatas_ = new java.util.ArrayList<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData>();
+          }
+          result.inviteRoleDatas_.addAll(other.inviteRoleDatas_);
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addInviteRoleDatas(subBuilder.buildPartial());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // repeated .com.randioo.demo_optimisticframe_server.protocal.InviteRoleData inviteRoleDatas = 1;
+      public java.util.List<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData> getInviteRoleDatasList() {
+        return java.util.Collections.unmodifiableList(result.inviteRoleDatas_);
+      }
+      public int getInviteRoleDatasCount() {
+        return result.getInviteRoleDatasCount();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData getInviteRoleDatas(int index) {
+        return result.getInviteRoleDatas(index);
+      }
+      public Builder setInviteRoleDatas(int index, com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.inviteRoleDatas_.set(index, value);
+        return this;
+      }
+      public Builder setInviteRoleDatas(int index, com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.Builder builderForValue) {
+        result.inviteRoleDatas_.set(index, builderForValue.build());
+        return this;
+      }
+      public Builder addInviteRoleDatas(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        if (result.inviteRoleDatas_.isEmpty()) {
+          result.inviteRoleDatas_ = new java.util.ArrayList<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData>();
+        }
+        result.inviteRoleDatas_.add(value);
+        return this;
+      }
+      public Builder addInviteRoleDatas(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.Builder builderForValue) {
+        if (result.inviteRoleDatas_.isEmpty()) {
+          result.inviteRoleDatas_ = new java.util.ArrayList<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData>();
+        }
+        result.inviteRoleDatas_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addAllInviteRoleDatas(
+          java.lang.Iterable<? extends com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData> values) {
+        if (result.inviteRoleDatas_.isEmpty()) {
+          result.inviteRoleDatas_ = new java.util.ArrayList<com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData>();
+        }
+        super.addAll(values, result.inviteRoleDatas_);
+        return this;
+      }
+      public Builder clearInviteRoleDatas() {
+        result.inviteRoleDatas_ = java.util.Collections.emptyList();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.demo_optimisticframe_server.protocal.InviteNewInvitationResponse)
+    }
+    
+    static {
+      defaultInstance = new InviteNewInvitationResponse(true);
+      com.randioo.demo_optimisticframe_server.protocal.Invite.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.demo_optimisticframe_server.protocal.InviteNewInvitationResponse)
+  }
+  
+  public static final class InviteQuitInvitationRequest extends
+      com.google.protobuf.GeneratedMessage {
+    // Use InviteQuitInvitationRequest.newBuilder() to construct.
+    private InviteQuitInvitationRequest() {
+      initFields();
+    }
+    private InviteQuitInvitationRequest(boolean noInit) {}
+    
+    private static final InviteQuitInvitationRequest defaultInstance;
+    public static InviteQuitInvitationRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public InviteQuitInvitationRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationRequest_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationRequest_fieldAccessorTable;
+    }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest result;
+      
+      // Construct using com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest();
+        return builder;
+      }
+      
+      protected com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest.getDescriptor();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest getDefaultInstanceForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest) {
+          return mergeFrom((com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest other) {
+        if (other == com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.demo_optimisticframe_server.protocal.InviteQuitInvitationRequest)
+    }
+    
+    static {
+      defaultInstance = new InviteQuitInvitationRequest(true);
+      com.randioo.demo_optimisticframe_server.protocal.Invite.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.demo_optimisticframe_server.protocal.InviteQuitInvitationRequest)
+  }
+  
+  public static final class InviteQuitInvitationResponse extends
+      com.google.protobuf.GeneratedMessage {
+    // Use InviteQuitInvitationResponse.newBuilder() to construct.
+    private InviteQuitInvitationResponse() {
+      initFields();
+    }
+    private InviteQuitInvitationResponse(boolean noInit) {}
+    
+    private static final InviteQuitInvitationResponse defaultInstance;
+    public static InviteQuitInvitationResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public InviteQuitInvitationResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationResponse_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationResponse_fieldAccessorTable;
+    }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse result;
+      
+      // Construct using com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse();
+        return builder;
+      }
+      
+      protected com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse.getDescriptor();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse getDefaultInstanceForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse) {
+          return mergeFrom((com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse other) {
+        if (other == com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.demo_optimisticframe_server.protocal.InviteQuitInvitationResponse)
+    }
+    
+    static {
+      defaultInstance = new InviteQuitInvitationResponse(true);
+      com.randioo.demo_optimisticframe_server.protocal.Invite.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.demo_optimisticframe_server.protocal.InviteQuitInvitationResponse)
+  }
+  
+  public static final class InviteFriendsGameStartRequest extends
+      com.google.protobuf.GeneratedMessage {
+    // Use InviteFriendsGameStartRequest.newBuilder() to construct.
+    private InviteFriendsGameStartRequest() {
+      initFields();
+    }
+    private InviteFriendsGameStartRequest(boolean noInit) {}
+    
+    private static final InviteFriendsGameStartRequest defaultInstance;
+    public static InviteFriendsGameStartRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public InviteFriendsGameStartRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartRequest_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartRequest_fieldAccessorTable;
+    }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest result;
+      
+      // Construct using com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest();
+        return builder;
+      }
+      
+      protected com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest.getDescriptor();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest getDefaultInstanceForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest) {
+          return mergeFrom((com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest other) {
+        if (other == com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.demo_optimisticframe_server.protocal.InviteFriendsGameStartRequest)
+    }
+    
+    static {
+      defaultInstance = new InviteFriendsGameStartRequest(true);
+      com.randioo.demo_optimisticframe_server.protocal.Invite.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.demo_optimisticframe_server.protocal.InviteFriendsGameStartRequest)
+  }
+  
+  public static final class InviteFriendsGameStartResponse extends
+      com.google.protobuf.GeneratedMessage {
+    // Use InviteFriendsGameStartResponse.newBuilder() to construct.
+    private InviteFriendsGameStartResponse() {
+      initFields();
+    }
+    private InviteFriendsGameStartResponse(boolean noInit) {}
+    
+    private static final InviteFriendsGameStartResponse defaultInstance;
+    public static InviteFriendsGameStartResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public InviteFriendsGameStartResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartResponse_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.demo_optimisticframe_server.protocal.Invite.internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartResponse_fieldAccessorTable;
+    }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse result;
+      
+      // Construct using com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse();
+        return builder;
+      }
+      
+      protected com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse.getDescriptor();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse getDefaultInstanceForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse) {
+          return mergeFrom((com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse other) {
+        if (other == com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.demo_optimisticframe_server.protocal.InviteFriendsGameStartResponse)
+    }
+    
+    static {
+      defaultInstance = new InviteFriendsGameStartResponse(true);
+      com.randioo.demo_optimisticframe_server.protocal.Invite.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.demo_optimisticframe_server.protocal.InviteFriendsGameStartResponse)
+  }
+  
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendRequest_descriptor;
   private static
@@ -2130,6 +4919,56 @@ public final class Invite {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_randioo_demo_optimisticframe_server_protocal_SCInviteCancel_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_demo_optimisticframe_server_protocal_SCInviteReceive_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_demo_optimisticframe_server_protocal_SCInviteReceive_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsRequest_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsResponse_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteRoleData_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteRoleData_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationRequest_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationResponse_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationRequest_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationResponse_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartRequest_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartResponse_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartResponse_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2144,11 +4983,25 @@ public final class Invite {
       "Request\022\017\n\007account\030\001 \001(\t\")\n\024InviteFriend" +
       "Response\022\021\n\terrorCode\030\001 \001(\005\"6\n\023InviteAns" +
       "werRequest\022\017\n\007account\030\001 \001(\t\022\016\n\006answer\030\002 " +
-      "\001(\010\"\026\n\024InviteAnswerResponse\"3\n\016SCInviteA" +
-      "ccept\022\017\n\007starter\030\001 \001(\t\022\020\n\010targeter\030\002 \001(\t" +
-      "\"3\n\016SCInviteReject\022\017\n\007starter\030\001 \001(\t\022\020\n\010t" +
-      "argeter\030\002 \001(\t\"!\n\016SCInviteCancel\022\017\n\007start" +
-      "er\030\001 \001(\t"
+      "\001(\010\"\026\n\024InviteAnswerResponse\"k\n\016SCInviteA" +
+      "ccept\022Y\n\017inviteRoleDatas\030\001 \003(\0132@.com.ran" +
+      "dioo.demo_optimisticframe_server.protoca" +
+      "l.InviteRoleData\"3\n\016SCInviteReject\022\017\n\007st" +
+      "arter\030\001 \001(\t\022\020\n\010targeter\030\002 \001(\t\"!\n\016SCInvit",
+      "eCancel\022\017\n\007starter\030\001 \001(\t\"\"\n\017SCInviteRece" +
+      "ive\022\017\n\007account\030\001 \001(\t\"\032\n\030InviteShowFriend" +
+      "sRequest\"v\n\031InviteShowFriendsResponse\022Y\n" +
+      "\017inviteRoleDatas\030\001 \003(\0132@.com.randioo.dem" +
+      "o_optimisticframe_server.protocal.Invite" +
+      "RoleData\"2\n\016InviteRoleData\022\017\n\007account\030\001 " +
+      "\001(\t\022\017\n\007planeId\030\002 \003(\005\"\034\n\032InviteNewInvitat" +
+      "ionRequest\"x\n\033InviteNewInvitationRespons" +
+      "e\022Y\n\017inviteRoleDatas\030\001 \003(\0132@.com.randioo" +
+      ".demo_optimisticframe_server.protocal.In",
+      "viteRoleData\"\035\n\033InviteQuitInvitationRequ" +
+      "est\"\036\n\034InviteQuitInvitationResponse\"\037\n\035I" +
+      "nviteFriendsGameStartRequest\" \n\036InviteFr" +
+      "iendsGameStartResponse"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2192,7 +5045,7 @@ public final class Invite {
           internal_static_com_randioo_demo_optimisticframe_server_protocal_SCInviteAccept_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_demo_optimisticframe_server_protocal_SCInviteAccept_descriptor,
-              new java.lang.String[] { "Starter", "Targeter", },
+              new java.lang.String[] { "InviteRoleDatas", },
               com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept.class,
               com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteAccept.Builder.class);
           internal_static_com_randioo_demo_optimisticframe_server_protocal_SCInviteReject_descriptor =
@@ -2211,6 +5064,86 @@ public final class Invite {
               new java.lang.String[] { "Starter", },
               com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel.class,
               com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel.Builder.class);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_SCInviteReceive_descriptor =
+            getDescriptor().getMessageTypes().get(7);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_SCInviteReceive_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_demo_optimisticframe_server_protocal_SCInviteReceive_descriptor,
+              new java.lang.String[] { "Account", },
+              com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive.class,
+              com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive.Builder.class);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsRequest_descriptor =
+            getDescriptor().getMessageTypes().get(8);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsRequest_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsRequest_descriptor,
+              new java.lang.String[] { },
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest.class,
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsRequest.Builder.class);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsResponse_descriptor =
+            getDescriptor().getMessageTypes().get(9);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsResponse_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteShowFriendsResponse_descriptor,
+              new java.lang.String[] { "InviteRoleDatas", },
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse.class,
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteShowFriendsResponse.Builder.class);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteRoleData_descriptor =
+            getDescriptor().getMessageTypes().get(10);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteRoleData_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteRoleData_descriptor,
+              new java.lang.String[] { "Account", "PlaneId", },
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.class,
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteRoleData.Builder.class);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationRequest_descriptor =
+            getDescriptor().getMessageTypes().get(11);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationRequest_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationRequest_descriptor,
+              new java.lang.String[] { },
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest.class,
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationRequest.Builder.class);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationResponse_descriptor =
+            getDescriptor().getMessageTypes().get(12);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationResponse_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteNewInvitationResponse_descriptor,
+              new java.lang.String[] { "InviteRoleDatas", },
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse.class,
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteNewInvitationResponse.Builder.class);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationRequest_descriptor =
+            getDescriptor().getMessageTypes().get(13);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationRequest_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationRequest_descriptor,
+              new java.lang.String[] { },
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest.class,
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationRequest.Builder.class);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationResponse_descriptor =
+            getDescriptor().getMessageTypes().get(14);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationResponse_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteQuitInvitationResponse_descriptor,
+              new java.lang.String[] { },
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse.class,
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteQuitInvitationResponse.Builder.class);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartRequest_descriptor =
+            getDescriptor().getMessageTypes().get(15);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartRequest_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartRequest_descriptor,
+              new java.lang.String[] { },
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest.class,
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartRequest.Builder.class);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartResponse_descriptor =
+            getDescriptor().getMessageTypes().get(16);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartResponse_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_demo_optimisticframe_server_protocal_InviteFriendsGameStartResponse_descriptor,
+              new java.lang.String[] { },
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse.class,
+              com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendsGameStartResponse.Builder.class);
           return null;
         }
       };

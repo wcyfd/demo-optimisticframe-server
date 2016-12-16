@@ -1,11 +1,8 @@
-package com.randioo.demo_optimisticframe_server.entity;
-
+package com.randioo.demo_optimisticframe_server.entity.po;
 
 public class GameInfo {
 	private int roleId;
 	private int score;
-
-	
 
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;

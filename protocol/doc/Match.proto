@@ -1,5 +1,6 @@
 package com.randioo.demo_optimisticframe_server.protocal;
 
+// 随机匹配玩家
 message MatchRoleRequest{	
 	optional bool test = 1;
 }

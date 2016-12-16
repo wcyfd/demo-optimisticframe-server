@@ -1,9 +1,10 @@
-package com.randioo.demo_optimisticframe_server.entity;
+package com.randioo.demo_optimisticframe_server.entity.po;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
+import com.randioo.demo_optimisticframe_server.entity.bo.Role;
 import com.randioo.randioo_server_base.utils.game.game_type.real_time_strategy_game.RTSGame;
 
 /**

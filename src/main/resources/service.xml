@@ -9,9 +9,12 @@
 
 	<bean id="loginService" class="com.randioo.demo_optimisticframe_server.module.login.service.LoginServiceImpl">
 		<property name="roleService" ref="roleService"></property>
+		<property name="roleDao" ref="roleDao"></property>
+		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
 	<bean id="roleService" class="com.randioo.demo_optimisticframe_server.module.role.service.RoleServiceImpl"></bean>
+	<bean id="marketService" class="com.randioo.demo_optimisticframe_server.module.market.service.MarketServiceImpl"></bean>
 	<bean id="fightService" class="com.randioo.demo_optimisticframe_server.module.fight.service.FightServiceImpl">
 		<property name="gameStarter" ref="gameStarter"></property>
 	</bean>

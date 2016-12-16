@@ -1,0 +1,12 @@
+package com.randioo.demo_optimisticframe_server.protocal;
+
+//买飞机
+message MarketBuyPlaneRequest{
+	optional int32 planeId = 1;
+}
+
+message MarketBuyPlaneResponse{
+	
+}
+
+

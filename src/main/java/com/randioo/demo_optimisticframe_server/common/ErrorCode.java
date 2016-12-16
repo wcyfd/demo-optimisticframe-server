@@ -7,6 +7,7 @@ public class ErrorCode {
 	public static short NAME_IS_ALREADY_HAS = 30101;
 	public static short IN_LOGIN = 30102;
 	public static short ACCOUNT_IS_ALREADY_HAS = 30103;
+	public static short NO_ROLE = 30104;
 	
 	public static short ROOM_IS_END = 30301;
 }

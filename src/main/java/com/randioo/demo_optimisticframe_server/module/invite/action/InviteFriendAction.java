@@ -2,10 +2,10 @@ package com.randioo.demo_optimisticframe_server.module.invite.action;
 
 import org.apache.mina.core.session.IoSession;
 
-import com.randioo.demo_optimisticframe_server.cache.RoleCache;
-import com.randioo.demo_optimisticframe_server.entity.Role;
+import com.randioo.demo_optimisticframe_server.entity.bo.Role;
 import com.randioo.demo_optimisticframe_server.module.invite.service.InviteService;
 import com.randioo.demo_optimisticframe_server.protocal.Invite.InviteFriendRequest;
+import com.randioo.randioo_server_base.cache.RoleCache;
 import com.randioo.randioo_server_base.net.ActionSupport;
 import com.randioo.randioo_server_base.net.PTAnnotation;
 
@@ -20,7 +20,7 @@ public class InviteFriendAction extends ActionSupport {
 	@Override
 	public void execute(Object data, IoSession session) {
 		InviteFriendRequest request = (InviteFriendRequest) data;
-		Role role = RoleCache.getRoleBySession(session);
+		Role role = (Role)RoleCache.getRoleBySession(session);
 		inviteService.invite(role, request.getAccount(), session);
 	}
 }

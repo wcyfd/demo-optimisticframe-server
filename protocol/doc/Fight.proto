@@ -34,6 +34,7 @@ message SCFightLoadResource{
 message RoleInfo{
 	optional int32 roleId = 1;
 	optional string name=2;
+	repeated int32 usePlanes = 3;
 }
 
 message SCFightRemove{
@@ -47,15 +48,6 @@ message SCFightCreate{
 	optional int32 y=2;
 	optional int32 enemyId=3;
 	optional EnemyType enemyType = 4;
-}
-
-message SCFightGameOver{
-	message Result{
-		optional int32 roleId = 1;
-		optional string name = 2;
-		optional int32 score = 3;
-	}
-	repeated Result results= 1;
 }
 
 enum EnemyType{
@@ -78,4 +70,11 @@ message Frame{
 	optional int32 frameIndex = 1;
 	repeated GameAction gameActions= 2;		
 }
-		
+
+message FightGameOverRequest{
+	optional int32 score = 1;
+}
+
+message FightGameOverResponse{
+	
+}

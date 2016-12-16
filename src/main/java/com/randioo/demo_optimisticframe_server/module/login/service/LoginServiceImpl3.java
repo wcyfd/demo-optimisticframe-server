@@ -9,10 +9,8 @@ import javax.sql.DataSource;
 import org.apache.mina.core.session.IoSession;
 
 import com.google.protobuf.GeneratedMessage;
-import com.randioo.demo_optimisticframe_server.cache.RoleCache;
-import com.randioo.demo_optimisticframe_server.cache.SessionCache;
 import com.randioo.demo_optimisticframe_server.common.ErrorCode;
-import com.randioo.demo_optimisticframe_server.entity.Role;
+import com.randioo.demo_optimisticframe_server.entity.bo.Role;
 import com.randioo.demo_optimisticframe_server.module.role.service.RoleService;
 import com.randioo.demo_optimisticframe_server.protocal.Login.LoginCheckAccountResponse;
 import com.randioo.demo_optimisticframe_server.protocal.Login.LoginCreateRoleResponse;
@@ -20,6 +18,8 @@ import com.randioo.demo_optimisticframe_server.protocal.Login.LoginGetRoleDataRe
 import com.randioo.demo_optimisticframe_server.protocal.Login.RoleData;
 import com.randioo.demo_optimisticframe_server.protocal.ServerMessage.SCMessage;
 import com.randioo.demo_optimisticframe_server.utils.Utils;
+import com.randioo.randioo_server_base.cache.RoleCache;
+import com.randioo.randioo_server_base.cache.SessionCache;
 import com.randioo.randioo_server_base.module.BaseService;
 import com.randioo.randioo_server_base.net.CacheLockUtil;
 
@@ -129,7 +129,7 @@ public class LoginServiceImpl3 extends BaseService implements LoginService3 {
 
 		try {
 			// 获取缓存中的role
-			Role role = RoleCache.getRoleByAccount(account);
+			Role role = (Role)RoleCache.getRoleByAccount(account);
 
 			if (role == null) { // 缓存中没有role数据
 			// role = roleDao.getRoleByAccount(account);

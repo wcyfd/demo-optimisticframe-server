@@ -1,14 +1,16 @@
 package com.randioo.demo_optimisticframe_server.module.login.service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
-import org.apache.mina.core.session.IoSession;
+import javax.sql.DataSource;
 
 import com.google.protobuf.GeneratedMessage;
-import com.randioo.demo_optimisticframe_server.cache.RoleCache;
-import com.randioo.demo_optimisticframe_server.cache.SessionCache;
 import com.randioo.demo_optimisticframe_server.common.ErrorCode;
-import com.randioo.demo_optimisticframe_server.entity.Role;
+import com.randioo.demo_optimisticframe_server.db.dao.RoleDao;
+import com.randioo.demo_optimisticframe_server.entity.bo.Role;
 import com.randioo.demo_optimisticframe_server.module.role.service.RoleService;
 import com.randioo.demo_optimisticframe_server.protocal.Login.LoginCheckAccountRequest;
 import com.randioo.demo_optimisticframe_server.protocal.Login.LoginCheckAccountResponse;
@@ -19,7 +21,9 @@ import com.randioo.demo_optimisticframe_server.protocal.Login.LoginGetRoleDataRe
 import com.randioo.demo_optimisticframe_server.protocal.Login.RoleData;
 import com.randioo.demo_optimisticframe_server.protocal.ServerMessage.SCMessage;
 import com.randioo.demo_optimisticframe_server.utils.Utils;
+import com.randioo.randioo_server_base.cache.RoleCache;
 import com.randioo.randioo_server_base.entity.Ref;
+import com.randioo.randioo_server_base.entity.RoleInterface;
 import com.randioo.randioo_server_base.module.login.LoginHandler;
 import com.randioo.randioo_server_base.module.login.LoginModelServiceImpl;
 
@@ -31,17 +35,34 @@ public class LoginServiceImpl extends LoginModelServiceImpl implements LoginServ
 		this.roleService = roleService;
 	}
 
+	private RoleDao roleDao;
+
+	public void setRoleDao(RoleDao roleDao) {
+		this.roleDao = roleDao;
+	}
+
+	private DataSource dataSource;
+
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+
 	@Override
 	public void init() {
+		// 初始化所有已经有过的帐号和昵称
+		List<List> lists = roleDao.getAllAccounts$Names();
+		for (List list : lists) {
+			RoleCache.getAccountSet().add((String) list.get(0));
+			RoleCache.getNameSet().add((String) list.get(1));
+		}
 		setLoginHandler(new LoginHandlerImpl());
 	}
 
-	private class LoginHandlerImpl implements LoginHandler<Role> {
+	private class LoginHandlerImpl implements LoginHandler {
 
 		@Override
-		public GeneratedMessage checkLoginAccountCanLogin(String account) {
-			// TODO Auto-generated method stub
-			return null;
+		public boolean checkLoginAccountCanLogin(String account, Ref<Object> canLoginErrorMessage) {
+			return true;
 		}
 
 		@Override
@@ -69,44 +90,43 @@ public class LoginServiceImpl extends LoginModelServiceImpl implements LoginServ
 		}
 
 		@Override
-		public Object checkCreateRoleAccount(Object createRoleMessage) {
+		public boolean checkCreateRoleAccount(Object createRoleMessage, Ref<Object> checkCreateRoleMessage) {
 			LoginCreateRoleRequest request = (LoginCreateRoleRequest) createRoleMessage;
 
 			if (RoleCache.getNameSet().contains(request.getName())) {
-				return SCMessage
+
+				checkCreateRoleMessage.set(SCMessage
 						.newBuilder()
 						.setLoginCreateRoleResponse(
 								LoginCreateRoleResponse.newBuilder().setErrorCode(ErrorCode.NAME_IS_ALREADY_HAS))
-						.build();
+						.build());
+				return false;
 			}
 
 			if (RoleCache.getAccountSet().contains(request.getAccount())) { // 判定账号是否存在
-				return SCMessage
+
+				checkCreateRoleMessage.set(SCMessage
 						.newBuilder()
 						.setLoginCreateRoleResponse(
 								LoginCreateRoleResponse.newBuilder().setErrorCode(ErrorCode.ACCOUNT_IS_ALREADY_HAS))
-						.build();
+						.build());
+				return false;
 			}
-			return null;
+			return true;
 		}
 
 		@Override
-		public Connection getConnection() {
-			return null;
+		public Connection getConnection() throws SQLException {
+			return dataSource.getConnection();
 		}
 
 		@Override
 		public Object createRole(Connection conn, Object createRoleMessage) {
 			LoginCreateRoleRequest request = (LoginCreateRoleRequest) createRoleMessage;
 
-			// mysql事务
-			// conn = dataSource.getConnection();
-			// conn.setAutoCommit(false);
 			// 用户数据
 			Role role = roleInit(request.getAccount(), conn, request.getName());
 
-			// conn.commit(); // 提交JDBC事务
-			// conn.setAutoCommit(true); // 恢复JDBC事务的默认提交方式
 			// 加入role缓存
 			RoleCache.putNewRole(role);
 
@@ -116,19 +136,21 @@ public class LoginServiceImpl extends LoginModelServiceImpl implements LoginServ
 		}
 
 		@Override
-		public GeneratedMessage getRoleData(Ref<Role> ref) {
-			Role role = ref.get();
+		public GeneratedMessage getRoleData(Ref<RoleInterface> ref) {
+			Role role = (Role) ref.get();
+			RoleData.Builder roleDataBuilder = RoleData.newBuilder().setRoleId(role.getRoleId())
+					.setName(role.getName()).setAccount(role.getAccount());
+			Map<Integer, Integer> usePlanes = role.getUsePlanes();
+			for (int i = 1; i <= usePlanes.size(); i++) {
+				roleDataBuilder.addUsePlanes(usePlanes.get(i));
+			}
 
+			roleDataBuilder.addAllPlanes(role.getPlanes()).setScore(role.getScore());
 			return SCMessage
 					.newBuilder()
 					.setLoginGetRoleDataResponse(
-							LoginGetRoleDataResponse
-									.newBuilder()
-									.setErrorCode(ErrorCode.SUCCESS)
-									.setServerTime(Utils.getNowTime())
-									.setRoleData(
-											RoleData.newBuilder().setRoleId(role.getRoleId()).setName(role.getName())))
-					.build();
+							LoginGetRoleDataResponse.newBuilder().setErrorCode(ErrorCode.SUCCESS)
+									.setServerTime(Utils.getNowTime()).setRoleData(roleDataBuilder)).build();
 		}
 
 		@Override
@@ -138,51 +160,35 @@ public class LoginServiceImpl extends LoginModelServiceImpl implements LoginServ
 		}
 
 		@Override
-		public Object getRoleObjectFromCollectionsByGeneratedMessage(Ref<Role> ref, Object createRoleMessage) {
+		public boolean getRoleObject(Ref<RoleInterface> ref, Object createRoleMessage,
+				Ref<Object> errorMessage) {
 			LoginGetRoleDataRequest request = (LoginGetRoleDataRequest) createRoleMessage;
 			String account = request.getAccount();
-			Role role = RoleCache.getRoleByAccount(account);
+			Role role = (Role) RoleCache.getRoleByAccount(account);
 			if (role == null) {
-				// role = roleDao.getRoleByAccount(account);
-				// this.loginRoleModuleDataInit(role);
+				role = roleDao.getRoleByAccount(account);
+				loginRoleModuleDataInit(role);
 				if (role == null) {
-					return SCMessage.newBuilder()
-							.setLoginGetRoleDataResponse(LoginGetRoleDataResponse.newBuilder().setErrorCode(30103))
-							.build();
+					errorMessage.set(SCMessage
+							.newBuilder()
+							.setLoginGetRoleDataResponse(
+									LoginGetRoleDataResponse.newBuilder().setErrorCode(ErrorCode.NO_ROLE)).build());
+					return false;
 				}
 			}
 			ref.set(role);
 
-			return null;
+			return true;
 		}
 
 		@Override
-		public String getIoSessionTag() {
-			return "roleId";
-		}
-
-		@Override
-		public Object getIoSessionAttributeValue(Ref<Role> ref) {
-			return ref.get().getRoleId();
-		}
-
-		@Override
-		public IoSession getSessionByRef(Ref<Role> ref) {
-			IoSession session = SessionCache.getSessionById(ref.get().getRoleId());
-			return session;
-		}
-
-		@Override
-		public Object connectingError() {
-			return SCMessage
-					.newBuilder()
-					.setLoginGetRoleDataResponse(LoginGetRoleDataResponse.newBuilder().setErrorCode(ErrorCode.IN_LOGIN))
-					.build();
-		}
-
-		@Override
-		public void recordSession(Ref<Role> ref, IoSession session) {
-			SessionCache.addSession(ref.get().getRoleId(), session);
+		public boolean connectingError(Ref<Object> errorConnectingMessage) {
+			errorConnectingMessage
+					.set(SCMessage
+							.newBuilder()
+							.setLoginGetRoleDataResponse(
+									LoginGetRoleDataResponse.newBuilder().setErrorCode(ErrorCode.IN_LOGIN)).build());
+			return true;
 		}
 
 	}
@@ -198,11 +204,11 @@ public class LoginServiceImpl extends LoginModelServiceImpl implements LoginServ
 		// 创建用户
 		Role role = new Role();
 		role.setAccount(account);
-
 		role.setName(name);
-		int id = RoleCache.getAccountSet().size();
-		// int id = roleDao.insertRole(role, conn);
-		id++;
+		for (int i = 1, INIT_PLANE_COUNT = 2; i <= INIT_PLANE_COUNT; i++)
+			role.getUsePlanes().put(i, -1);
+
+		int id = roleDao.insertRole(role, conn);
 		role.setRoleId(id);
 
 		return role;

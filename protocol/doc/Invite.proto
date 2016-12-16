@@ -1,5 +1,5 @@
 package com.randioo.demo_optimisticframe_server.protocal;
-
+//邀请好友
 message InviteFriendRequest{
 	optional string account = 1;
 }
@@ -8,6 +8,7 @@ message InviteFriendResponse{
 	optional int32 errorCode = 1;
 }
 
+//邀请回复
 message InviteAnswerRequest{
 	optional string account = 1;
 	optional bool answer = 2;
@@ -17,12 +18,11 @@ message InviteAnswerResponse{
 	
 }
 
-message SCInviteAccept{
-	//发起者信息
-	optional string starter = 1;
-	//接受者信息
-	optional string targeter = 2;
+message SCInviteAccept{	
+	//邀请到的玩家信息
+	repeated InviteRoleData inviteRoleDatas = 1;
 }
+
 
 message SCInviteReject{
 	//发起者信息
@@ -34,5 +34,52 @@ message SCInviteReject{
 //邀请取消
 message SCInviteCancel{
 	optional string starter = 1;
+}
+
+//收到邀请
+message SCInviteReceive{
+	optional string account = 1;
+}
+
+//显示所有在线用户
+message InviteShowFriendsRequest{
+	
+}
+
+message InviteShowFriendsResponse{
+	repeated InviteRoleData inviteRoleDatas = 1;
+}
+
+//在线玩家的信息
+message InviteRoleData{
+	//帐号名
+	optional string account = 1;
+	//正在使用的飞机id
+	repeated int32 planeId = 2;
+}
+
+//新建队伍
+message InviteNewInvitationRequest{
+	
+}
+
+message InviteNewInvitationResponse{
+	repeated InviteRoleData inviteRoleDatas = 1;
+}
+
+//退出队伍
+message InviteQuitInvitationRequest{
+}
+
+message InviteQuitInvitationResponse{
+
+}
+
+// 匹配指定好友
+message InviteFriendsGameStartRequest{
+}
+
+message InviteFriendsGameStartResponse{
+	
 }
 

@@ -42,33 +42,12 @@ public final class Game {
     public boolean hasGameElementID() { return hasGameElementID; }
     public int getGameElementID() { return gameElementID_; }
     
-    // optional bool leftKey = 2;
-    public static final int LEFTKEY_FIELD_NUMBER = 2;
-    private boolean hasLeftKey;
-    private boolean leftKey_ = false;
-    public boolean hasLeftKey() { return hasLeftKey; }
-    public boolean getLeftKey() { return leftKey_; }
-    
-    // optional bool rightKey = 3;
-    public static final int RIGHTKEY_FIELD_NUMBER = 3;
-    private boolean hasRightKey;
-    private boolean rightKey_ = false;
-    public boolean hasRightKey() { return hasRightKey; }
-    public boolean getRightKey() { return rightKey_; }
-    
-    // optional bool upKey = 4;
-    public static final int UPKEY_FIELD_NUMBER = 4;
-    private boolean hasUpKey;
-    private boolean upKey_ = false;
-    public boolean hasUpKey() { return hasUpKey; }
-    public boolean getUpKey() { return upKey_; }
-    
-    // optional bool downKey = 5;
-    public static final int DOWNKEY_FIELD_NUMBER = 5;
-    private boolean hasDownKey;
-    private boolean downKey_ = false;
-    public boolean hasDownKey() { return hasDownKey; }
-    public boolean getDownKey() { return downKey_; }
+    // optional string rate = 2;
+    public static final int RATE_FIELD_NUMBER = 2;
+    private boolean hasRate;
+    private java.lang.String rate_ = "";
+    public boolean hasRate() { return hasRate; }
+    public java.lang.String getRate() { return rate_; }
     
     private void initFields() {
     }
@@ -82,17 +61,8 @@ public final class Game {
       if (hasGameElementID()) {
         output.writeInt32(1, getGameElementID());
       }
-      if (hasLeftKey()) {
-        output.writeBool(2, getLeftKey());
-      }
-      if (hasRightKey()) {
-        output.writeBool(3, getRightKey());
-      }
-      if (hasUpKey()) {
-        output.writeBool(4, getUpKey());
-      }
-      if (hasDownKey()) {
-        output.writeBool(5, getDownKey());
+      if (hasRate()) {
+        output.writeString(2, getRate());
       }
       getUnknownFields().writeTo(output);
     }
@@ -107,21 +77,9 @@ public final class Game {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, getGameElementID());
       }
-      if (hasLeftKey()) {
+      if (hasRate()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, getLeftKey());
-      }
-      if (hasRightKey()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, getRightKey());
-      }
-      if (hasUpKey()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(4, getUpKey());
-      }
-      if (hasDownKey()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(5, getDownKey());
+          .computeStringSize(2, getRate());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -284,17 +242,8 @@ public final class Game {
         if (other.hasGameElementID()) {
           setGameElementID(other.getGameElementID());
         }
-        if (other.hasLeftKey()) {
-          setLeftKey(other.getLeftKey());
-        }
-        if (other.hasRightKey()) {
-          setRightKey(other.getRightKey());
-        }
-        if (other.hasUpKey()) {
-          setUpKey(other.getUpKey());
-        }
-        if (other.hasDownKey()) {
-          setDownKey(other.getDownKey());
+        if (other.hasRate()) {
+          setRate(other.getRate());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -325,20 +274,8 @@ public final class Game {
               setGameElementID(input.readInt32());
               break;
             }
-            case 16: {
-              setLeftKey(input.readBool());
-              break;
-            }
-            case 24: {
-              setRightKey(input.readBool());
-              break;
-            }
-            case 32: {
-              setUpKey(input.readBool());
-              break;
-            }
-            case 40: {
-              setDownKey(input.readBool());
+            case 18: {
+              setRate(input.readString());
               break;
             }
           }
@@ -364,75 +301,24 @@ public final class Game {
         return this;
       }
       
-      // optional bool leftKey = 2;
-      public boolean hasLeftKey() {
-        return result.hasLeftKey();
+      // optional string rate = 2;
+      public boolean hasRate() {
+        return result.hasRate();
       }
-      public boolean getLeftKey() {
-        return result.getLeftKey();
+      public java.lang.String getRate() {
+        return result.getRate();
       }
-      public Builder setLeftKey(boolean value) {
-        result.hasLeftKey = true;
-        result.leftKey_ = value;
+      public Builder setRate(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasRate = true;
+        result.rate_ = value;
         return this;
       }
-      public Builder clearLeftKey() {
-        result.hasLeftKey = false;
-        result.leftKey_ = false;
-        return this;
-      }
-      
-      // optional bool rightKey = 3;
-      public boolean hasRightKey() {
-        return result.hasRightKey();
-      }
-      public boolean getRightKey() {
-        return result.getRightKey();
-      }
-      public Builder setRightKey(boolean value) {
-        result.hasRightKey = true;
-        result.rightKey_ = value;
-        return this;
-      }
-      public Builder clearRightKey() {
-        result.hasRightKey = false;
-        result.rightKey_ = false;
-        return this;
-      }
-      
-      // optional bool upKey = 4;
-      public boolean hasUpKey() {
-        return result.hasUpKey();
-      }
-      public boolean getUpKey() {
-        return result.getUpKey();
-      }
-      public Builder setUpKey(boolean value) {
-        result.hasUpKey = true;
-        result.upKey_ = value;
-        return this;
-      }
-      public Builder clearUpKey() {
-        result.hasUpKey = false;
-        result.upKey_ = false;
-        return this;
-      }
-      
-      // optional bool downKey = 5;
-      public boolean hasDownKey() {
-        return result.hasDownKey();
-      }
-      public boolean getDownKey() {
-        return result.getDownKey();
-      }
-      public Builder setDownKey(boolean value) {
-        result.hasDownKey = true;
-        result.downKey_ = value;
-        return this;
-      }
-      public Builder clearDownKey() {
-        result.hasDownKey = false;
-        result.downKey_ = false;
+      public Builder clearRate() {
+        result.hasRate = false;
+        result.rate_ = getDefaultInstance().getRate();
         return this;
       }
       
@@ -463,10 +349,8 @@ public final class Game {
   static {
     java.lang.String[] descriptorData = {
       "\n\nGame.proto\0220com.randioo.demo_optimisti" +
-      "cframe_server.protocal\"f\n\nGameAction\022\025\n\r" +
-      "gameElementID\030\001 \001(\005\022\017\n\007leftKey\030\002 \001(\010\022\020\n\010" +
-      "rightKey\030\003 \001(\010\022\r\n\005upKey\030\004 \001(\010\022\017\n\007downKey" +
-      "\030\005 \001(\010"
+      "cframe_server.protocal\"1\n\nGameAction\022\025\n\r" +
+      "gameElementID\030\001 \001(\005\022\014\n\004rate\030\002 \001(\t"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -478,7 +362,7 @@ public final class Game {
           internal_static_com_randioo_demo_optimisticframe_server_protocal_GameAction_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_demo_optimisticframe_server_protocal_GameAction_descriptor,
-              new java.lang.String[] { "GameElementID", "LeftKey", "RightKey", "UpKey", "DownKey", },
+              new java.lang.String[] { "GameElementID", "Rate", },
               com.randioo.demo_optimisticframe_server.protocal.Game.GameAction.class,
               com.randioo.demo_optimisticframe_server.protocal.Game.GameAction.Builder.class);
           return null;

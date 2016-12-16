@@ -4,8 +4,10 @@ import "Match.proto";
 import "Fight.proto";
 import "Ping.proto";
 import "Invite.proto";
+import "Market.proto";
+import "Role.proto";
 
-//10
+//18
 message CSMessage{
 	optional LoginCheckAccountRequest loginCheckAccountRequest=1;
 	optional LoginCreateRoleRequest loginCreateRoleRequest=2;
@@ -16,9 +18,22 @@ message CSMessage{
 	optional FightReceiveHitGameControlRequest fightReceiveHitGameControlRequest=5;
 	optional FightReceivePlaneGameControlRequest fightReceivePlaneGameControlRequest=6;
 	optional FightLoadCompleteRequest fightLoadCompleteRequest=7;
+	optional FightGameOverRequest fightGameOverRequest = 8;
 
-	optional PingRequest pingRequest = 8;
+	optional PingRequest pingRequest = 9;
 	
-	optional InviteFriendRequest inviteFriendRequest = 9;
-	optional InviteAnswerRequest inviteAnswerRequest = 10;
+	optional InviteFriendRequest inviteFriendRequest = 10;
+	optional InviteAnswerRequest inviteAnswerRequest = 11;
+	optional InviteShowFriendsRequest inviteShowFriendsRequest = 12;
+	optional InviteNewInvitationRequest inviteNewInvitationRequest = 13;
+	optional InviteQuitInvitationRequest inviteQuitInvitationRequest = 14;
+	optional InviteFriendsGameStartRequest inviteFriendsGameStartRequest=15;
+	
+	//选择飞机
+	optional RoleChoosePlaneRequest roleChoosePlaneRequest = 16;
+	//移除飞机
+	optional RoleFallPlaneRequest roleFallPlaneRequest = 17;
+	
+	optional MarketBuyPlaneRequest marketBuyPlaneRequest = 18;
+	
 }

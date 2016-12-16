@@ -1,5 +1,6 @@
 package com.randioo.demo_optimisticframe_server.protocal;
 
+//用户登录检查
 message LoginCheckAccountRequest{
 	optional string account = 1;
 }
@@ -8,6 +9,7 @@ message LoginCheckAccountResponse{
 	optional int32 errorCode=1;
 }
 
+//创建玩家
 message LoginCreateRoleRequest{
 	optional string account=1;
 	optional string name=2;
@@ -17,6 +19,7 @@ message LoginCreateRoleResponse{
 	optional int32 errorCode=1;
 }
 
+//获得玩家信息
 message LoginGetRoleDataRequest{
 	optional string account=1;
 }
@@ -27,7 +30,15 @@ message LoginGetRoleDataResponse{
 	optional RoleData roleData = 3;
 }
 
+//玩家信息
 message RoleData{
 	optional int32 roleId = 1;
 	optional string name=2;
+	optional string account = 3;
+	//使用中的飞机
+	repeated int32 usePlanes = 4;
+	//所有的飞机
+	repeated int32 planes = 5;
+	//最高分
+	optional int32 score = 6;
 }

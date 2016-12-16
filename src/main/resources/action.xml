@@ -16,9 +16,19 @@
 	<bean id="fightLoadCompleteAction" class="com.randioo.demo_optimisticframe_server.module.fight.action.FightLoadCompleteAction" p:fightService-ref="fightService"></bean>
 	<bean id="fightReceiveHitGameControlInfoAction" class="com.randioo.demo_optimisticframe_server.module.fight.action.FightReceiveHitGameControlInfoAction" p:fightService-ref="fightService"></bean>
 	<bean id="fightReceivePlaneGameControlInfoAction" class="com.randioo.demo_optimisticframe_server.module.fight.action.FightReceivePlaneGameControlInfoAction" p:fightService-ref="fightService"></bean>
-	
+	<bean id="fightGameOverAction" class="com.randioo.demo_optimisticframe_server.module.fight.action.FightGameOverAction" p:fightService-ref="fightService"></bean>
+
 	<bean id="pingAction" class="com.randioo.demo_optimisticframe_server.module.ping.action.PingAction" p:pingService-ref="pingService"></bean>
-	
+
 	<bean id="inviteAnswerAction" class="com.randioo.demo_optimisticframe_server.module.invite.action.InviteAnswerAction" p:inviteService-ref="inviteService"></bean>
 	<bean id="inviteFriendAction" class="com.randioo.demo_optimisticframe_server.module.invite.action.InviteFriendAction" p:inviteService-ref="inviteService"></bean>
+	<bean id="inviteShowFriendsAction" class="com.randioo.demo_optimisticframe_server.module.invite.action.InviteShowFriendsAction" p:inviteService-ref="inviteService"></bean>
+	<bean id="inviteNewInvitationAction" class="com.randioo.demo_optimisticframe_server.module.invite.action.InviteNewInvitationAction" p:inviteService-ref="inviteService"></bean>
+	<bean id="inviteQuitInvitationAction" class="com.randioo.demo_optimisticframe_server.module.invite.action.InviteQuitInvitationAction" p:inviteService-ref="inviteService"></bean>
+	<bean id="inviteFriendsStartGameAction" class="com.randioo.demo_optimisticframe_server.module.invite.action.InviteFriendsStartGameAction" p:inviteService-ref="inviteService"></bean>
+	
+	<bean id="marketBuyPlaneAction" class="com.randioo.demo_optimisticframe_server.module.market.action.MarketBuyPlaneAction" p:marketService-ref="marketService"></bean>
+	
+	<bean id="roleChoosePlaneAction" class="com.randioo.demo_optimisticframe_server.module.role.action.RoleChoosePlaneAction" p:roleService-ref="roleService"></bean>
+	<bean id="roleFallPlaneAction" class="com.randioo.demo_optimisticframe_server.module.role.action.RoleFallPlaneAction" p:roleService-ref="roleService"></bean>
 </beans>

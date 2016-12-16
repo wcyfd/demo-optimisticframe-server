@@ -6,33 +6,30 @@ import java.util.concurrent.locks.Lock;
 import org.apache.mina.core.session.IoSession;
 
 import com.google.protobuf.GeneratedMessage;
-import com.randioo.demo_optimisticframe_server.cache.GameCache;
-import com.randioo.demo_optimisticframe_server.cache.SessionCache;
 import com.randioo.demo_optimisticframe_server.common.ErrorCode;
-import com.randioo.demo_optimisticframe_server.entity.Game;
-import com.randioo.demo_optimisticframe_server.entity.GameInfo;
-import com.randioo.demo_optimisticframe_server.entity.Role;
+import com.randioo.demo_optimisticframe_server.entity.bo.Role;
+import com.randioo.demo_optimisticframe_server.entity.po.Game;
+import com.randioo.demo_optimisticframe_server.entity.po.GameInfo;
+import com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverResponse;
 import com.randioo.demo_optimisticframe_server.protocal.Fight.FightLoadCompleteResponse;
 import com.randioo.demo_optimisticframe_server.protocal.Fight.FightReceiveHitGameControlResponse;
 import com.randioo.demo_optimisticframe_server.protocal.Fight.FightReceivePlaneGameControlResponse;
 import com.randioo.demo_optimisticframe_server.protocal.Fight.Frame;
 import com.randioo.demo_optimisticframe_server.protocal.Fight.RoleInfo;
-import com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver;
-import com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.Result;
 import com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightLoadResource;
 import com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightSendKeyFrame;
 import com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightStartGame;
 import com.randioo.demo_optimisticframe_server.protocal.Game.GameAction;
 import com.randioo.demo_optimisticframe_server.protocal.ServerMessage.SCMessage;
 import com.randioo.demo_optimisticframe_server.utils.Utils;
+import com.randioo.randioo_server_base.cache.SessionCache;
 import com.randioo.randioo_server_base.entity.ActionQueue;
 import com.randioo.randioo_server_base.entity.GameEvent;
 import com.randioo.randioo_server_base.module.BaseService;
+import com.randioo.randioo_server_base.utils.game.GameIdCreator;
 import com.randioo.randioo_server_base.utils.game.game_type.GameBase;
 import com.randioo.randioo_server_base.utils.game.game_type.GameHandler;
 import com.randioo.randioo_server_base.utils.game.game_type.real_time_strategy_game.RTSGameStarter;
-import com.randioo.randioo_server_base.utils.game.matcher.MatchInfo;
-import com.randioo.randioo_server_base.utils.game.matcher.MatchRule;
 import com.randioo.randioo_server_base.utils.game.matcher.Matchable;
 
 public class FightServiceImpl extends BaseService implements FightService {
@@ -59,7 +56,7 @@ public class FightServiceImpl extends BaseService implements FightService {
 
 	@Override
 	public void loadResource(int playCount, List<? extends Matchable> matchables) {
-		int randSeed = Utils.getRandomNum(0, 100);
+		int randSeed = Utils.getRandomNum(1, 100);
 		System.out.println("loadResource");
 
 		// 游戏初始化
@@ -72,9 +69,13 @@ public class FightServiceImpl extends BaseService implements FightService {
 						.setRandSeed(randSeed);
 				for (Matchable matchable : matchables) {
 					Role role = (Role) matchable;
-					RoleInfo roleInfo = RoleInfo.newBuilder().setName(role.getName()).setRoleId(role.getRoleId())
-							.build();
-					scFightLoadResource.addRoleInfos(roleInfo);
+					RoleInfo.Builder roleInfoBuilder = RoleInfo.newBuilder().setName(role.getName())
+							.setRoleId(role.getRoleId());
+					for (int index = 1; index <= role.getUsePlanes().size(); index++) {
+						roleInfoBuilder.addUsePlanes(role.getUsePlanes().get(index));
+					}
+
+					scFightLoadResource.addRoleInfos(roleInfoBuilder);
 				}
 
 				IoSession session = SessionCache.getSessionById(targetRole.getRoleId());
@@ -130,7 +131,7 @@ public class FightServiceImpl extends BaseService implements FightService {
 	@Override
 	public Game serverGameInit(int playCount, List<? extends Matchable> matchables) {
 		Game game = new Game(playCount, 60 * 3, 5, 50);
-		game.setGameId(GameCache.getGameId());
+		game.setGameId(GameIdCreator.getId());
 
 		for (Matchable matchable : matchables) {
 			Role role = (Role) matchable;
@@ -165,13 +166,14 @@ public class FightServiceImpl extends BaseService implements FightService {
 				game.setStartTime(System.currentTimeMillis());
 				game.setHasStartTime(true);
 			}
-//			// 游戏时间到了，发送游戏结束
-//			if (getCurrentFrameIndex(game) >= game.getFrameCountInOneSecond() * game.getTotalTime()) {
-//
-//				sendEnd(game);
-//
-//				return;
-//			}
+			// // 游戏时间到了，发送游戏结束
+			// if (getCurrentFrameIndex(game) >= game.getFrameCountInOneSecond()
+			// * game.getTotalTime()) {
+			//
+			// sendEnd(game);
+			//
+			// return;
+			// }
 
 			// 发送关键帧内所有操作信息
 			sendKeyFrameInfo(game);
@@ -288,44 +290,32 @@ public class FightServiceImpl extends BaseService implements FightService {
 	}
 
 	@Override
-	public void sendEnd(Game game) {
+	public void offline(Role role) {
+		Game game = (Game) role.getGame();
+		if (game == null || game.isEnd())
+			return;
+
 		Lock lock = game.getLock();
 		lock.lock();
-		if (game.isEnd()) {
-			return;
-		}
 		try {
-			if (game.isEnd()) {
+			if (game.isEnd())
 				return;
+			game.getRoleMap().remove(role.getRoleId());
+			role.setGame(null);
+			if (game.getRoleMap().size() == 0) {
+				game.setEnd(true);
+				game.getScheduledFuture().cancel(true);
 			}
-			game.setEnd(true);
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			lock.unlock();
 		}
+	}
 
-		game.getScheduledFuture().cancel(true);
-
-		SCFightGameOver.Builder messageBuilder = SCFightGameOver.newBuilder();
-		for (Role role : game.getRoleMap().values()) {
-			Result.Builder result = Result.newBuilder();
-			result.setName(role.getName()).setRoleId(role.getRoleId())
-					.setScore(game.getGameInfoMap().get(role.getRoleId()).getScore());
-			messageBuilder.addResults(result);
-		}
-		SCFightGameOver message = messageBuilder.build();
-
-		for (Role role : game.getRoleMap().values()) {
-			SCMessage sc = SCMessage.newBuilder().setScFightGameOver(message).build();
-
-			IoSession session = SessionCache.getSessionById(role.getRoleId());
-			if (session != null) {
-				session.write(sc);
-			}
-		}
-
-		for (Role role : game.getRoleMap().values()) {
-			role.setGame(null);
-		}
+	@Override
+	public GeneratedMessage gameOver(Role role, int score) {
+		return SCMessage.newBuilder().setFightGameOverResponse(FightGameOverResponse.newBuilder()).build();
 	}
 
 }

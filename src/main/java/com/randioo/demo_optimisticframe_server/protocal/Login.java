@@ -1907,6 +1907,44 @@ public final class Login {
     public boolean hasName() { return hasName; }
     public java.lang.String getName() { return name_; }
     
+    // optional string account = 3;
+    public static final int ACCOUNT_FIELD_NUMBER = 3;
+    private boolean hasAccount;
+    private java.lang.String account_ = "";
+    public boolean hasAccount() { return hasAccount; }
+    public java.lang.String getAccount() { return account_; }
+    
+    // repeated int32 usePlanes = 4;
+    public static final int USEPLANES_FIELD_NUMBER = 4;
+    private java.util.List<java.lang.Integer> usePlanes_ =
+      java.util.Collections.emptyList();
+    public java.util.List<java.lang.Integer> getUsePlanesList() {
+      return usePlanes_;
+    }
+    public int getUsePlanesCount() { return usePlanes_.size(); }
+    public int getUsePlanes(int index) {
+      return usePlanes_.get(index);
+    }
+    
+    // repeated int32 planes = 5;
+    public static final int PLANES_FIELD_NUMBER = 5;
+    private java.util.List<java.lang.Integer> planes_ =
+      java.util.Collections.emptyList();
+    public java.util.List<java.lang.Integer> getPlanesList() {
+      return planes_;
+    }
+    public int getPlanesCount() { return planes_.size(); }
+    public int getPlanes(int index) {
+      return planes_.get(index);
+    }
+    
+    // optional int32 score = 6;
+    public static final int SCORE_FIELD_NUMBER = 6;
+    private boolean hasScore;
+    private int score_ = 0;
+    public boolean hasScore() { return hasScore; }
+    public int getScore() { return score_; }
+    
     private void initFields() {
     }
     public final boolean isInitialized() {
@@ -1921,6 +1959,18 @@ public final class Login {
       }
       if (hasName()) {
         output.writeString(2, getName());
+      }
+      if (hasAccount()) {
+        output.writeString(3, getAccount());
+      }
+      for (int element : getUsePlanesList()) {
+        output.writeInt32(4, element);
+      }
+      for (int element : getPlanesList()) {
+        output.writeInt32(5, element);
+      }
+      if (hasScore()) {
+        output.writeInt32(6, getScore());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1938,6 +1988,32 @@ public final class Login {
       if (hasName()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(2, getName());
+      }
+      if (hasAccount()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(3, getAccount());
+      }
+      {
+        int dataSize = 0;
+        for (int element : getUsePlanesList()) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(element);
+        }
+        size += dataSize;
+        size += 1 * getUsePlanesList().size();
+      }
+      {
+        int dataSize = 0;
+        for (int element : getPlanesList()) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(element);
+        }
+        size += dataSize;
+        size += 1 * getPlanesList().size();
+      }
+      if (hasScore()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, getScore());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2081,6 +2157,14 @@ public final class Login {
           throw new IllegalStateException(
             "build() has already been called on this Builder.");
         }
+        if (result.usePlanes_ != java.util.Collections.EMPTY_LIST) {
+          result.usePlanes_ =
+            java.util.Collections.unmodifiableList(result.usePlanes_);
+        }
+        if (result.planes_ != java.util.Collections.EMPTY_LIST) {
+          result.planes_ =
+            java.util.Collections.unmodifiableList(result.planes_);
+        }
         com.randioo.demo_optimisticframe_server.protocal.Login.RoleData returnMe = result;
         result = null;
         return returnMe;
@@ -2102,6 +2186,24 @@ public final class Login {
         }
         if (other.hasName()) {
           setName(other.getName());
+        }
+        if (other.hasAccount()) {
+          setAccount(other.getAccount());
+        }
+        if (!other.usePlanes_.isEmpty()) {
+          if (result.usePlanes_.isEmpty()) {
+            result.usePlanes_ = new java.util.ArrayList<java.lang.Integer>();
+          }
+          result.usePlanes_.addAll(other.usePlanes_);
+        }
+        if (!other.planes_.isEmpty()) {
+          if (result.planes_.isEmpty()) {
+            result.planes_ = new java.util.ArrayList<java.lang.Integer>();
+          }
+          result.planes_.addAll(other.planes_);
+        }
+        if (other.hasScore()) {
+          setScore(other.getScore());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2134,6 +2236,40 @@ public final class Login {
             }
             case 18: {
               setName(input.readString());
+              break;
+            }
+            case 26: {
+              setAccount(input.readString());
+              break;
+            }
+            case 32: {
+              addUsePlanes(input.readInt32());
+              break;
+            }
+            case 34: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              while (input.getBytesUntilLimit() > 0) {
+                addUsePlanes(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 40: {
+              addPlanes(input.readInt32());
+              break;
+            }
+            case 42: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              while (input.getBytesUntilLimit() > 0) {
+                addPlanes(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 48: {
+              setScore(input.readInt32());
               break;
             }
           }
@@ -2177,6 +2313,113 @@ public final class Login {
       public Builder clearName() {
         result.hasName = false;
         result.name_ = getDefaultInstance().getName();
+        return this;
+      }
+      
+      // optional string account = 3;
+      public boolean hasAccount() {
+        return result.hasAccount();
+      }
+      public java.lang.String getAccount() {
+        return result.getAccount();
+      }
+      public Builder setAccount(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasAccount = true;
+        result.account_ = value;
+        return this;
+      }
+      public Builder clearAccount() {
+        result.hasAccount = false;
+        result.account_ = getDefaultInstance().getAccount();
+        return this;
+      }
+      
+      // repeated int32 usePlanes = 4;
+      public java.util.List<java.lang.Integer> getUsePlanesList() {
+        return java.util.Collections.unmodifiableList(result.usePlanes_);
+      }
+      public int getUsePlanesCount() {
+        return result.getUsePlanesCount();
+      }
+      public int getUsePlanes(int index) {
+        return result.getUsePlanes(index);
+      }
+      public Builder setUsePlanes(int index, int value) {
+        result.usePlanes_.set(index, value);
+        return this;
+      }
+      public Builder addUsePlanes(int value) {
+        if (result.usePlanes_.isEmpty()) {
+          result.usePlanes_ = new java.util.ArrayList<java.lang.Integer>();
+        }
+        result.usePlanes_.add(value);
+        return this;
+      }
+      public Builder addAllUsePlanes(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        if (result.usePlanes_.isEmpty()) {
+          result.usePlanes_ = new java.util.ArrayList<java.lang.Integer>();
+        }
+        super.addAll(values, result.usePlanes_);
+        return this;
+      }
+      public Builder clearUsePlanes() {
+        result.usePlanes_ = java.util.Collections.emptyList();
+        return this;
+      }
+      
+      // repeated int32 planes = 5;
+      public java.util.List<java.lang.Integer> getPlanesList() {
+        return java.util.Collections.unmodifiableList(result.planes_);
+      }
+      public int getPlanesCount() {
+        return result.getPlanesCount();
+      }
+      public int getPlanes(int index) {
+        return result.getPlanes(index);
+      }
+      public Builder setPlanes(int index, int value) {
+        result.planes_.set(index, value);
+        return this;
+      }
+      public Builder addPlanes(int value) {
+        if (result.planes_.isEmpty()) {
+          result.planes_ = new java.util.ArrayList<java.lang.Integer>();
+        }
+        result.planes_.add(value);
+        return this;
+      }
+      public Builder addAllPlanes(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        if (result.planes_.isEmpty()) {
+          result.planes_ = new java.util.ArrayList<java.lang.Integer>();
+        }
+        super.addAll(values, result.planes_);
+        return this;
+      }
+      public Builder clearPlanes() {
+        result.planes_ = java.util.Collections.emptyList();
+        return this;
+      }
+      
+      // optional int32 score = 6;
+      public boolean hasScore() {
+        return result.hasScore();
+      }
+      public int getScore() {
+        return result.getScore();
+      }
+      public Builder setScore(int value) {
+        result.hasScore = true;
+        result.score_ = value;
+        return this;
+      }
+      public Builder clearScore() {
+        result.hasScore = false;
+        result.score_ = 0;
         return this;
       }
       
@@ -2247,8 +2490,9 @@ public final class Login {
       "DataResponse\022\021\n\terrorCode\030\001 \001(\005\022\022\n\nserve" +
       "rTime\030\002 \001(\005\022L\n\010roleData\030\003 \001(\0132:.com.rand",
       "ioo.demo_optimisticframe_server.protocal" +
-      ".RoleData\"(\n\010RoleData\022\016\n\006roleId\030\001 \001(\005\022\014\n" +
-      "\004name\030\002 \001(\t"
+      ".RoleData\"k\n\010RoleData\022\016\n\006roleId\030\001 \001(\005\022\014\n" +
+      "\004name\030\002 \001(\t\022\017\n\007account\030\003 \001(\t\022\021\n\tusePlane" +
+      "s\030\004 \003(\005\022\016\n\006planes\030\005 \003(\005\022\r\n\005score\030\006 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2308,7 +2552,7 @@ public final class Login {
           internal_static_com_randioo_demo_optimisticframe_server_protocal_RoleData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_demo_optimisticframe_server_protocal_RoleData_descriptor,
-              new java.lang.String[] { "RoleId", "Name", },
+              new java.lang.String[] { "RoleId", "Name", "Account", "UsePlanes", "Planes", "Score", },
               com.randioo.demo_optimisticframe_server.protocal.Login.RoleData.class,
               com.randioo.demo_optimisticframe_server.protocal.Login.RoleData.Builder.class);
           return null;

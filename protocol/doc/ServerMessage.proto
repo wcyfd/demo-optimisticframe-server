@@ -4,8 +4,10 @@ import "Match.proto";
 import "Fight.proto";
 import "Ping.proto";
 import "Invite.proto";
+import "Market.proto";
+import "Role.proto";
 
-//19
+//27
 message SCMessage{
 	optional LoginCheckAccountResponse loginCheckAccountResponse=1;
 	optional LoginCreateRoleResponse loginCreateRoleResponse=2;
@@ -16,19 +18,28 @@ message SCMessage{
 	optional FightReceiveHitGameControlResponse fightReceiveHitGameControlResponse=5;
 	optional FightReceivePlaneGameControlResponse fightReceivePlaneGameControlResponse=6;
 	optional FightLoadCompleteResponse fightLoadCompleteResponse=7;
-	optional SCFightStartGame scFightStartGame = 8;
-	optional SCFightLoadResource scFightLoadResource =9;
-	optional SCFightRemove scFightRemove = 10;
-	optional SCFightCreate scFightCreate =11;
-	optional SCFightGameOver scFightGameOver =12;
+	optional FightGameOverResponse fightGameOverResponse = 8;
+	optional SCFightStartGame scFightStartGame = 9;
+	optional SCFightLoadResource scFightLoadResource =10;
+	optional SCFightRemove scFightRemove = 11;
+	optional SCFightCreate scFightCreate =12;
 	optional SCFightSendKeyFrame scFightSendKeyFrame = 13;
 
 	optional PingResponse pingResponse=14;
 	
 	optional InviteFriendResponse inviteFriendResponse = 15;
 	optional InviteAnswerResponse inviteAnswerResponse = 16;
-	optional SCInviteAccept scInviteAccept = 17;
-	optional SCInviteReject scInviteReject = 18;
-	optional SCInviteCancel scInviteCancel = 19;
+	optional InviteShowFriendsResponse inviteShowFriendsResponse = 17;
+	optional InviteNewInvitationResponse inviteNewInvitationResponse = 26;
+	optional InviteQuitInvitationResponse inviteQuitInvitationResponse = 27;
+	optional InviteFriendsGameStartResponse inviteFriendsGameStartResponse = 24;
+	optional SCInviteAccept scInviteAccept = 18;
+	optional SCInviteReject scInviteReject = 19;
+	optional SCInviteCancel scInviteCancel = 20;
+	optional SCInviteReceive scInviteReceive = 25;
 	
+	optional RoleChoosePlaneResponse roleChoosePlaneResponse = 21;
+	optional RoleFallPlaneResponse roleFallPlaneResponse = 23;
+	
+	optional MarketBuyPlaneResponse marketBuyPlaneResponse = 22;
 }

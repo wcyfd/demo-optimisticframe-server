@@ -7,11 +7,11 @@ import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.randioo.demo_optimisticframe_server.cache.RoleCache;
-import com.randioo.demo_optimisticframe_server.entity.Game;
-import com.randioo.demo_optimisticframe_server.entity.Role;
+import com.randioo.demo_optimisticframe_server.entity.bo.Role;
+import com.randioo.demo_optimisticframe_server.entity.po.Game;
 import com.randioo.demo_optimisticframe_server.module.fight.service.FightService;
 import com.randioo.demo_optimisticframe_server.protocal.ClientMessage.CSMessage;
+import com.randioo.randioo_server_base.cache.RoleCache;
 import com.randioo.randioo_server_base.navigation.Navigation;
 import com.randioo.randioo_server_base.net.IActionSupport;
 import com.randioo.randioo_server_base.net.IoHandlerAdapter;
@@ -32,11 +32,13 @@ public class ServerHandler extends IoHandlerAdapter {
 	@Override
 	public void sessionClosed(IoSession session) throws Exception {
 		System.out.println("roleId:" + session.getAttribute("roleId") + " sessionClosed");
-		Role role = RoleCache.getRoleBySession(session);
-		Game game = (Game)role.getGame();
-		if (game != null) {
-			FightService fightService = SpringContext.getBean("fightService");
-			fightService.sendEnd(game);
+		Role role = (Role) RoleCache.getRoleBySession(session);
+		if (role != null) {
+			try {
+				SessionCloseHandler.manipulate(role);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -63,7 +65,12 @@ public class ServerHandler extends IoHandlerAdapter {
 				System.out.println("ERR_MESSAGE_REC");
 				return;
 			}
-//			System.out.println(message);
+			String messageStr = message.toString();
+			if (messageStr.contains("pingRequest")||messageStr.contains("pingResponse")){
+				
+			}else{
+				System.out.println(message);				
+			}
 
 			Map<FieldDescriptor, Object> allFields = message.getAllFields();
 			for (Map.Entry<FieldDescriptor, Object> entrySet : allFields.entrySet()) {
@@ -98,8 +105,12 @@ public class ServerHandler extends IoHandlerAdapter {
 	@Override
 	public void messageSent(IoSession session, Object message) throws Exception {
 		String messageStr = message.toString();
-//		if (messageStr.contains("KeyFrame")||messageStr.contains("Resource"))
+		if (messageStr.contains("pingRequest")||messageStr.contains("pingResponse")){
+			
+		}else{
 			System.out.println(message);
+			
+		}
 //		if (messageStr.contains("fightReceiveControl") || messageStr.contains("scFightSendKeyFrame"))
 	}
 
