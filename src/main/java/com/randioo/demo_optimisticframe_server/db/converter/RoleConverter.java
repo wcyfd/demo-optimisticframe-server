@@ -14,8 +14,8 @@ public class RoleConverter implements ResultConverter<Role> {
 		role.setRoleId(rs.getInt("id"));
 		role.setAccount(rs.getString("account"));
 		role.setName(rs.getString("name"));
-		role.setPlanesStr(rs.getString("planesStr"));
-		role.setUsePlanesStr(rs.getString("usePlanesStr"));
+		role.setPlanesRawStr(rs.getString("planesStr"));
+		role.setUsePlanesRawStr(rs.getString("usePlanesStr"));
 		role.setScore(rs.getInt("score"));
 
 		return role;

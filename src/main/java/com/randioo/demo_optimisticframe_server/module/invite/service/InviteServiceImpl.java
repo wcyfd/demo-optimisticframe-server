@@ -25,10 +25,11 @@ import com.randioo.demo_optimisticframe_server.protocal.ServerMessage.SCMessage;
 import com.randioo.randioo_server_base.cache.RoleCache;
 import com.randioo.randioo_server_base.cache.SessionCache;
 import com.randioo.randioo_server_base.module.BaseService;
+import com.randioo.randioo_server_base.module.invite.Invitable;
+import com.randioo.randioo_server_base.module.invite.Invitation;
+import com.randioo.randioo_server_base.module.invite.InviteHandler;
+import com.randioo.randioo_server_base.module.invite.InviteModelService;
 import com.randioo.randioo_server_base.utils.game.inviter.GameInviter;
-import com.randioo.randioo_server_base.utils.game.inviter.Invitable;
-import com.randioo.randioo_server_base.utils.game.inviter.Invitation;
-import com.randioo.randioo_server_base.utils.game.inviter.InviteHandler;
 
 public class InviteServiceImpl extends BaseService implements InviteService {
 
@@ -36,6 +37,12 @@ public class InviteServiceImpl extends BaseService implements InviteService {
 
 	public void setGameInviter(GameInviter gameInviter) {
 		this.gameInviter = gameInviter;
+	}
+
+	private InviteModelService inviteModelService;
+
+	public void setInviteModelService(InviteModelService inviteModelService) {
+		this.inviteModelService = inviteModelService;
 	}
 
 	private MatchService matchService;
@@ -46,7 +53,65 @@ public class InviteServiceImpl extends BaseService implements InviteService {
 
 	@Override
 	public void init() {
-		gameInviter.setHandler(new InviteHandler() {
+		init2();
+	}
+
+	// void init1(){
+	// gameInviter.setHandler(new InviteHandler() {
+	//
+	// @Override
+	// public void acceptInvite(Invitation invitation, Invitable targeter) {
+	// inviteUpdate(invitation);
+	//
+	// }
+	//
+	// @Override
+	// public void rejectInvite(Invitation invitation, Invitable targeter) {
+	// Role starter = (Role) invitation.getInviteSuccessList().get(0);
+	// Role targetRole = (Role) targeter;
+	// IoSession session = SessionCache.getSessionById(starter.getRoleId());
+	// if (session != null) {
+	// if (session != null) {
+	// session.write(SCMessage
+	// .newBuilder()
+	// .setScInviteReject(
+	// SCInviteReject.newBuilder().setStarter(starter.getAccount())
+	// .setTargeter(targetRole.getAccount())).build());
+	// }
+	// }
+	// }
+	//
+	// @Override
+	// public void inviteCancel(Invitation invitation, Invitable targeter) {
+	// inviteUpdate(invitation);
+	// }
+	//
+	// @Override
+	// public void inviteComplete(Invitation invitation) {
+	//
+	// }
+	//
+	// @Override
+	// public void inviteOutOfIndex(Invitation invitation) {
+	// // TODO Auto-generated method stub
+	//
+	// }
+	//
+	// @Override
+	// public void receiveInvite(Invitation invitation, Invitable targeter) {
+	// Role role = (Role) targeter;
+	// IoSession session = SessionCache.getSessionById(role.getRoleId());
+	// if (session != null) {
+	// Role starter = (Role) invitation.getInviteSuccessList().get(0);
+	// session.write(SCMessage.newBuilder()
+	// .setScInviteReceive(SCInviteReceive.newBuilder().setAccount(starter.getAccount())).build());
+	// }
+	// }
+	//
+	// });
+	// }
+	void init2() {
+		inviteModelService.setHandler(new InviteHandler() {
 
 			@Override
 			public void acceptInvite(Invitation invitation, Invitable targeter) {
@@ -133,7 +198,7 @@ public class InviteServiceImpl extends BaseService implements InviteService {
 
 	@Override
 	public GeneratedMessage newInvitation(Role role) {
-		gameInviter.newInvitation(role, 2);
+		inviteModelService.newInvitation(role, 2);
 		InviteRoleData.Builder inviteRoleDataBuilder = InviteRoleData.newBuilder().setAccount(role.getAccount());
 		for (int i = 1; i <= role.getUsePlanes().size(); i++) {
 			inviteRoleDataBuilder.addPlaneId(role.getUsePlanes().get(i));
@@ -148,13 +213,13 @@ public class InviteServiceImpl extends BaseService implements InviteService {
 	public void invite(Role role, String account, IoSession session) {
 		session.write(SCMessage.newBuilder()
 				.setInviteFriendResponse(InviteFriendResponse.newBuilder().setErrorCode(ErrorCode.SUCCESS)).build());
-		gameInviter.invite(role, (Role) RoleCache.getRoleByAccount(account));
+		inviteModelService.invite(role, (Role) RoleCache.getRoleByAccount(account));
 	}
 
 	@Override
 	public void answer(Role role, String account, boolean answer, IoSession session) {
 		session.write(SCMessage.newBuilder().setInviteAnswerResponse(InviteAnswerResponse.newBuilder()).build());
-		gameInviter.response((Role) RoleCache.getRoleByAccount(account), role, answer);
+		inviteModelService.response((Role) RoleCache.getRoleByAccount(account), role, answer);
 	}
 
 	@Override
@@ -179,11 +244,11 @@ public class InviteServiceImpl extends BaseService implements InviteService {
 
 	@Override
 	public GeneratedMessage quitInvitation(Role role) {
-		gameInviter.cancelInvite(role);
+		inviteModelService.cancelInvite(role);
 		return SCMessage.newBuilder().setInviteQuitInvitationResponse(InviteQuitInvitationResponse.newBuilder())
 				.build();
 	}
-	
+
 	@Override
 	public void inviteFriendsGameStart(Role role, IoSession session) {
 		session.write(SCMessage.newBuilder()
@@ -196,8 +261,9 @@ public class InviteServiceImpl extends BaseService implements InviteService {
 
 			List<Invitable> invitables = invitation.getInviteSuccessList();
 			List<Role> roleList = new ArrayList<>(invitation.getSize());
-			
-			int totalSize = invitation.getSize();			
+
+			// 还没有邀请完直接开始了比赛，则添加npc
+			int totalSize = invitation.getSize();
 			if (totalSize > invitables.size()) {
 				for (int i = 0; i < totalSize - invitables.size(); i++) {
 					Role npc = new Role();
@@ -213,16 +279,14 @@ public class InviteServiceImpl extends BaseService implements InviteService {
 			for (Invitable invitable : invitables) {
 				roleList.add((Role) invitable);
 			}
-			
+
 			matchService.matchRole(roleList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			lock.unlock();
 		}
-		
 
-		
 	}
 
 }

@@ -7,7 +7,7 @@ import "Invite.proto";
 import "Market.proto";
 import "Role.proto";
 
-//27
+//28
 message SCMessage{
 	optional LoginCheckAccountResponse loginCheckAccountResponse=1;
 	optional LoginCreateRoleResponse loginCreateRoleResponse=2;
@@ -37,6 +37,7 @@ message SCMessage{
 	optional SCInviteReject scInviteReject = 19;
 	optional SCInviteCancel scInviteCancel = 20;
 	optional SCInviteReceive scInviteReceive = 25;
+	optional SCFightGameOver scFightGameOver = 28;
 	
 	optional RoleChoosePlaneResponse roleChoosePlaneResponse = 21;
 	optional RoleFallPlaneResponse roleFallPlaneResponse = 23;

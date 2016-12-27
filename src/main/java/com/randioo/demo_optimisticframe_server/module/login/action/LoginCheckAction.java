@@ -2,7 +2,6 @@ package com.randioo.demo_optimisticframe_server.module.login.action;
 
 import org.apache.mina.core.session.IoSession;
 
-import com.google.protobuf.GeneratedMessage;
 import com.randioo.demo_optimisticframe_server.module.login.service.LoginService;
 import com.randioo.demo_optimisticframe_server.protocal.Login.LoginCheckAccountRequest;
 import com.randioo.randioo_server_base.net.ActionSupport;

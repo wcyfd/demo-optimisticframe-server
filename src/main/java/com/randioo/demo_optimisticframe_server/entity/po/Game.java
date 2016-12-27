@@ -14,8 +14,6 @@ import com.randioo.randioo_server_base.utils.game.game_type.real_time_strategy_g
 public class Game extends RTSGame {
 	/** 游戏id */
 	private int gameId;
-
-	private int addDeltaFrame;
 	/** 玩家数量 */
 	private int controlCount;
 	/** 总时间 */

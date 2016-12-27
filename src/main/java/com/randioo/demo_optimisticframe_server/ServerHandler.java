@@ -1,6 +1,7 @@
 package com.randioo.demo_optimisticframe_server;
 
 import java.io.InputStream;
+import java.net.InetSocketAddress;
 import java.util.Map;
 
 import org.apache.mina.core.session.IdleStatus;
@@ -8,14 +9,11 @@ import org.apache.mina.core.session.IoSession;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.randioo.demo_optimisticframe_server.entity.bo.Role;
-import com.randioo.demo_optimisticframe_server.entity.po.Game;
-import com.randioo.demo_optimisticframe_server.module.fight.service.FightService;
 import com.randioo.demo_optimisticframe_server.protocal.ClientMessage.CSMessage;
 import com.randioo.randioo_server_base.cache.RoleCache;
 import com.randioo.randioo_server_base.navigation.Navigation;
 import com.randioo.randioo_server_base.net.IActionSupport;
 import com.randioo.randioo_server_base.net.IoHandlerAdapter;
-import com.randioo.randioo_server_base.net.SpringContext;
 
 public class ServerHandler extends IoHandlerAdapter {
 
@@ -54,9 +52,6 @@ public class ServerHandler extends IoHandlerAdapter {
 
 	@Override
 	public void messageReceived(IoSession session, Object messageObj) throws Exception {
-		
-		
-
 		InputStream input = (InputStream) messageObj;
 		try {
 			CSMessage message = CSMessage.parseDelimitedFrom(input);
@@ -66,10 +61,11 @@ public class ServerHandler extends IoHandlerAdapter {
 				return;
 			}
 			String messageStr = message.toString();
-			if (messageStr.contains("pingRequest")||messageStr.contains("pingResponse")){
-				
-			}else{
-				System.out.println(message);				
+			if (messageStr.contains("pingRequest") || messageStr.contains("pingResponse")
+					|| messageStr.contains("fightReceivePlaneGameControl")) {
+
+			} else {
+				System.out.println(message);
 			}
 
 			Map<FieldDescriptor, Object> allFields = message.getAllFields();
@@ -93,7 +89,8 @@ public class ServerHandler extends IoHandlerAdapter {
 					// }
 				}
 			}
-		} catch (Exception e) {
+		} catch (Exception e) {			
+			System.out.println("ip:" + getIPAddress(session));			
 			e.printStackTrace();
 		} finally {
 			if (input != null) {
@@ -105,13 +102,15 @@ public class ServerHandler extends IoHandlerAdapter {
 	@Override
 	public void messageSent(IoSession session, Object message) throws Exception {
 		String messageStr = message.toString();
-		if (messageStr.contains("pingRequest")||messageStr.contains("pingResponse")){
-			
-		}else{
-			System.out.println(message);
-			
+		if (messageStr.contains("ping") || messageStr.contains("scFightSendKeyFrame")
+				|| messageStr.contains("fightReceivePlaneGameControl")) {
+		} else {
+			System.out.println(messageStr);
 		}
-//		if (messageStr.contains("fightReceiveControl") || messageStr.contains("scFightSendKeyFrame"))
 	}
 
+	private static String getIPAddress(IoSession session){
+		InetSocketAddress address = (InetSocketAddress)session.getRemoteAddress();
+		return address.getAddress().getHostAddress();
+	}
 }

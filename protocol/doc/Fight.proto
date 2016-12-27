@@ -78,3 +78,7 @@ message FightGameOverRequest{
 message FightGameOverResponse{
 	
 }
+
+message SCFightGameOver{
+	optional int32 score = 1;
+}

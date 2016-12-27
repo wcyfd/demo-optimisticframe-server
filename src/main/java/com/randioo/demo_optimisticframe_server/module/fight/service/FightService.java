@@ -8,7 +8,7 @@ import com.google.protobuf.GeneratedMessage;
 import com.randioo.demo_optimisticframe_server.entity.bo.Role;
 import com.randioo.demo_optimisticframe_server.entity.po.Game;
 import com.randioo.randioo_server_base.module.BaseServiceInterface;
-import com.randioo.randioo_server_base.utils.game.matcher.Matchable;
+import com.randioo.randioo_server_base.module.match.Matchable;
 
 public interface FightService extends BaseServiceInterface {
 
@@ -46,8 +46,17 @@ public interface FightService extends BaseServiceInterface {
 	 * @return
 	 * @author wcy 2016年12月12日
 	 */
-	GeneratedMessage gameOver(Role role,int score);
+	void gameOver(Role role, int score, IoSession session);
 
 	void offline(Role role);
+
+	/**
+	 * 游戏结束统一接口
+	 * 
+	 * @param role
+	 * @param score
+	 * @author wcy 2016年12月22日
+	 */
+	void gameOver(Role role, int score);
 
 }

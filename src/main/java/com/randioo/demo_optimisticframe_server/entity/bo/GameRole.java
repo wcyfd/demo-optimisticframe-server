@@ -1,13 +1,13 @@
 package com.randioo.demo_optimisticframe_server.entity.bo;
 
 import com.randioo.randioo_server_base.entity.RoleInterface;
+import com.randioo.randioo_server_base.module.invite.Invitable;
+import com.randioo.randioo_server_base.module.invite.Invitation;
+import com.randioo.randioo_server_base.module.match.MatchInfo;
+import com.randioo.randioo_server_base.module.match.Matchable;
 import com.randioo.randioo_server_base.utils.db.Saveable;
 import com.randioo.randioo_server_base.utils.game.Gameable;
 import com.randioo.randioo_server_base.utils.game.game_type.GameBase;
-import com.randioo.randioo_server_base.utils.game.inviter.Invitable;
-import com.randioo.randioo_server_base.utils.game.inviter.Invitation;
-import com.randioo.randioo_server_base.utils.game.matcher.MatchInfo;
-import com.randioo.randioo_server_base.utils.game.matcher.Matchable;
 
 public abstract class GameRole implements Matchable, RoleInterface,Gameable,Saveable,Invitable {
 	private MatchInfo matchInfo;

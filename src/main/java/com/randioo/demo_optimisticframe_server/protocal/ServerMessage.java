@@ -203,6 +203,13 @@ public final class ServerMessage {
     public boolean hasScInviteReceive() { return hasScInviteReceive; }
     public com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive getScInviteReceive() { return scInviteReceive_; }
     
+    // optional .com.randioo.demo_optimisticframe_server.protocal.SCFightGameOver scFightGameOver = 28;
+    public static final int SCFIGHTGAMEOVER_FIELD_NUMBER = 28;
+    private boolean hasScFightGameOver;
+    private com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver scFightGameOver_;
+    public boolean hasScFightGameOver() { return hasScFightGameOver; }
+    public com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver getScFightGameOver() { return scFightGameOver_; }
+    
     // optional .com.randioo.demo_optimisticframe_server.protocal.RoleChoosePlaneResponse roleChoosePlaneResponse = 21;
     public static final int ROLECHOOSEPLANERESPONSE_FIELD_NUMBER = 21;
     private boolean hasRoleChoosePlaneResponse;
@@ -249,6 +256,7 @@ public final class ServerMessage {
       scInviteReject_ = com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReject.getDefaultInstance();
       scInviteCancel_ = com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteCancel.getDefaultInstance();
       scInviteReceive_ = com.randioo.demo_optimisticframe_server.protocal.Invite.SCInviteReceive.getDefaultInstance();
+      scFightGameOver_ = com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.getDefaultInstance();
       roleChoosePlaneResponse_ = com.randioo.demo_optimisticframe_server.protocal.Role.RoleChoosePlaneResponse.getDefaultInstance();
       roleFallPlaneResponse_ = com.randioo.demo_optimisticframe_server.protocal.Role.RoleFallPlaneResponse.getDefaultInstance();
       marketBuyPlaneResponse_ = com.randioo.demo_optimisticframe_server.protocal.Market.MarketBuyPlaneResponse.getDefaultInstance();
@@ -340,6 +348,9 @@ public final class ServerMessage {
       }
       if (hasInviteQuitInvitationResponse()) {
         output.writeMessage(27, getInviteQuitInvitationResponse());
+      }
+      if (hasScFightGameOver()) {
+        output.writeMessage(28, getScFightGameOver());
       }
       getUnknownFields().writeTo(output);
     }
@@ -457,6 +468,10 @@ public final class ServerMessage {
       if (hasInviteQuitInvitationResponse()) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(27, getInviteQuitInvitationResponse());
+      }
+      if (hasScFightGameOver()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(28, getScFightGameOver());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -687,6 +702,9 @@ public final class ServerMessage {
         }
         if (other.hasScInviteReceive()) {
           mergeScInviteReceive(other.getScInviteReceive());
+        }
+        if (other.hasScFightGameOver()) {
+          mergeScFightGameOver(other.getScFightGameOver());
         }
         if (other.hasRoleChoosePlaneResponse()) {
           mergeRoleChoosePlaneResponse(other.getRoleChoosePlaneResponse());
@@ -963,6 +981,15 @@ public final class ServerMessage {
               }
               input.readMessage(subBuilder, extensionRegistry);
               setInviteQuitInvitationResponse(subBuilder.buildPartial());
+              break;
+            }
+            case 226: {
+              com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.Builder subBuilder = com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.newBuilder();
+              if (hasScFightGameOver()) {
+                subBuilder.mergeFrom(getScFightGameOver());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setScFightGameOver(subBuilder.buildPartial());
               break;
             }
           }
@@ -1858,6 +1885,43 @@ public final class ServerMessage {
         return this;
       }
       
+      // optional .com.randioo.demo_optimisticframe_server.protocal.SCFightGameOver scFightGameOver = 28;
+      public boolean hasScFightGameOver() {
+        return result.hasScFightGameOver();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver getScFightGameOver() {
+        return result.getScFightGameOver();
+      }
+      public Builder setScFightGameOver(com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasScFightGameOver = true;
+        result.scFightGameOver_ = value;
+        return this;
+      }
+      public Builder setScFightGameOver(com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.Builder builderForValue) {
+        result.hasScFightGameOver = true;
+        result.scFightGameOver_ = builderForValue.build();
+        return this;
+      }
+      public Builder mergeScFightGameOver(com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver value) {
+        if (result.hasScFightGameOver() &&
+            result.scFightGameOver_ != com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.getDefaultInstance()) {
+          result.scFightGameOver_ =
+            com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.newBuilder(result.scFightGameOver_).mergeFrom(value).buildPartial();
+        } else {
+          result.scFightGameOver_ = value;
+        }
+        result.hasScFightGameOver = true;
+        return this;
+      }
+      public Builder clearScFightGameOver() {
+        result.hasScFightGameOver = false;
+        result.scFightGameOver_ = com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.getDefaultInstance();
+        return this;
+      }
+      
       // optional .com.randioo.demo_optimisticframe_server.protocal.RoleChoosePlaneResponse roleChoosePlaneResponse = 21;
       public boolean hasRoleChoosePlaneResponse() {
         return result.hasRoleChoosePlaneResponse();
@@ -1999,7 +2063,7 @@ public final class ServerMessage {
       "optimisticframe_server.protocal\032\013Login.p" +
       "roto\032\013Match.proto\032\013Fight.proto\032\nPing.pro" +
       "to\032\014Invite.proto\032\014Market.proto\032\nRole.pro" +
-      "to\"\213\026\n\tSCMessage\022n\n\031loginCheckAccountRes" +
+      "to\"\347\026\n\tSCMessage\022n\n\031loginCheckAccountRes" +
       "ponse\030\001 \001(\0132K.com.randioo.demo_optimisti" +
       "cframe_server.protocal.LoginCheckAccount" +
       "Response\022j\n\027loginCreateRoleResponse\030\002 \001(" +
@@ -2061,15 +2125,18 @@ public final class ServerMessage {
       "om.randioo.demo_optimisticframe_server.p" +
       "rotocal.SCInviteCancel\022Z\n\017scInviteReceiv" +
       "e\030\031 \001(\0132A.com.randioo.demo_optimisticfra" +
-      "me_server.protocal.SCInviteReceive\022j\n\027ro" +
-      "leChoosePlaneResponse\030\025 \001(\0132I.com.randio" +
-      "o.demo_optimisticframe_server.protocal.R" +
-      "oleChoosePlaneResponse\022f\n\025roleFallPlaneR",
-      "esponse\030\027 \001(\0132G.com.randioo.demo_optimis" +
-      "ticframe_server.protocal.RoleFallPlaneRe" +
-      "sponse\022h\n\026marketBuyPlaneResponse\030\026 \001(\0132H" +
-      ".com.randioo.demo_optimisticframe_server" +
-      ".protocal.MarketBuyPlaneResponse"
+      "me_server.protocal.SCInviteReceive\022Z\n\017sc" +
+      "FightGameOver\030\034 \001(\0132A.com.randioo.demo_o" +
+      "ptimisticframe_server.protocal.SCFightGa" +
+      "meOver\022j\n\027roleChoosePlaneResponse\030\025 \001(\0132",
+      "I.com.randioo.demo_optimisticframe_serve" +
+      "r.protocal.RoleChoosePlaneResponse\022f\n\025ro" +
+      "leFallPlaneResponse\030\027 \001(\0132G.com.randioo." +
+      "demo_optimisticframe_server.protocal.Rol" +
+      "eFallPlaneResponse\022h\n\026marketBuyPlaneResp" +
+      "onse\030\026 \001(\0132H.com.randioo.demo_optimistic" +
+      "frame_server.protocal.MarketBuyPlaneResp" +
+      "onse"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2081,7 +2148,7 @@ public final class ServerMessage {
           internal_static_com_randioo_demo_optimisticframe_server_protocal_SCMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_randioo_demo_optimisticframe_server_protocal_SCMessage_descriptor,
-              new java.lang.String[] { "LoginCheckAccountResponse", "LoginCreateRoleResponse", "LoginGetRoleDataResponse", "MatchRoleResponse", "FightReceiveHitGameControlResponse", "FightReceivePlaneGameControlResponse", "FightLoadCompleteResponse", "FightGameOverResponse", "ScFightStartGame", "ScFightLoadResource", "ScFightRemove", "ScFightCreate", "ScFightSendKeyFrame", "PingResponse", "InviteFriendResponse", "InviteAnswerResponse", "InviteShowFriendsResponse", "InviteNewInvitationResponse", "InviteQuitInvitationResponse", "InviteFriendsGameStartResponse", "ScInviteAccept", "ScInviteReject", "ScInviteCancel", "ScInviteReceive", "RoleChoosePlaneResponse", "RoleFallPlaneResponse", "MarketBuyPlaneResponse", },
+              new java.lang.String[] { "LoginCheckAccountResponse", "LoginCreateRoleResponse", "LoginGetRoleDataResponse", "MatchRoleResponse", "FightReceiveHitGameControlResponse", "FightReceivePlaneGameControlResponse", "FightLoadCompleteResponse", "FightGameOverResponse", "ScFightStartGame", "ScFightLoadResource", "ScFightRemove", "ScFightCreate", "ScFightSendKeyFrame", "PingResponse", "InviteFriendResponse", "InviteAnswerResponse", "InviteShowFriendsResponse", "InviteNewInvitationResponse", "InviteQuitInvitationResponse", "InviteFriendsGameStartResponse", "ScInviteAccept", "ScInviteReject", "ScInviteCancel", "ScInviteReceive", "ScFightGameOver", "RoleChoosePlaneResponse", "RoleFallPlaneResponse", "MarketBuyPlaneResponse", },
               com.randioo.demo_optimisticframe_server.protocal.ServerMessage.SCMessage.class,
               com.randioo.demo_optimisticframe_server.protocal.ServerMessage.SCMessage.Builder.class);
           return null;

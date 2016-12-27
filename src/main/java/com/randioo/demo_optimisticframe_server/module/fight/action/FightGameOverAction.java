@@ -22,7 +22,7 @@ public class FightGameOverAction extends ActionSupport {
 	public void execute(Object data, IoSession session) {
 		FightGameOverRequest cs = (FightGameOverRequest) data;
 		Role role = (Role)RoleCache.getRoleBySession(session);
-		fightService.gameOver(role, cs.getScore());
+		fightService.gameOver(role, cs.getScore(),session);
 	}
 
 }

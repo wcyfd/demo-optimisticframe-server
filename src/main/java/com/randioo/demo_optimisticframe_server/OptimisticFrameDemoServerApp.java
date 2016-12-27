@@ -20,7 +20,7 @@ import com.randioo.randioo_server_base.utils.db.DatabaseInitialization;
 public class OptimisticFrameDemoServerApp {
 	public static void main(String[] args) {
 		int port = 6666;
-		ConfigLoader.loadConfig("com.randioo.demo_optimisticframe_server.config", "./config.cfg");
+		ConfigLoader.loadConfig("com.randioo.demo_optimisticframe_server.entity.file", "./config.zip");
 		SpringContext.initSpringCtx("ApplicationContext.xml");
 
 		DatabaseInitialization databaseInit = (DatabaseInitialization) SpringContext.getBean("databaseInitialization");

@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.apache.mina.core.session.IoSession;
+
 import com.google.protobuf.GeneratedMessage;
 import com.randioo.demo_optimisticframe_server.common.ErrorCode;
 import com.randioo.demo_optimisticframe_server.db.dao.RoleDao;
@@ -22,12 +24,13 @@ import com.randioo.demo_optimisticframe_server.protocal.Login.RoleData;
 import com.randioo.demo_optimisticframe_server.protocal.ServerMessage.SCMessage;
 import com.randioo.demo_optimisticframe_server.utils.Utils;
 import com.randioo.randioo_server_base.cache.RoleCache;
-import com.randioo.randioo_server_base.entity.Ref;
 import com.randioo.randioo_server_base.entity.RoleInterface;
+import com.randioo.randioo_server_base.module.BaseService;
 import com.randioo.randioo_server_base.module.login.LoginHandler;
-import com.randioo.randioo_server_base.module.login.LoginModelServiceImpl;
+import com.randioo.randioo_server_base.module.login.LoginModelService;
+import com.randioo.randioo_server_base.utils.template.Ref;
 
-public class LoginServiceImpl extends LoginModelServiceImpl implements LoginService {
+public class LoginServiceImpl extends BaseService implements LoginService {
 
 	private RoleService roleService;
 
@@ -47,6 +50,12 @@ public class LoginServiceImpl extends LoginModelServiceImpl implements LoginServ
 		this.dataSource = dataSource;
 	}
 
+	private LoginModelService loginModelService;
+
+	public void setLoginModelService(LoginModelService loginModelService) {
+		this.loginModelService = loginModelService;
+	}
+
 	@Override
 	public void init() {
 		// 初始化所有已经有过的帐号和昵称
@@ -55,7 +64,8 @@ public class LoginServiceImpl extends LoginModelServiceImpl implements LoginServ
 			RoleCache.getAccountSet().add((String) list.get(0));
 			RoleCache.getNameSet().add((String) list.get(1));
 		}
-		setLoginHandler(new LoginHandlerImpl());
+		loginModelService.init();
+		loginModelService.setLoginHandler(new LoginHandlerImpl());
 	}
 
 	private class LoginHandlerImpl implements LoginHandler {
@@ -160,8 +170,7 @@ public class LoginServiceImpl extends LoginModelServiceImpl implements LoginServ
 		}
 
 		@Override
-		public boolean getRoleObject(Ref<RoleInterface> ref, Object createRoleMessage,
-				Ref<Object> errorMessage) {
+		public boolean getRoleObject(Ref<RoleInterface> ref, Object createRoleMessage, Ref<Object> errorMessage) {
 			LoginGetRoleDataRequest request = (LoginGetRoleDataRequest) createRoleMessage;
 			String account = request.getAccount();
 			Role role = (Role) RoleCache.getRoleByAccount(account);
@@ -219,4 +228,20 @@ public class LoginServiceImpl extends LoginModelServiceImpl implements LoginServ
 		// 将数据库中的数据放入缓存中
 		RoleCache.putRoleCache(role);
 	}
+
+	@Override
+	public Object login(Object msg) {
+		return loginModelService.login(msg);
+	}
+
+	@Override
+	public Object creatRole(Object msg) {
+		return loginModelService.creatRole(msg);
+	}
+
+	@Override
+	public Object getRoleData(Object requestMessage, IoSession ioSession) {
+		return loginModelService.getRoleData(requestMessage, ioSession);
+	}
+
 }

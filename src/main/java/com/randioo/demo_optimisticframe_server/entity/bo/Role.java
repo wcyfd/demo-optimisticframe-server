@@ -38,16 +38,22 @@ public class Role extends GameRole {
 		return planesStr;
 	}
 
-	public void setPlanesStr(String planesStr) {
-		if (planesStr == null || planesStr.equals("")) {
-			return;
-		}
-		this.planesStr = planesStr;
+	public boolean setPlanesStr(String planesStr) {
 		planes.clear();
+		if (planesStr == null || planesStr.equals("")) {
+			return false;
+		}
 		String[] data = planesStr.split(",");
 		int i = 0;
 		while (i < data.length) {
 			planes.add(Integer.parseInt(data[i++]));
+		}
+		return true;
+	}
+
+	public void setPlanesRawStr(String planesStr) {
+		if (setPlanesStr(planesStr)) {
+			this.planesStr = planesStr;
 		}
 	}
 
@@ -57,27 +63,31 @@ public class Role extends GameRole {
 
 	public String getUsePlanesStr() {
 		StringBuilder sb = new StringBuilder();
-		for(Map.Entry<Integer, Integer> entrySet:usePlanes.entrySet()){
+		for (Map.Entry<Integer, Integer> entrySet : usePlanes.entrySet()) {
 			sb.append(entrySet.getKey()).append(",").append(entrySet.getValue()).append(",");
 		}
 		this.usePlanesStr = sb.toString();
 		return usePlanesStr;
 	}
 
-	public void setUsePlanesStr(String usePlanesStr) {
-		if(usePlanesStr == null||usePlanesStr.equals("")){
-			return;
-		}
-		this.usePlanesStr = usePlanesStr;
+	public boolean setUsePlanesStr(String usePlanesStr) {
 		usePlanes.clear();
+		if (usePlanesStr == null || usePlanesStr.equals("")) {
+			return false;
+		}
 		String[] data = usePlanesStr.split(",");
 		int i = 0;
-		while(i<data.length){
+		while (i < data.length) {
 			int index = Integer.parseInt(data[i++]);
 			int planeId = Integer.parseInt(data[i++]);
 			usePlanes.put(index, planeId);
 		}
-		
+		return true;
+	}
+
+	public void setUsePlanesRawStr(String usePlanesStr) {
+		if (setUsePlanesStr(usePlanesStr))
+			this.usePlanesStr = usePlanesStr;
 	}
 
 	public Map<Integer, Integer> getUsePlanes() {

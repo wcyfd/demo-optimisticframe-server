@@ -4843,6 +4843,290 @@ public final class Fight {
     // @@protoc_insertion_point(class_scope:com.randioo.demo_optimisticframe_server.protocal.FightGameOverResponse)
   }
   
+  public static final class SCFightGameOver extends
+      com.google.protobuf.GeneratedMessage {
+    // Use SCFightGameOver.newBuilder() to construct.
+    private SCFightGameOver() {
+      initFields();
+    }
+    private SCFightGameOver(boolean noInit) {}
+    
+    private static final SCFightGameOver defaultInstance;
+    public static SCFightGameOver getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public SCFightGameOver getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.randioo.demo_optimisticframe_server.protocal.Fight.internal_static_com_randioo_demo_optimisticframe_server_protocal_SCFightGameOver_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.randioo.demo_optimisticframe_server.protocal.Fight.internal_static_com_randioo_demo_optimisticframe_server_protocal_SCFightGameOver_fieldAccessorTable;
+    }
+    
+    // optional int32 score = 1;
+    public static final int SCORE_FIELD_NUMBER = 1;
+    private boolean hasScore;
+    private int score_ = 0;
+    public boolean hasScore() { return hasScore; }
+    public int getScore() { return score_; }
+    
+    private void initFields() {
+    }
+    public final boolean isInitialized() {
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (hasScore()) {
+        output.writeInt32(1, getScore());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (hasScore()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, getScore());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    public static com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+      private com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver result;
+      
+      // Construct using com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.newBuilder()
+      private Builder() {}
+      
+      private static Builder create() {
+        Builder builder = new Builder();
+        builder.result = new com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver();
+        return builder;
+      }
+      
+      protected com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver internalGetResult() {
+        return result;
+      }
+      
+      public Builder clear() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "Cannot call clear() after build().");
+        }
+        result = new com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver();
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(result);
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.getDescriptor();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver getDefaultInstanceForType() {
+        return com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.getDefaultInstance();
+      }
+      
+      public boolean isInitialized() {
+        return result.isInitialized();
+      }
+      public com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver build() {
+        if (result != null && !isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return buildPartial();
+      }
+      
+      private com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        if (!isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return buildPartial();
+      }
+      
+      public com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver buildPartial() {
+        if (result == null) {
+          throw new IllegalStateException(
+            "build() has already been called on this Builder.");
+        }
+        com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver returnMe = result;
+        result = null;
+        return returnMe;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver) {
+          return mergeFrom((com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver other) {
+        if (other == com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.getDefaultInstance()) return this;
+        if (other.hasScore()) {
+          setScore(other.getScore());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              setScore(input.readInt32());
+              break;
+            }
+          }
+        }
+      }
+      
+      
+      // optional int32 score = 1;
+      public boolean hasScore() {
+        return result.hasScore();
+      }
+      public int getScore() {
+        return result.getScore();
+      }
+      public Builder setScore(int value) {
+        result.hasScore = true;
+        result.score_ = value;
+        return this;
+      }
+      public Builder clearScore() {
+        result.hasScore = false;
+        result.score_ = 0;
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:com.randioo.demo_optimisticframe_server.protocal.SCFightGameOver)
+    }
+    
+    static {
+      defaultInstance = new SCFightGameOver(true);
+      com.randioo.demo_optimisticframe_server.protocal.Fight.internalForceInit();
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:com.randioo.demo_optimisticframe_server.protocal.SCFightGameOver)
+  }
+  
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_randioo_demo_optimisticframe_server_protocal_FightReceiveHitGameControlRequest_descriptor;
   private static
@@ -4918,6 +5202,11 @@ public final class Fight {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_randioo_demo_optimisticframe_server_protocal_FightGameOverResponse_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_randioo_demo_optimisticframe_server_protocal_SCFightGameOver_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_randioo_demo_optimisticframe_server_protocal_SCFightGameOver_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4955,10 +5244,11 @@ public final class Fight {
       "\030\002 \003(\0132<.com.randioo.demo_optimisticfram" +
       "e_server.protocal.GameAction\"%\n\024FightGam" +
       "eOverRequest\022\r\n\005score\030\001 \001(\005\"\027\n\025FightGame" +
-      "OverResponse*\200\001\n\tEnemyType\022\013\n\006ENEMY1\020\364\007\022" +
-      "\013\n\006ENEMY2\020\367\007\022\013\n\006ENEMY3\020\377\007\022\013\n\006ENEMY4\020\252\010\022\013",
-      "\n\006ENEMY5\020\253\010\022\013\n\006ENEMY6\020\277\010\022\013\n\006ENEMY7\020\303\t\022\013\n" +
-      "\006ENEMY8\020\253\r\022\013\n\006ENEMY9\020\226\020"
+      "OverResponse\" \n\017SCFightGameOver\022\r\n\005score" +
+      "\030\001 \001(\005*\200\001\n\tEnemyType\022\013\n\006ENEMY1\020\364\007\022\013\n\006ENE",
+      "MY2\020\367\007\022\013\n\006ENEMY3\020\377\007\022\013\n\006ENEMY4\020\252\010\022\013\n\006ENEM" +
+      "Y5\020\253\010\022\013\n\006ENEMY6\020\277\010\022\013\n\006ENEMY7\020\303\t\022\013\n\006ENEMY" +
+      "8\020\253\r\022\013\n\006ENEMY9\020\226\020"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5085,6 +5375,14 @@ public final class Fight {
               new java.lang.String[] { },
               com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverResponse.class,
               com.randioo.demo_optimisticframe_server.protocal.Fight.FightGameOverResponse.Builder.class);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_SCFightGameOver_descriptor =
+            getDescriptor().getMessageTypes().get(15);
+          internal_static_com_randioo_demo_optimisticframe_server_protocal_SCFightGameOver_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_randioo_demo_optimisticframe_server_protocal_SCFightGameOver_descriptor,
+              new java.lang.String[] { "Score", },
+              com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.class,
+              com.randioo.demo_optimisticframe_server.protocal.Fight.SCFightGameOver.Builder.class);
           return null;
         }
       };
