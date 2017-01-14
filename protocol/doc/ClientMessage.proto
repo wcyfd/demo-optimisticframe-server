@@ -7,33 +7,34 @@ import "Invite.proto";
 import "Market.proto";
 import "Role.proto";
 
-//18
+//19
 message CSMessage{
-	optional LoginCheckAccountRequest loginCheckAccountRequest=1;
-	optional LoginCreateRoleRequest loginCreateRoleRequest=2;
-	optional LoginGetRoleDataRequest loginGetRoleDataRequest=3;
+	optional int32 tag = 1 [default = 0];
+	optional LoginCheckAccountRequest loginCheckAccountRequest=2;
+	optional LoginCreateRoleRequest loginCreateRoleRequest=3;
+	optional LoginGetRoleDataRequest loginGetRoleDataRequest=4;
 
-	optional MatchRoleRequest matchRoleRequest=4;
+	optional MatchRoleRequest matchRoleRequest=5;
 
-	optional FightReceiveHitGameControlRequest fightReceiveHitGameControlRequest=5;
-	optional FightReceivePlaneGameControlRequest fightReceivePlaneGameControlRequest=6;
-	optional FightLoadCompleteRequest fightLoadCompleteRequest=7;
-	optional FightGameOverRequest fightGameOverRequest = 8;
+	optional FightReceiveHitGameControlRequest fightReceiveHitGameControlRequest=6;
+	optional FightReceivePlaneGameControlRequest fightReceivePlaneGameControlRequest=7;
+	optional FightLoadCompleteRequest fightLoadCompleteRequest=8;
+	optional FightGameOverRequest fightGameOverRequest = 9;
 
-	optional PingRequest pingRequest = 9;
+	optional PingRequest pingRequest = 10;
 	
-	optional InviteFriendRequest inviteFriendRequest = 10;
-	optional InviteAnswerRequest inviteAnswerRequest = 11;
-	optional InviteShowFriendsRequest inviteShowFriendsRequest = 12;
-	optional InviteNewInvitationRequest inviteNewInvitationRequest = 13;
-	optional InviteQuitInvitationRequest inviteQuitInvitationRequest = 14;
-	optional InviteFriendsGameStartRequest inviteFriendsGameStartRequest=15;
+	optional InviteFriendRequest inviteFriendRequest = 11;
+	optional InviteAnswerRequest inviteAnswerRequest = 12;
+	optional InviteShowFriendsRequest inviteShowFriendsRequest = 13;
+	optional InviteNewInvitationRequest inviteNewInvitationRequest = 14;
+	optional InviteQuitInvitationRequest inviteQuitInvitationRequest = 15;
+	optional InviteFriendsGameStartRequest inviteFriendsGameStartRequest=16;
 	
 	//选择飞机
-	optional RoleChoosePlaneRequest roleChoosePlaneRequest = 16;
+	optional RoleChoosePlaneRequest roleChoosePlaneRequest = 17;
 	//移除飞机
-	optional RoleFallPlaneRequest roleFallPlaneRequest = 17;
+	optional RoleFallPlaneRequest roleFallPlaneRequest = 18;
 	
-	optional MarketBuyPlaneRequest marketBuyPlaneRequest = 18;
+	optional MarketBuyPlaneRequest marketBuyPlaneRequest = 19;
 	
 }

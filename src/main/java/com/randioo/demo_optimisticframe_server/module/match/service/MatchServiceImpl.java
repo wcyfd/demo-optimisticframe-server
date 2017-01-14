@@ -16,7 +16,6 @@ import com.randioo.randioo_server_base.module.match.MatchInfo;
 import com.randioo.randioo_server_base.module.match.MatchModelService;
 import com.randioo.randioo_server_base.module.match.MatchRule;
 import com.randioo.randioo_server_base.module.match.Matchable;
-import com.randioo.randioo_server_base.utils.game.matcher.GameMatcher;
 
 public class MatchServiceImpl extends BaseService implements MatchService {
 
@@ -26,11 +25,11 @@ public class MatchServiceImpl extends BaseService implements MatchService {
 		this.fightService = fightService;
 	}
 
-	private GameMatcher gameMatcher;
-
-	public void setGameMatcher(GameMatcher gameMatcher) {
-		this.gameMatcher = gameMatcher;
-	}
+//	private GameMatcher gameMatcher;
+//
+//	public void setGameMatcher(GameMatcher gameMatcher) {
+//		this.gameMatcher = gameMatcher;
+//	}
 	
 	private MatchModelService matchModelService;
 	public void setMatchModelService(MatchModelService matchModelService) {

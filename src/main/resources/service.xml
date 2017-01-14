@@ -12,6 +12,7 @@
 		<property name="roleDao" ref="roleDao"></property>
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="loginModelService" ref="loginModelService"></property>
+		<property name="systemManager" ref="systemManager"></property>
 	</bean>
 
 	<bean id="roleService" class="com.randioo.demo_optimisticframe_server.module.role.service.RoleServiceImpl"></bean>
@@ -26,7 +27,6 @@
 	
 	<bean id="matchService" class="com.randioo.demo_optimisticframe_server.module.match.service.MatchServiceImpl">
 		<property name="fightService" ref="fightService"></property>
-		<property name="gameMatcher" ref="gameMatcher"></property>
 		<property name="matchModelService" ref="matchModelService"></property>
 	</bean>
 	
@@ -34,10 +34,12 @@
 	</bean>
 	
 	<bean id="inviteService" class="com.randioo.demo_optimisticframe_server.module.invite.service.InviteServiceImpl">
-		<property name="gameInviter" ref="gameInviter"></property>
 		<property name="inviteModelService" ref="inviteModelService"></property>
 		<property name="matchService" ref="matchService"></property>
-		
 	</bean>
-
+	
+	<bean id="gmService" class="com.randioo.demo_optimisticframe_server.module.gm.service.GmServiceImpl">
+		<property name="systemManager" ref="systemManager"></property>
+	</bean>
+ 
 </beans>

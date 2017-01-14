@@ -7,14 +7,10 @@
     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd 
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<bean id="gameMatcher" class="com.randioo.randioo_server_base.utils.game.matcher.GameMatcher">
-		<property name="threadSize" value="5"></property>
-	</bean>
+
 	<bean id="gameStarter" class="com.randioo.randioo_server_base.utils.game.game_type.real_time_strategy_game.RTSGameStarter">
 		<property name="threadSize" value="1"></property>
 	</bean>
-	<bean id="gameInviter" class="com.randioo.randioo_server_base.utils.game.inviter.GameInviter"></bean>
-
 
 	<bean id="matchConfig" class="com.randioo.randioo_server_base.module.match.MatchConfig">
 		<property name="threadSize" value="1"></property>
@@ -40,9 +36,12 @@
 				<ref bean="roleService" />
 				<ref bean="inviteService" />
 				<ref bean="marketService" />
+				<ref bean="gmService"/>
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="systemManager" class="com.randioo.demo_optimisticframe_server.utils.DefaultSystemManager"></bean>
 
 	<bean id="rateFrameMeter" class="com.randioo.randioo_server_base.utils.game.game_type.real_time_strategy_game.RateFrameMeter"></bean>
 
@@ -64,4 +63,5 @@
 			</list>
 		</property>
 	</bean>
+	
 </beans>

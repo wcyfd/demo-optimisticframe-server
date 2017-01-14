@@ -68,6 +68,42 @@ public class FightServiceImpl extends BaseService implements FightService {
 			}
 
 		});
+		
+		//设置回调函数
+		rateFrameMeter.setCallback(new Function() {
+
+			@Override
+			public Object apply(Object... params) {
+				Game game = (Game)params[0];
+				@SuppressWarnings("unchecked")
+				List<LogicFrame> logicFrames = (List<LogicFrame>) params[1];
+
+				SCFightSendKeyFrame.Builder message = SCFightSendKeyFrame.newBuilder();
+
+				for (LogicFrame logicFrame : logicFrames) {
+					Frame.Builder frameBuilder = Frame.newBuilder();
+					frameBuilder.setFrameIndex(logicFrame.getFrameIndex());
+					for (Object object : logicFrame.getGameActions()) {
+						GameAction gameAction = (GameAction) object;
+						frameBuilder.addGameActions(gameAction);
+					}
+
+					message.addFrames(frameBuilder);
+				}
+
+				SCMessage sc = SCMessage.newBuilder().setScFightSendKeyFrame(message).build();
+
+				// 向各用户发送消息
+				for (Role role : game.getRoleMap().values()) {
+					IoSession session = SessionCache.getSessionById(role.getRoleId());
+					if (session != null)
+						session.write(sc);
+				}
+
+				return null;
+			}
+
+		});
 
 	}
 
@@ -336,40 +372,8 @@ public class FightServiceImpl extends BaseService implements FightService {
 	// }
 	// }
 
-	private void send2(final Game game) {
-		rateFrameMeter.sendKeyFrame(game, new Function() {
-
-			@Override
-			public Object apply(Object... params) {
-				@SuppressWarnings("unchecked")
-				List<LogicFrame> logicFrames = (List<LogicFrame>) params[0];
-
-				SCFightSendKeyFrame.Builder message = SCFightSendKeyFrame.newBuilder();
-
-				for (LogicFrame logicFrame : logicFrames) {
-					Frame.Builder frameBuilder = Frame.newBuilder();
-					frameBuilder.setFrameIndex(logicFrame.getFrameIndex());
-					for (Object object : logicFrame.getGameActions()) {
-						GameAction gameAction = (GameAction) object;
-						frameBuilder.addGameActions(gameAction);
-					}
-
-					message.addFrames(frameBuilder);
-				}
-
-				SCMessage sc = SCMessage.newBuilder().setScFightSendKeyFrame(message).build();
-
-				// 向各用户发送消息
-				for (Role role : game.getRoleMap().values()) {
-					IoSession session = SessionCache.getSessionById(role.getRoleId());
-					if (session != null)
-						session.write(sc);
-				}
-
-				return null;
-			}
-
-		});
+	private void send2(Game game) {
+		rateFrameMeter.sendKeyFrame(game);
 	}
 
 	@Override

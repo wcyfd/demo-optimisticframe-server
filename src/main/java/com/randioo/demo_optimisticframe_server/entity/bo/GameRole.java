@@ -1,5 +1,8 @@
 package com.randioo.demo_optimisticframe_server.entity.bo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.randioo.randioo_server_base.entity.RoleInterface;
 import com.randioo.randioo_server_base.module.invite.Invitable;
 import com.randioo.randioo_server_base.module.invite.Invitation;

@@ -1,0 +1,9 @@
+package com.randioo.demo_optimisticframe_server.protocal.gm;
+
+import "GM.proto";
+//3
+message GMSCMessage{
+	optional GmRejectLoginResponse gmRejectLoginResponse = 1;
+	optional GmOpenLoginResponse gmOpenLoginResponse = 2;
+	optional GmShutdownServerResponse gmShutdownServerResponse = 3;
+}

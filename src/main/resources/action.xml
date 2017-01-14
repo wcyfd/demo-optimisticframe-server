@@ -31,4 +31,8 @@
 	
 	<bean id="roleChoosePlaneAction" class="com.randioo.demo_optimisticframe_server.module.role.action.RoleChoosePlaneAction" p:roleService-ref="roleService"></bean>
 	<bean id="roleFallPlaneAction" class="com.randioo.demo_optimisticframe_server.module.role.action.RoleFallPlaneAction" p:roleService-ref="roleService"></bean>
+	
+	<bean id="gmCloseAction" class="com.randioo.demo_optimisticframe_server.module.gm.action.GmCloseAction" p:gmService-ref="gmService"></bean>
+	<bean id="gmOpenAction" class="com.randioo.demo_optimisticframe_server.module.gm.action.GmOpenAction" p:gmService-ref="gmService"></bean>
+	<bean id="gmShutdownAction" class="com.randioo.demo_optimisticframe_server.module.gm.action.GmShutdownAction" p:gmService-ref="gmService"></bean>
 </beans>

@@ -14,6 +14,7 @@ import com.randioo.demo_optimisticframe_server.common.ErrorCode;
 import com.randioo.demo_optimisticframe_server.db.dao.RoleDao;
 import com.randioo.demo_optimisticframe_server.entity.bo.Role;
 import com.randioo.demo_optimisticframe_server.module.role.service.RoleService;
+import com.randioo.demo_optimisticframe_server.protocal.Login;
 import com.randioo.demo_optimisticframe_server.protocal.Login.LoginCheckAccountRequest;
 import com.randioo.demo_optimisticframe_server.protocal.Login.LoginCheckAccountResponse;
 import com.randioo.demo_optimisticframe_server.protocal.Login.LoginCreateRoleRequest;
@@ -28,6 +29,8 @@ import com.randioo.randioo_server_base.entity.RoleInterface;
 import com.randioo.randioo_server_base.module.BaseService;
 import com.randioo.randioo_server_base.module.login.LoginHandler;
 import com.randioo.randioo_server_base.module.login.LoginModelService;
+import com.randioo.randioo_server_base.utils.sensitive.SensitiveWordDictionary;
+import com.randioo.randioo_server_base.utils.system.SystemManager;
 import com.randioo.randioo_server_base.utils.template.Ref;
 
 public class LoginServiceImpl extends BaseService implements LoginService {
@@ -55,6 +58,11 @@ public class LoginServiceImpl extends BaseService implements LoginService {
 	public void setLoginModelService(LoginModelService loginModelService) {
 		this.loginModelService = loginModelService;
 	}
+	
+	private SystemManager systemManager;
+	public void setSystemManager(SystemManager systemManager) {
+		this.systemManager = systemManager;
+	}
 
 	@Override
 	public void init() {
@@ -72,6 +80,14 @@ public class LoginServiceImpl extends BaseService implements LoginService {
 
 		@Override
 		public boolean checkLoginAccountCanLogin(String account, Ref<Object> canLoginErrorMessage) {
+			//检查是否可以登录
+			if (!systemManager.isService()) {
+				canLoginErrorMessage.set(SCMessage
+						.newBuilder()
+						.setLoginCheckAccountResponse(
+								LoginCheckAccountResponse.newBuilder().setErrorCode(ErrorCode.REJECT_LOGIN)).build());
+				return false;
+			}
 			return true;
 		}
 
@@ -120,6 +136,14 @@ public class LoginServiceImpl extends BaseService implements LoginService {
 						.setLoginCreateRoleResponse(
 								LoginCreateRoleResponse.newBuilder().setErrorCode(ErrorCode.ACCOUNT_IS_ALREADY_HAS))
 						.build());
+				return false;
+			}
+
+			if (SensitiveWordDictionary.containsSensitiveWord(request.getName())) {
+				checkCreateRoleMessage.set(SCMessage
+						.newBuilder()
+						.setLoginCreateRoleResponse(
+								LoginCreateRoleResponse.newBuilder().setErrorCode(ErrorCode.NAME_SENSITIVE)).build());
 				return false;
 			}
 			return true;

@@ -29,15 +29,14 @@ import com.randioo.randioo_server_base.module.invite.Invitable;
 import com.randioo.randioo_server_base.module.invite.Invitation;
 import com.randioo.randioo_server_base.module.invite.InviteHandler;
 import com.randioo.randioo_server_base.module.invite.InviteModelService;
-import com.randioo.randioo_server_base.utils.game.inviter.GameInviter;
 
 public class InviteServiceImpl extends BaseService implements InviteService {
 
-	private GameInviter gameInviter;
-
-	public void setGameInviter(GameInviter gameInviter) {
-		this.gameInviter = gameInviter;
-	}
+//	private GameInviter gameInviter;
+//
+//	public void setGameInviter(GameInviter gameInviter) {
+//		this.gameInviter = gameInviter;
+//	}
 
 	private InviteModelService inviteModelService;
 
@@ -211,6 +210,11 @@ public class InviteServiceImpl extends BaseService implements InviteService {
 
 	@Override
 	public void invite(Role role, String account, IoSession session) {
+		if (role == null) {
+			session.write(SCMessage.newBuilder()
+					.setInviteFriendResponse(InviteFriendResponse.newBuilder().setErrorCode(ErrorCode.RELOGIN)).build());
+			return;
+		}
 		session.write(SCMessage.newBuilder()
 				.setInviteFriendResponse(InviteFriendResponse.newBuilder().setErrorCode(ErrorCode.SUCCESS)).build());
 		inviteModelService.invite(role, (Role) RoleCache.getRoleByAccount(account));

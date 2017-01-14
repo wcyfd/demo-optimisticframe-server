@@ -1,0 +1,25 @@
+package com.randioo.demo_optimisticframe_server.protocal.gm;
+
+message GmRejectLoginRequest{
+	optional string code = 1;
+}
+
+message GmRejectLoginResponse{
+	optional bool errorCode = 1;
+}
+
+message GmOpenLoginRequest{
+	optional string code = 1;
+}
+
+message GmOpenLoginResponse{
+	optional bool errorCode = 1;
+}
+
+message GmShutdownServerRequest{
+	optional string code = 1;
+}
+
+message GmShutdownServerResponse{
+	optional bool errorCode = 1;
+}
